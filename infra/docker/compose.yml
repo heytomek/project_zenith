@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: zenith-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-zenith}
+      POSTGRES_USER: ${POSTGRES_USER:-zenith}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-zenith}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - zenith-postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: zenith-redis
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+volumes:
+  zenith-postgres-data:
+

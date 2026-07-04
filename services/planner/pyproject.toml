@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zenith-planner"
+version = "0.1.0"
+description = "Zenith planning engine"
+requires-python = ">=3.12"
+dependencies = [
+  "ortools>=9.15,<10.0",
+  "pydantic>=2.9,<3.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

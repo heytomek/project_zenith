@@ -1,0 +1,15 @@
+{
+  "name": "project-zenith",
+  "private": true,
+  "packageManager": "bun@1.3.10",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:web": "bun run --cwd apps/web dev",
+    "build:web": "bun run --cwd apps/web build",
+    "lint:web": "bun run --cwd apps/web lint",
+    "typecheck:web": "bun run --cwd apps/web typecheck",
+    "new": "bun upgrade --latest && bun update --latest"
+  }
+}
