@@ -1,0 +1,21 @@
+{
+  "timezone": {
+    "api_horizon_end": "2026-04-12T18:00:00",
+    "browser_interpretation_in_New_York": "2026-04-12T18:00:00-04:00"
+  },
+  "redundant_staffing": {
+    "required": 1,
+    "assigned": [
+      "A",
+      "B"
+    ]
+  },
+  "scope_comparison": {
+    "baseline_assignments": 3,
+    "candidate_assignments": 3,
+    "removed_from_unassigned": [
+      "d6a3444d-250b-4932-9fe8-19c812fad6db"
+    ],
+    "actually_assigned_among_removed": []
+  }
+}

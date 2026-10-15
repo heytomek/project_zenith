@@ -1,13 +1,15 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 export default function NotFoundPage() {
   return (
-    <main className="shell">
-      <section className="hero">
-        <p className="eyebrow">Not Found</p>
+    <main className="z-missing">
+      <div className="missing-layout">
         <h1>Page unavailable.</h1>
-        <p className="lead">
-          This route is not part of the current Zenith scaffold.
-        </p>
-      </section>
+        <Link className="button primary" href="/">
+          Zenith <ArrowRight size={16} />
+        </Link>
+      </div>
     </main>
   );
 }

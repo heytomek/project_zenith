@@ -1,0 +1,4040 @@
+{
+  "format": "zenith-coordination",
+  "version": 2,
+  "checksum": "7fbe181572e875f85164d9be0f639f37fb0ea87a9f4e5cee62ec2e431bc81d08",
+  "payload": {
+    "version": 2,
+    "activeId": "harbor",
+    "onboardingDone": true,
+    "workspaces": [
+      {
+        "version": 2,
+        "profile": {
+          "id": "harbor",
+          "name": "Harbor",
+          "icon": "region",
+          "subtitle": "Energy · housing · workforce",
+          "question": "Which investments can cut household energy burden without displacing residents?",
+          "context": "A fictional regional compact covers 1,200 occupied homes and a constrained district energy network. The compact has a $60 million appropriation, a 36-month projection, two municipal partners and an independent resident assembly. Procurement quotes, consent records and workforce estimates disagree. The figures below are synthetic planning proxies, not an engineering assessment.",
+          "date": "2027-01-06",
+          "horizonMonths": 36,
+          "authority": "Harbor compact board; resident assembly consent is required for work in occupied homes.",
+          "principles": [
+            "No involuntary displacement.",
+            "Resident consent can be withdrawn before work begins.",
+            "Regional emissions must not rise above the starting estimate.",
+            "Treat contested estimates as revisable claims, not commitments."
+          ],
+          "scopes": [
+            {
+              "id": "h.region",
+              "name": "Harbor compact",
+              "parentId": null,
+              "relatedIds": [],
+              "kind": "Region",
+              "steward": "Nadia Reyes · compact chair",
+              "description": "Two municipalities coordinate an appropriation of $60 million over 36 months. Neither owns the resident assembly nor the training college."
+            },
+            {
+              "id": "h.grid",
+              "name": "District network",
+              "parentId": "h.region",
+              "relatedIds": [
+                "h.homes",
+                "h.workforce"
+              ],
+              "kind": "Infrastructure",
+              "steward": "Jun Park · utility liaison",
+              "description": "Substation commissioning and heat-network work share scarce electrical crews. Utility consent does not authorize entry into homes."
+            },
+            {
+              "id": "h.homes",
+              "name": "Occupied housing",
+              "parentId": "h.region",
+              "relatedIds": [
+                "h.assembly",
+                "h.grid"
+              ],
+              "kind": "Housing",
+              "steward": "Amara Diallo · housing steward",
+              "description": "1,200 homes; 480 currently meet the compact's winter comfort threshold. Tenants retain separate consent rights."
+            },
+            {
+              "id": "h.workforce",
+              "name": "Skills partnership",
+              "parentId": "h.region",
+              "relatedIds": [
+                "h.grid",
+                "h.homes"
+              ],
+              "kind": "Workforce",
+              "steward": "Luis Moreno · college director",
+              "description": "The college and two unions can certify additional installers; training hours cannot substitute for qualified crew hours."
+            },
+            {
+              "id": "h.assembly",
+              "name": "Resident assembly",
+              "parentId": null,
+              "relatedIds": [
+                "h.region",
+                "h.homes"
+              ],
+              "kind": "Institution",
+              "steward": "Cora Bell · elected delegate",
+              "description": "An independent institution representing residents in both municipalities. Consent is bounded by the signed register, not assumed from participation."
+            },
+            {
+              "id": "h.fund",
+              "name": "Transition fund",
+              "parentId": "h.region",
+              "relatedIds": [
+                "h.workforce",
+                "h.assembly"
+              ],
+              "kind": "Finance",
+              "steward": "Evan Moss · public finance",
+              "description": "The appropriation funds complete packages. Unspent authority is available for contingencies; it is not additional capacity."
+            }
+          ],
+          "objectives": [
+            {
+              "id": "h.emissions",
+              "scopeId": "h.region",
+              "label": "Emissions",
+              "unit": "index",
+              "baseline": 100,
+              "target": 40,
+              "direction": "decrease",
+              "protection": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Synthetic annual regional energy emissions index. Reductions add as a planning approximation; rebound and interactions remain outside this first model."
+            },
+            {
+              "id": "h.comfort",
+              "scopeId": "h.homes",
+              "label": "Warm homes",
+              "unit": "homes",
+              "baseline": 480,
+              "target": 1080,
+              "direction": "increase",
+              "protection": {
+                "max": 1200
+              },
+              "description": "Occupied homes expected to meet the winter comfort threshold. A home is counted once within each proposed package; forecasts cannot exceed the 1,200-home stock."
+            },
+            {
+              "id": "h.skills",
+              "scopeId": "h.workforce",
+              "label": "Qualified installers",
+              "unit": "people",
+              "baseline": 90,
+              "target": 270,
+              "direction": "increase",
+              "description": "People with the agreed safety certification; forecast completion is not an employment guarantee."
+            },
+            {
+              "id": "h.displacement",
+              "scopeId": "h.assembly",
+              "label": "Involuntary moves",
+              "unit": "households",
+              "baseline": 0,
+              "target": 0,
+              "direction": "decrease",
+              "protection": {
+                "max": 0
+              },
+              "description": "A protected limit, independent of financial or carbon benefits. Any planned involuntary move makes a portfolio inadmissible."
+            },
+            {
+              "id": "h.burden",
+              "scopeId": "h.homes",
+              "label": "Energy burden",
+              "unit": "% of income",
+              "baseline": 18,
+              "target": 10,
+              "direction": "decrease",
+              "protection": {
+                "min": 0
+              },
+              "description": "Median modeled household energy expenditure as a share of disposable income. Tariff and technical savings are uncertain, additive proxies."
+            }
+          ],
+          "claims": [
+            {
+              "id": "h.budget-claim",
+              "scopeId": "h.fund",
+              "label": "Appropriation",
+              "value": 60,
+              "unit": "million $",
+              "status": "observed",
+              "min": 0,
+              "max": 80,
+              "step": 1,
+              "source": {
+                "title": "Appropriation ledger · synthetic",
+                "author": "Evan Moss",
+                "date": "2026-12-18",
+                "excerpt": "The compact has $60 million of spending authority for the 36-month period. This excludes an unapproved $15 million application."
+              }
+            },
+            {
+              "id": "h.crew-claim",
+              "scopeId": "h.grid",
+              "label": "Qualified crew hours",
+              "value": 18000,
+              "unit": "hours",
+              "status": "contested",
+              "min": 0,
+              "max": 24000,
+              "step": 500,
+              "source": {
+                "title": "Contractor availability return · synthetic",
+                "author": "Jun Park",
+                "date": "2026-12-21",
+                "excerpt": "Three contractors list 18,000 qualified hours across the compact's work period. One 8,500-hour listing is also offered to a neighboring region."
+              },
+              "dissent": "The neighboring procurement may reduce our confirmed allocation to 9,500 hours."
+            },
+            {
+              "id": "h.training-claim",
+              "scopeId": "h.workforce",
+              "label": "Training allocation",
+              "value": 7200,
+              "unit": "hours",
+              "status": "observed",
+              "min": 0,
+              "max": 10000,
+              "step": 200,
+              "source": {
+                "title": "College and union allocation · synthetic",
+                "author": "Luis Moreno",
+                "date": "2026-12-12",
+                "excerpt": "The signed allocation contains 7,200 instructor and supervised-practice hours. Seats require trainees to opt in; hours do not compel attendance."
+              }
+            },
+            {
+              "id": "h.consent-claim",
+              "scopeId": "h.assembly",
+              "label": "Current consent",
+              "value": 420,
+              "unit": "households",
+              "status": "observed",
+              "min": 0,
+              "max": 1200,
+              "step": 10,
+              "source": {
+                "title": "Consent register · synthetic",
+                "author": "Cora Bell",
+                "date": "2027-01-03",
+                "excerpt": "420 households signed package-specific provisional permissions. No nonresponse is counted as consent; withdrawals must reduce this allocation before a new decision."
+              }
+            },
+            {
+              "id": "h.grid-claim",
+              "scopeId": "h.grid",
+              "label": "Connection allocation",
+              "value": 8,
+              "unit": "MVA",
+              "status": "observed",
+              "min": 0,
+              "max": 12,
+              "step": 0.5,
+              "source": {
+                "title": "Utility connection letter · synthetic",
+                "author": "Jun Park",
+                "date": "2026-12-19",
+                "excerpt": "Eight MVA are reserved for the compact after commissioning. The letter does not guarantee the commissioning date."
+              }
+            },
+            {
+              "id": "h.lead-claim",
+              "scopeId": "h.grid",
+              "label": "Commissioning lead",
+              "value": 12,
+              "unit": "months",
+              "status": "contested",
+              "min": 1,
+              "max": 36,
+              "step": 1,
+              "source": {
+                "title": "Commissioning window · synthetic",
+                "author": "Jun Park",
+                "date": "2027-01-04",
+                "excerpt": "The utility proposes commissioning 12 months after mandate acceptance. Transformer procurement has not yet been completed."
+              },
+              "dissent": "The equipment vendor gives a 24–30 month range if the current slot is lost."
+            },
+            {
+              "id": "h.yield-claim",
+              "scopeId": "h.homes",
+              "label": "Retrofit response",
+              "value": 1,
+              "unit": "response ratio",
+              "status": "assumed",
+              "min": 0.25,
+              "max": 1.5,
+              "step": 0.05,
+              "source": {
+                "title": "Winter pilot extrapolation · synthetic",
+                "author": "Amara Diallo",
+                "date": "2026-12-16",
+                "excerpt": "The baseline response ratio is 1.0, extrapolated from 28 treated homes. Weather, ventilation behavior and building condition may reduce that response; no region-wide effect has been observed."
+              }
+            },
+            {
+              "id": "h.cost-claim",
+              "scopeId": "h.fund",
+              "label": "Installed-cost index",
+              "value": 1.2,
+              "unit": "cost ratio",
+              "status": "contested",
+              "min": 0.8,
+              "max": 2,
+              "step": 0.05,
+              "source": {
+                "title": "Tender reconciliation · synthetic",
+                "author": "Evan Moss",
+                "date": "2026-12-29",
+                "excerpt": "The working quote uses a 1.2 cost index against the original estimate. The heat-loop tender excludes two road crossings."
+              },
+              "dissent": "The infrastructure committee expects a 1.5 index once road permissions are priced."
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "h.money",
+              "scopeIds": [
+                "h.grid",
+                "h.homes",
+                "h.workforce"
+              ],
+              "label": "Funding",
+              "unit": "million $",
+              "amount": 60,
+              "claimId": "h.budget-claim",
+              "provider": "Transition fund",
+              "period": "36 months"
+            },
+            {
+              "id": "h.crews",
+              "scopeIds": [
+                "h.grid",
+                "h.homes"
+              ],
+              "label": "Qualified crews",
+              "unit": "hours",
+              "amount": 18000,
+              "claimId": "h.crew-claim",
+              "provider": "Three contractors",
+              "period": "36 months"
+            },
+            {
+              "id": "h.training",
+              "scopeIds": [
+                "h.workforce"
+              ],
+              "label": "Training",
+              "unit": "hours",
+              "amount": 7200,
+              "claimId": "h.training-claim",
+              "provider": "College and unions",
+              "period": "36 months"
+            },
+            {
+              "id": "h.consent",
+              "scopeIds": [
+                "h.homes",
+                "h.grid"
+              ],
+              "label": "Household consent",
+              "unit": "households",
+              "amount": 420,
+              "claimId": "h.consent-claim",
+              "provider": "Resident assembly",
+              "period": "Current register"
+            },
+            {
+              "id": "h.connection",
+              "scopeIds": [
+                "h.grid",
+                "h.homes"
+              ],
+              "label": "Connections",
+              "unit": "MVA",
+              "amount": 8,
+              "claimId": "h.grid-claim",
+              "provider": "District utility",
+              "period": "After commissioning"
+            }
+          ],
+          "interventions": [
+            {
+              "id": "h.network",
+              "scopeId": "h.grid",
+              "title": "Commission the network",
+              "mechanism": "Reserve transformer delivery and commission the district connection before dependent housing work begins.",
+              "agentId": "h.infrastructure-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 8,
+                  "scaleClaimId": "h.cost-claim",
+                  "scaleBase": 1.2
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 2500
+                },
+                {
+                  "capabilityId": "h.connection",
+                  "amount": 2
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -4
+                }
+              ],
+              "leadMonths": 12,
+              "leadClaimId": "h.lead-claim",
+              "reversible": false,
+              "observedFactor": 0.85
+            },
+            {
+              "id": "h.pilot",
+              "scopeId": "h.homes",
+              "title": "Treat the winter cohort",
+              "mechanism": "Insulate and rebalance 80 consenting homes with current qualified crews; retain a measured comparison cohort.",
+              "agentId": "h.housing-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 6,
+                  "scaleClaimId": "h.cost-claim",
+                  "scaleBase": 1.2
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 1800
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "amount": 80
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -6,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                },
+                {
+                  "objectiveId": "h.comfort",
+                  "amount": 80,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                },
+                {
+                  "objectiveId": "h.burden",
+                  "amount": -0.7,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                }
+              ],
+              "leadMonths": 4,
+              "reversible": true,
+              "observedFactor": 0.8
+            },
+            {
+              "id": "h.train",
+              "scopeId": "h.workforce",
+              "title": "Certify the next cohort",
+              "mechanism": "Fund 90 opt-in trainees through the college and union certification pathway; do not count their hours as crew capacity in this portfolio.",
+              "agentId": "h.workforce-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 4
+                },
+                {
+                  "capabilityId": "h.training",
+                  "amount": 3600
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.skills",
+                  "amount": 90
+                }
+              ],
+              "leadMonths": 6,
+              "reversible": true,
+              "observedFactor": 0.9
+            },
+            {
+              "id": "h.retrofit",
+              "scopeId": "h.homes",
+              "title": "Retrofit 280 homes",
+              "mechanism": "Combine insulation, ventilation and heat-pump work after network commissioning and certification. Only separately reserved crew hours supply the work.",
+              "agentId": "h.housing-agent",
+              "dependencies": [
+                "h.network",
+                "h.train"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 24,
+                  "scaleClaimId": "h.cost-claim",
+                  "scaleBase": 1.2
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 9000
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "amount": 280
+                },
+                {
+                  "capabilityId": "h.connection",
+                  "amount": 3
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -26,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                },
+                {
+                  "objectiveId": "h.comfort",
+                  "amount": 280,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                },
+                {
+                  "objectiveId": "h.burden",
+                  "amount": -3,
+                  "scaleClaimId": "h.yield-claim",
+                  "scaleBase": 1
+                }
+              ],
+              "leadMonths": 10,
+              "reversible": false,
+              "observedFactor": 0.78
+            },
+            {
+              "id": "h.heat-loop",
+              "scopeId": "h.grid",
+              "title": "Build the shared heat loop",
+              "mechanism": "Connect a separate 240-home consenting cohort to district heat after commissioning. Road-crossing cost remains contested.",
+              "agentId": "h.infrastructure-agent",
+              "dependencies": [
+                "h.network"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 20,
+                  "scaleClaimId": "h.cost-claim",
+                  "scaleBase": 1.2
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 8500
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "amount": 240
+                },
+                {
+                  "capabilityId": "h.connection",
+                  "amount": 4
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -28
+                },
+                {
+                  "objectiveId": "h.comfort",
+                  "amount": 240
+                },
+                {
+                  "objectiveId": "h.burden",
+                  "amount": -2.4
+                }
+              ],
+              "leadMonths": 15,
+              "reversible": false,
+              "observedFactor": 0.7
+            },
+            {
+              "id": "h.tariff",
+              "scopeId": "h.homes",
+              "title": "Offer a resident tariff",
+              "mechanism": "Enroll a separate 120-household cohort in a voluntary tariff with a capped winter price. Enrolment and exit remain opt-in.",
+              "agentId": "h.finance-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 3
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 400
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "amount": 120
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -3
+                },
+                {
+                  "objectiveId": "h.burden",
+                  "amount": -2
+                }
+              ],
+              "leadMonths": 2,
+              "reversible": true,
+              "observedFactor": 0.95
+            },
+            {
+              "id": "h.clearance",
+              "scopeId": "h.homes",
+              "title": "Clear and rebuild the block",
+              "mechanism": "A developer proposes demolition and fast replacement. The proposal entails 22 involuntary moves and conflicts with the compact's protected resident limit.",
+              "agentId": "h.housing-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "amount": 8
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "amount": 5000
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "amount": 220
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "h.emissions",
+                  "amount": -8
+                },
+                {
+                  "objectiveId": "h.comfort",
+                  "amount": 400
+                },
+                {
+                  "objectiveId": "h.displacement",
+                  "amount": 22
+                }
+              ],
+              "leadMonths": 18,
+              "reversible": false,
+              "observedFactor": 0.8
+            }
+          ],
+          "strategies": [
+            {
+              "id": "h.stabilize",
+              "name": "Winter first",
+              "thesis": "Build evidence and skills while relieving immediate bills. Preserve capital and avoid committing to the contested network window.",
+              "interventionIds": [
+                "h.pilot",
+                "h.train",
+                "h.tariff"
+              ]
+            },
+            {
+              "id": "h.transition",
+              "name": "Homes and skills",
+              "thesis": "Commit to a deeper 280-home transition, contingent on network commissioning. Reserve the full work package before agents begin.",
+              "interventionIds": [
+                "h.network",
+                "h.train",
+                "h.retrofit",
+                "h.tariff"
+              ]
+            },
+            {
+              "id": "h.accelerate",
+              "name": "Build everything",
+              "thesis": "Test the advertised fast transformation against shared resources and resident protections. High modeled benefits cannot override either constraint.",
+              "interventionIds": [
+                "h.network",
+                "h.pilot",
+                "h.train",
+                "h.retrofit",
+                "h.heat-loop",
+                "h.tariff",
+                "h.clearance"
+              ]
+            }
+          ],
+          "agents": [
+            {
+              "id": "h.infrastructure-agent",
+              "name": "Network",
+              "initials": "NW",
+              "role": "Utility liaison agent",
+              "scopeIds": [
+                "h.grid"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "h.housing-agent",
+              "name": "Homes",
+              "initials": "HM",
+              "role": "Resident-approved housing agent",
+              "scopeIds": [
+                "h.homes"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "h.workforce-agent",
+              "name": "Skills",
+              "initials": "SK",
+              "role": "College coordination agent",
+              "scopeIds": [
+                "h.workforce"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "h.finance-agent",
+              "name": "Tariffs",
+              "initials": "TF",
+              "role": "Finance and enrolment agent",
+              "scopeIds": [
+                "h.homes",
+                "h.fund"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            }
+          ],
+          "shocks": [
+            {
+              "id": "h.crew-shock",
+              "name": "Crews allocated elsewhere",
+              "claimId": "h.crew-claim",
+              "value": 9500,
+              "description": "The neighboring region accepts the overlapping contractor offer. Our confirmed qualified crew allocation falls from 18,000 to 9,500 hours."
+            },
+            {
+              "id": "h.grid-shock",
+              "name": "Transformer slot lost",
+              "claimId": "h.lead-claim",
+              "value": 30,
+              "description": "A vendor notice moves commissioning to month 30. Dependent housing work finishes after the 36-month projection and contributes no benefit inside it."
+            }
+          ]
+        },
+        "revision": 6,
+        "tick": 6,
+        "claimValues": {
+          "h.budget-claim": 60,
+          "h.crew-claim": 9500,
+          "h.training-claim": 7200,
+          "h.consent-claim": 420,
+          "h.grid-claim": 8,
+          "h.lead-claim": 12,
+          "h.yield-claim": 1,
+          "h.cost-claim": 1.2
+        },
+        "decisions": [
+          {
+            "id": "decision-1-1",
+            "strategyId": "h.stabilize",
+            "revision": 0,
+            "claimValues": {
+              "h.budget-claim": 60,
+              "h.crew-claim": 18000,
+              "h.training-claim": 7200,
+              "h.consent-claim": 420,
+              "h.grid-claim": 8,
+              "h.lead-claim": 12,
+              "h.yield-claim": 1,
+              "h.cost-claim": 1.2
+            },
+            "evaluation": {
+              "strategyId": "h.stabilize",
+              "feasible": true,
+              "violations": [],
+              "assumptions": [
+                "h.budget-claim",
+                "h.consent-claim",
+                "h.cost-claim",
+                "h.crew-claim",
+                "h.grid-claim",
+                "h.training-claim",
+                "h.yield-claim"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "h.money",
+                  "required": 13,
+                  "available": 60,
+                  "total": 60,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "h.crews",
+                  "required": 2200,
+                  "available": 18000,
+                  "total": 18000,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "h.training",
+                  "required": 3600,
+                  "available": 7200,
+                  "total": 7200,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "h.consent",
+                  "required": 200,
+                  "available": 420,
+                  "total": 420,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "h.connection",
+                  "required": 0,
+                  "available": 8,
+                  "total": 8,
+                  "committed": 0
+                }
+              ],
+              "outcomes": [
+                {
+                  "objectiveId": "h.emissions",
+                  "value": 91,
+                  "delta": -9,
+                  "target": 40,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "h.comfort",
+                  "value": 560,
+                  "delta": 80,
+                  "target": 1080,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "h.skills",
+                  "value": 180,
+                  "delta": 90,
+                  "target": 270,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "h.displacement",
+                  "value": 0,
+                  "delta": 0,
+                  "target": 0,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "h.burden",
+                  "value": 15.3,
+                  "delta": -2.7,
+                  "target": 10,
+                  "protected": true
+                }
+              ],
+              "schedule": [
+                {
+                  "interventionId": "h.pilot",
+                  "start": 0,
+                  "finish": 4
+                },
+                {
+                  "interventionId": "h.train",
+                  "start": 0,
+                  "finish": 6
+                },
+                {
+                  "interventionId": "h.tariff",
+                  "start": 0,
+                  "finish": 2
+                }
+              ]
+            },
+            "snapshot": {
+              "commitments": {
+                "h.money": 0,
+                "h.crews": 0,
+                "h.training": 0,
+                "h.consent": 0,
+                "h.connection": 0
+              },
+              "baselineDeltas": {
+                "h.emissions": 0,
+                "h.comfort": 0,
+                "h.skills": 0,
+                "h.displacement": 0,
+                "h.burden": 0
+              },
+              "authorizedInterventionIds": []
+            },
+            "authority": "Harbor compact board; resident assembly consent is required for work in occupied homes.",
+            "rationale": "Build evidence and skills while relieving immediate bills. Preserve capital and avoid committing to the contested network window.",
+            "mandateIds": [
+              "mandate-1-1",
+              "mandate-1-2",
+              "mandate-1-3"
+            ],
+            "createdAt": "2027-01-06T01:00:00.000Z"
+          }
+        ],
+        "mandates": [
+          {
+            "id": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "interventionId": "h.pilot",
+            "agentId": "h.housing-agent",
+            "scopeId": "h.homes",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "h.money",
+                "amount": 6,
+                "consumed": 6
+              },
+              {
+                "capabilityId": "h.crews",
+                "amount": 1800,
+                "consumed": 1800
+              },
+              {
+                "capabilityId": "h.consent",
+                "amount": 80,
+                "consumed": 80
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "h.emissions",
+                "amount": -6
+              },
+              {
+                "objectiveId": "h.comfort",
+                "amount": 80
+              },
+              {
+                "objectiveId": "h.burden",
+                "amount": -0.7
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 109,
+            "issuedRevision": 1,
+            "finishMonths": 4,
+            "observedFactor": 0.8,
+            "createdAt": "2027-01-06T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "interventionId": "h.train",
+            "agentId": "h.workforce-agent",
+            "scopeId": "h.workforce",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "h.money",
+                "amount": 4,
+                "consumed": 4
+              },
+              {
+                "capabilityId": "h.training",
+                "amount": 3600,
+                "consumed": 3600
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "h.skills",
+                "amount": 90
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 109,
+            "issuedRevision": 1,
+            "finishMonths": 6,
+            "observedFactor": 0.9,
+            "createdAt": "2027-01-06T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "interventionId": "h.tariff",
+            "agentId": "h.finance-agent",
+            "scopeId": "h.homes",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "h.money",
+                "amount": 3,
+                "consumed": 3
+              },
+              {
+                "capabilityId": "h.crews",
+                "amount": 400,
+                "consumed": 400
+              },
+              {
+                "capabilityId": "h.consent",
+                "amount": 120,
+                "consumed": 120
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "h.emissions",
+                "amount": -3
+              },
+              {
+                "objectiveId": "h.burden",
+                "amount": -2
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 109,
+            "issuedRevision": 1,
+            "finishMonths": 2,
+            "observedFactor": 0.95,
+            "createdAt": "2027-01-06T01:00:00.000Z"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "outcome-5-1",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.emissions",
+            "expected": -6,
+            "observed": -4.8,
+            "source": "Synthetic completion · Homes",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-2",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.comfort",
+            "expected": 80,
+            "observed": 64,
+            "source": "Synthetic completion · Homes",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-3",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.burden",
+            "expected": -0.7,
+            "observed": -0.56,
+            "source": "Synthetic completion · Homes",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-4",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.skills",
+            "expected": 90,
+            "observed": 81,
+            "source": "Synthetic completion · Skills",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-5",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.emissions",
+            "expected": -3,
+            "observed": -2.85,
+            "source": "Synthetic completion · Tariffs",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-6",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "h.burden",
+            "expected": -2,
+            "observed": -1.9,
+            "source": "Synthetic completion · Tariffs",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          }
+        ],
+        "events": [
+          {
+            "id": "event-1-1",
+            "kind": "decision",
+            "title": "Winter first",
+            "detail": "Harbor compact board; resident assembly consent is required for work in occupied homes.: Build evidence and skills while relieving immediate bills. Preserve capital and avoid committing to the contested network window.",
+            "scopeId": "h.region",
+            "referenceId": "decision-1-1",
+            "createdAt": "2027-01-06T01:00:00.000Z"
+          },
+          {
+            "id": "event-2-2",
+            "kind": "accepted",
+            "title": "Treat the winter cohort",
+            "detail": "Homes accepted the frozen resource ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-1",
+            "createdAt": "2027-01-06T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-3",
+            "kind": "accepted",
+            "title": "Certify the next cohort",
+            "detail": "Skills accepted the frozen resource ceiling.",
+            "scopeId": "h.workforce",
+            "referenceId": "mandate-1-2",
+            "createdAt": "2027-01-06T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-4",
+            "kind": "accepted",
+            "title": "Offer a resident tariff",
+            "detail": "Tariffs accepted the frozen resource ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-3",
+            "createdAt": "2027-01-06T02:00:00.000Z"
+          },
+          {
+            "id": "event-3-5",
+            "kind": "progress",
+            "title": "Treat the winter cohort",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-1",
+            "progress": 1,
+            "createdAt": "2027-01-06T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-6",
+            "kind": "progress",
+            "title": "Certify the next cohort",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.workforce",
+            "referenceId": "mandate-1-2",
+            "progress": 1,
+            "createdAt": "2027-01-06T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-7",
+            "kind": "progress",
+            "title": "Offer a resident tariff",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-3",
+            "progress": 1,
+            "createdAt": "2027-01-06T03:00:00.000Z"
+          },
+          {
+            "id": "event-4-8",
+            "kind": "progress",
+            "title": "Treat the winter cohort",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-1",
+            "progress": 2,
+            "createdAt": "2027-01-06T04:00:00.000Z"
+          },
+          {
+            "id": "event-4-9",
+            "kind": "progress",
+            "title": "Certify the next cohort",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.workforce",
+            "referenceId": "mandate-1-2",
+            "progress": 2,
+            "createdAt": "2027-01-06T04:00:00.000Z"
+          },
+          {
+            "id": "event-4-10",
+            "kind": "progress",
+            "title": "Offer a resident tariff",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-3",
+            "progress": 2,
+            "createdAt": "2027-01-06T04:00:00.000Z"
+          },
+          {
+            "id": "event-5-11",
+            "kind": "progress",
+            "title": "Treat the winter cohort",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-1",
+            "progress": 3,
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-12",
+            "kind": "outcome",
+            "title": "Emissions",
+            "detail": "-4.8 observed; -6 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.homes",
+            "referenceId": "outcome-5-1",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-13",
+            "kind": "outcome",
+            "title": "Warm homes",
+            "detail": "64 observed; 80 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.homes",
+            "referenceId": "outcome-5-2",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-14",
+            "kind": "outcome",
+            "title": "Energy burden",
+            "detail": "-0.56 observed; -0.7 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.homes",
+            "referenceId": "outcome-5-3",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-15",
+            "kind": "progress",
+            "title": "Certify the next cohort",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.workforce",
+            "referenceId": "mandate-1-2",
+            "progress": 3,
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-16",
+            "kind": "outcome",
+            "title": "Qualified installers",
+            "detail": "81 observed; 90 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.workforce",
+            "referenceId": "outcome-5-4",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-17",
+            "kind": "progress",
+            "title": "Offer a resident tariff",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "h.homes",
+            "referenceId": "mandate-1-3",
+            "progress": 3,
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-18",
+            "kind": "outcome",
+            "title": "Emissions",
+            "detail": "-2.85 observed; -3 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.homes",
+            "referenceId": "outcome-5-5",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-19",
+            "kind": "outcome",
+            "title": "Energy burden",
+            "detail": "-1.9 observed; -2 expected. Synthetic result, not field evidence.",
+            "scopeId": "h.homes",
+            "referenceId": "outcome-5-6",
+            "createdAt": "2027-01-06T05:00:00.000Z"
+          },
+          {
+            "id": "event-6-20",
+            "kind": "claim",
+            "title": "Qualified crew hours",
+            "detail": "18000 → 9500 hours. Source revision retained.",
+            "scopeId": "h.grid",
+            "referenceId": "h.crew-claim",
+            "change": {
+              "before": 18000,
+              "value": 9500
+            },
+            "createdAt": "2027-01-06T06:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "version": 2,
+        "profile": {
+          "id": "meridian",
+          "name": "Meridian",
+          "icon": "enterprise",
+          "subtitle": "Manufacturing · supply · resilience",
+          "question": "How do we restore reliable delivery without exhausting people or cash?",
+          "context": "A fictional manufacturer operates two plants and serves a concentrated customer base. A critical component supplier missed three delivery windows. Engineering hours, cash commitments and customer service compete across sites; reported machine capacity does not imply available skilled labor. All contracts and figures in this example are synthetic.",
+          "date": "2027-04-12",
+          "horizonMonths": 12,
+          "authority": "Meridian executive committee; plant councils retain the right to reject unsafe workload changes.",
+          "principles": [
+            "Do not increase the recorded fatigue index.",
+            "Preserve at least $5 million of operating cash.",
+            "Do not increase the emissions estimate.",
+            "Separate quoted supplier performance from verified deliveries."
+          ],
+          "scopes": [
+            {
+              "id": "m.company",
+              "name": "Meridian group",
+              "parentId": null,
+              "relatedIds": [],
+              "kind": "Enterprise",
+              "steward": "Inez Rao · chief executive",
+              "description": "A 12-month recovery program allocates $18 million; plant teams and suppliers retain distinct authorities."
+            },
+            {
+              "id": "m.north",
+              "name": "North plant",
+              "parentId": "m.company",
+              "relatedIds": [
+                "m.supply",
+                "m.people"
+              ],
+              "kind": "Plant",
+              "steward": "Malik Reed · plant director",
+              "description": "Produces the constrained component. Its technical team also supports the South plant; hours cannot be committed twice."
+            },
+            {
+              "id": "m.south",
+              "name": "South plant",
+              "parentId": "m.company",
+              "relatedIds": [
+                "m.north",
+                "m.people"
+              ],
+              "kind": "Plant",
+              "steward": "Rosa Kim · plant director",
+              "description": "Assembly and final delivery depend on components from North and the external supplier."
+            },
+            {
+              "id": "m.supply",
+              "name": "Supplier network",
+              "parentId": null,
+              "relatedIds": [
+                "m.company",
+                "m.north"
+              ],
+              "kind": "External network",
+              "steward": "Owen Shah · procurement",
+              "description": "Two candidate suppliers can qualify reserved lots; neither is owned by Meridian. Quoted lead times are contested."
+            },
+            {
+              "id": "m.people",
+              "name": "Plant councils",
+              "parentId": null,
+              "relatedIds": [
+                "m.north",
+                "m.south"
+              ],
+              "kind": "Institution",
+              "steward": "Lena Ortiz · council delegate",
+              "description": "Councils represent the two plants on workload and safety. Overtime is a proposed intervention, not an automatic resource."
+            }
+          ],
+          "objectives": [
+            {
+              "id": "m.service",
+              "scopeId": "m.company",
+              "label": "On-time delivery",
+              "unit": "%",
+              "baseline": 72,
+              "target": 95,
+              "direction": "increase",
+              "protection": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Modeled deliveries meeting the promised date. Portfolio effects use distinct customer cohorts and remain forecasts; rates above 100% are inadmissible."
+            },
+            {
+              "id": "m.concentration",
+              "scopeId": "m.supply",
+              "label": "Single-source exposure",
+              "unit": "%",
+              "baseline": 62,
+              "target": 25,
+              "direction": "decrease",
+              "protection": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Share of critical demand with only one qualified source. Qualification is a dependency, not presumed from an offer."
+            },
+            {
+              "id": "m.fatigue",
+              "scopeId": "m.people",
+              "label": "Fatigue",
+              "unit": "index",
+              "baseline": 6,
+              "target": 4,
+              "direction": "decrease",
+              "protection": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "Synthetic workload and fatigue proxy, protected at the current value. A high delivery forecast cannot compensate for a violation."
+            },
+            {
+              "id": "m.emissions",
+              "scopeId": "m.company",
+              "label": "Emissions",
+              "unit": "kt CO₂e",
+              "baseline": 26,
+              "target": 20,
+              "direction": "decrease",
+              "protection": {
+                "min": 0,
+                "max": 26
+              },
+              "description": "Estimated annual operating emissions. Changes in product mix and energy contracts need a later model revision."
+            },
+            {
+              "id": "m.cash",
+              "scopeId": "m.company",
+              "label": "Operating cash",
+              "unit": "million $",
+              "baseline": 8,
+              "target": 10,
+              "direction": "increase",
+              "protection": {
+                "min": 5
+              },
+              "description": "Cash remaining after modeled working-capital effects. The investment appropriation is tracked separately; inventory ties up operating cash."
+            }
+          ],
+          "claims": [
+            {
+              "id": "m.budget-claim",
+              "scopeId": "m.company",
+              "label": "Recovery appropriation",
+              "value": 18,
+              "unit": "million $",
+              "status": "observed",
+              "min": 0,
+              "max": 25,
+              "step": 0.5,
+              "source": {
+                "title": "Capital committee minute · synthetic",
+                "author": "Inez Rao",
+                "date": "2027-04-06",
+                "excerpt": "The committee approved $18 million for the 12-month recovery package. This is separate from the $8 million working-capital baseline."
+              }
+            },
+            {
+              "id": "m.skill-claim",
+              "scopeId": "m.north",
+              "label": "Technical allocation",
+              "value": 16000,
+              "unit": "hours",
+              "status": "contested",
+              "min": 0,
+              "max": 22000,
+              "step": 500,
+              "source": {
+                "title": "Cross-plant capacity reconciliation · synthetic",
+                "author": "Malik Reed",
+                "date": "2027-04-08",
+                "excerpt": "After current production commitments, the two plants list 16,000 technical hours for recovery work. A maintenance shutdown may claim 6,000 of those hours."
+              },
+              "dissent": "South's maintenance team has not released its shutdown reservation."
+            },
+            {
+              "id": "m.machine-claim",
+              "scopeId": "m.north",
+              "label": "Trial-cell time",
+              "value": 2000,
+              "unit": "machine hours",
+              "status": "observed",
+              "min": 0,
+              "max": 4000,
+              "step": 100,
+              "source": {
+                "title": "Trial-cell reservation · synthetic",
+                "author": "Rosa Kim",
+                "date": "2027-04-02",
+                "excerpt": "2,000 machine hours are reserved for tooling trials and efficiency validation. Technical labor remains a separate constraint."
+              }
+            },
+            {
+              "id": "m.lots-claim",
+              "scopeId": "m.supply",
+              "label": "Reserved supplier lots",
+              "value": 80,
+              "unit": "lots",
+              "status": "observed",
+              "min": 0,
+              "max": 120,
+              "step": 5,
+              "source": {
+                "title": "Supplier reservation letters · synthetic",
+                "author": "Owen Shah",
+                "date": "2027-04-09",
+                "excerpt": "Letters reserve 80 lots across qualification and inventory options. They are not accepted production deliveries."
+              }
+            },
+            {
+              "id": "m.energy-claim",
+              "scopeId": "m.south",
+              "label": "Trial energy allocation",
+              "value": 4500,
+              "unit": "MWh",
+              "status": "observed",
+              "min": 0,
+              "max": 6000,
+              "step": 100,
+              "source": {
+                "title": "Energy contract allocation · synthetic",
+                "author": "Rosa Kim",
+                "date": "2027-03-30",
+                "excerpt": "The recovery program may consume up to 4,500 MWh of separately contracted trial energy. Carbon effects are evaluated independently."
+              }
+            },
+            {
+              "id": "m.lead-claim",
+              "scopeId": "m.supply",
+              "label": "Supplier qualification lead",
+              "value": 3,
+              "unit": "months",
+              "status": "contested",
+              "min": 1,
+              "max": 18,
+              "step": 1,
+              "source": {
+                "title": "Qualification sequence · synthetic",
+                "author": "Owen Shah",
+                "date": "2027-04-10",
+                "excerpt": "The supplier quotes three months of qualification after the component audit. Its test laboratory slot is provisional."
+              },
+              "dissent": "The laboratory has a twelve-month queue if the reserved slot is reassigned."
+            },
+            {
+              "id": "m.price-claim",
+              "scopeId": "m.north",
+              "label": "Tooling price",
+              "value": 1,
+              "unit": "cost ratio",
+              "status": "contested",
+              "min": 0.5,
+              "max": 2.5,
+              "step": 0.05,
+              "source": {
+                "title": "Tooling quote · synthetic",
+                "author": "Malik Reed",
+                "date": "2027-04-05",
+                "excerpt": "The $6 million cell estimate uses a price ratio of 1.0. Imported fixtures and integration work are not fixed-price."
+              },
+              "dissent": "The supplier has indicated a possible 80% increase after a currency move."
+            },
+            {
+              "id": "m.yield-claim",
+              "scopeId": "m.supply",
+              "label": "Qualification response",
+              "value": 0.75,
+              "unit": "response ratio",
+              "status": "assumed",
+              "min": 0.2,
+              "max": 1.2,
+              "step": 0.05,
+              "source": {
+                "title": "Qualification cohort estimate · synthetic",
+                "author": "Owen Shah",
+                "date": "2027-04-11",
+                "excerpt": "At a 0.75 response ratio, qualification is expected to recover 10 points of delivery reliability and remove 22 points of single-source exposure. Pilot lots have not reached final acceptance."
+              }
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "m.money",
+              "scopeIds": [
+                "m.north",
+                "m.south",
+                "m.supply",
+                "m.people"
+              ],
+              "label": "Funding",
+              "unit": "million $",
+              "amount": 18,
+              "claimId": "m.budget-claim",
+              "provider": "Capital committee",
+              "period": "12 months"
+            },
+            {
+              "id": "m.technical",
+              "scopeIds": [
+                "m.north",
+                "m.south",
+                "m.supply",
+                "m.people"
+              ],
+              "label": "Technical teams",
+              "unit": "hours",
+              "amount": 16000,
+              "claimId": "m.skill-claim",
+              "provider": "Both plants",
+              "period": "12 months"
+            },
+            {
+              "id": "m.machine",
+              "scopeIds": [
+                "m.north",
+                "m.south"
+              ],
+              "label": "Trial cell",
+              "unit": "machine hours",
+              "amount": 2000,
+              "claimId": "m.machine-claim",
+              "provider": "North plant",
+              "period": "12 months"
+            },
+            {
+              "id": "m.lots",
+              "scopeIds": [
+                "m.supply"
+              ],
+              "label": "Supplier reservations",
+              "unit": "lots",
+              "amount": 80,
+              "claimId": "m.lots-claim",
+              "provider": "External suppliers",
+              "period": "Current letters"
+            },
+            {
+              "id": "m.energy",
+              "scopeIds": [
+                "m.north",
+                "m.south",
+                "m.supply"
+              ],
+              "label": "Trial energy",
+              "unit": "MWh",
+              "amount": 4500,
+              "claimId": "m.energy-claim",
+              "provider": "Energy contract",
+              "period": "12 months"
+            }
+          ],
+          "interventions": [
+            {
+              "id": "m.audit",
+              "scopeId": "m.supply",
+              "title": "Audit the component chain",
+              "mechanism": "Reconcile acceptance criteria, failure causes and two candidate supplier routes before qualification or tooling commitments.",
+              "agentId": "m.supply-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 0.8
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 1000
+                },
+                {
+                  "capabilityId": "m.lots",
+                  "amount": 2
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 2
+                },
+                {
+                  "objectiveId": "m.concentration",
+                  "amount": -3
+                }
+              ],
+              "leadMonths": 1,
+              "reversible": true,
+              "observedFactor": 0.95
+            },
+            {
+              "id": "m.qualify",
+              "scopeId": "m.supply",
+              "title": "Qualify a second supplier",
+              "mechanism": "Validate 20 reserved lots against the audited criteria. Release production only after qualification closes.",
+              "agentId": "m.supply-agent",
+              "dependencies": [
+                "m.audit"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 4
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 4500
+                },
+                {
+                  "capabilityId": "m.lots",
+                  "amount": 20
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 10,
+                  "scaleClaimId": "m.yield-claim",
+                  "scaleBase": 0.75
+                },
+                {
+                  "objectiveId": "m.concentration",
+                  "amount": -22,
+                  "scaleClaimId": "m.yield-claim",
+                  "scaleBase": 0.75
+                }
+              ],
+              "leadMonths": 3,
+              "leadClaimId": "m.lead-claim",
+              "reversible": true,
+              "observedFactor": 0.7
+            },
+            {
+              "id": "m.cell",
+              "scopeId": "m.north",
+              "title": "Install a flexible cell",
+              "mechanism": "Add an internally controlled component route after the audit. Commissioning consumes engineering and trial-machine time; quoted capacity alone is insufficient.",
+              "agentId": "m.plant-agent",
+              "dependencies": [
+                "m.audit"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 6,
+                  "scaleClaimId": "m.price-claim",
+                  "scaleBase": 1
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 6500
+                },
+                {
+                  "capabilityId": "m.machine",
+                  "amount": 1500
+                },
+                {
+                  "capabilityId": "m.energy",
+                  "amount": 600
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 8
+                },
+                {
+                  "objectiveId": "m.concentration",
+                  "amount": -10
+                },
+                {
+                  "objectiveId": "m.fatigue",
+                  "amount": 0.5
+                }
+              ],
+              "leadMonths": 4,
+              "reversible": false,
+              "observedFactor": 0.8
+            },
+            {
+              "id": "m.training",
+              "scopeId": "m.people",
+              "title": "Cross-train plant teams",
+              "mechanism": "Protect paid training time and redistribute qualified coverage. Training benefits are forecast outcomes, not newly available technical hours in the same plan.",
+              "agentId": "m.people-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 2
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 3500
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 4
+                },
+                {
+                  "objectiveId": "m.fatigue",
+                  "amount": -1.5
+                }
+              ],
+              "leadMonths": 3,
+              "reversible": true,
+              "observedFactor": 0.9
+            },
+            {
+              "id": "m.efficiency",
+              "scopeId": "m.south",
+              "title": "Reduce process energy",
+              "mechanism": "Validate heat recovery and standby controls without changing production acceptance standards.",
+              "agentId": "m.energy-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 3
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 2800
+                },
+                {
+                  "capabilityId": "m.machine",
+                  "amount": 300
+                },
+                {
+                  "capabilityId": "m.energy",
+                  "amount": 200
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.emissions",
+                  "amount": -5
+                },
+                {
+                  "objectiveId": "m.cash",
+                  "amount": 0.2
+                }
+              ],
+              "leadMonths": 3,
+              "reversible": true,
+              "observedFactor": 0.82
+            },
+            {
+              "id": "m.inventory",
+              "scopeId": "m.supply",
+              "title": "Buy a buffer stock",
+              "mechanism": "Reserve 45 accepted lots against near-term customer orders. The stock protects delivery but ties up operating cash and adds storage emissions.",
+              "agentId": "m.supply-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 5
+                },
+                {
+                  "capabilityId": "m.lots",
+                  "amount": 45
+                },
+                {
+                  "capabilityId": "m.energy",
+                  "amount": 300
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 9
+                },
+                {
+                  "objectiveId": "m.cash",
+                  "amount": -3.5
+                },
+                {
+                  "objectiveId": "m.emissions",
+                  "amount": 1.5
+                }
+              ],
+              "leadMonths": 1,
+              "reversible": true,
+              "observedFactor": 0.88
+            },
+            {
+              "id": "m.overtime",
+              "scopeId": "m.people",
+              "title": "Add an overtime shift",
+              "mechanism": "A proposed additional shift raises forecast delivery at the cost of fatigue and energy use. The plant councils have not authorized it.",
+              "agentId": "m.people-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "amount": 1.5
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "amount": 8000
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "m.service",
+                  "amount": 7
+                },
+                {
+                  "objectiveId": "m.fatigue",
+                  "amount": 3
+                },
+                {
+                  "objectiveId": "m.emissions",
+                  "amount": 2
+                }
+              ],
+              "leadMonths": 1,
+              "reversible": true,
+              "observedFactor": 0.6
+            }
+          ],
+          "strategies": [
+            {
+              "id": "m.diversify",
+              "name": "Qualify and train",
+              "thesis": "Restore reliability through a second supplier and paid training. Depend on laboratory timing rather than a new internal asset.",
+              "interventionIds": [
+                "m.audit",
+                "m.qualify",
+                "m.training"
+              ]
+            },
+            {
+              "id": "m.internal",
+              "name": "Control the bottleneck",
+              "thesis": "Invest in an internal cell, training and energy efficiency. Use more engineering capacity to gain control and lower emissions.",
+              "interventionIds": [
+                "m.audit",
+                "m.cell",
+                "m.training",
+                "m.efficiency"
+              ]
+            },
+            {
+              "id": "m.all",
+              "name": "Recovery at any cost",
+              "thesis": "Combine every requested measure. Expose overcommitted technical capacity, unsafe fatigue and depleted operating cash before authorization.",
+              "interventionIds": [
+                "m.audit",
+                "m.qualify",
+                "m.cell",
+                "m.training",
+                "m.efficiency",
+                "m.inventory",
+                "m.overtime"
+              ]
+            }
+          ],
+          "agents": [
+            {
+              "id": "m.supply-agent",
+              "name": "Supply",
+              "initials": "SU",
+              "role": "Supplier assurance agent",
+              "scopeIds": [
+                "m.supply"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "m.plant-agent",
+              "name": "Cell",
+              "initials": "CL",
+              "role": "Plant engineering agent",
+              "scopeIds": [
+                "m.north"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "m.people-agent",
+              "name": "Teams",
+              "initials": "TM",
+              "role": "Council-approved workforce agent",
+              "scopeIds": [
+                "m.people"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "m.energy-agent",
+              "name": "Energy",
+              "initials": "EN",
+              "role": "Process energy agent",
+              "scopeIds": [
+                "m.south"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            }
+          ],
+          "shocks": [
+            {
+              "id": "m.lead-shock",
+              "name": "Laboratory slot lost",
+              "claimId": "m.lead-claim",
+              "value": 12,
+              "description": "The external laboratory withdraws the provisional slot. Qualification now takes twelve months after the audit, beyond the recovery horizon."
+            },
+            {
+              "id": "m.capacity-shock",
+              "name": "Shutdown claims engineers",
+              "claimId": "m.skill-claim",
+              "value": 10000,
+              "description": "A required South-plant shutdown reserves 6,000 hours. Only 10,000 technical hours remain for the strategic recovery package."
+            }
+          ]
+        },
+        "revision": 9,
+        "tick": 9,
+        "claimValues": {
+          "m.budget-claim": 18,
+          "m.skill-claim": 10000,
+          "m.machine-claim": 2000,
+          "m.lots-claim": 80,
+          "m.energy-claim": 4500,
+          "m.lead-claim": 3,
+          "m.price-claim": 1,
+          "m.yield-claim": 0.75
+        },
+        "decisions": [
+          {
+            "id": "decision-1-1",
+            "strategyId": "m.diversify",
+            "revision": 0,
+            "claimValues": {
+              "m.budget-claim": 18,
+              "m.skill-claim": 16000,
+              "m.machine-claim": 2000,
+              "m.lots-claim": 80,
+              "m.energy-claim": 4500,
+              "m.lead-claim": 3,
+              "m.price-claim": 1,
+              "m.yield-claim": 0.75
+            },
+            "evaluation": {
+              "strategyId": "m.diversify",
+              "feasible": true,
+              "violations": [],
+              "assumptions": [
+                "m.budget-claim",
+                "m.energy-claim",
+                "m.lead-claim",
+                "m.lots-claim",
+                "m.machine-claim",
+                "m.skill-claim",
+                "m.yield-claim"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "m.money",
+                  "required": 6.8,
+                  "available": 18,
+                  "total": 18,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "m.technical",
+                  "required": 9000,
+                  "available": 16000,
+                  "total": 16000,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "m.machine",
+                  "required": 0,
+                  "available": 2000,
+                  "total": 2000,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "m.lots",
+                  "required": 22,
+                  "available": 80,
+                  "total": 80,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "m.energy",
+                  "required": 0,
+                  "available": 4500,
+                  "total": 4500,
+                  "committed": 0
+                }
+              ],
+              "outcomes": [
+                {
+                  "objectiveId": "m.service",
+                  "value": 88,
+                  "delta": 16,
+                  "target": 95,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "m.concentration",
+                  "value": 37,
+                  "delta": -25,
+                  "target": 25,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "m.fatigue",
+                  "value": 4.5,
+                  "delta": -1.5,
+                  "target": 4,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "m.emissions",
+                  "value": 26,
+                  "delta": 0,
+                  "target": 20,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "m.cash",
+                  "value": 8,
+                  "delta": 0,
+                  "target": 10,
+                  "protected": true
+                }
+              ],
+              "schedule": [
+                {
+                  "interventionId": "m.audit",
+                  "start": 0,
+                  "finish": 1
+                },
+                {
+                  "interventionId": "m.qualify",
+                  "start": 1,
+                  "finish": 4
+                },
+                {
+                  "interventionId": "m.training",
+                  "start": 0,
+                  "finish": 3
+                }
+              ]
+            },
+            "snapshot": {
+              "commitments": {
+                "m.money": 0,
+                "m.technical": 0,
+                "m.machine": 0,
+                "m.lots": 0,
+                "m.energy": 0
+              },
+              "baselineDeltas": {
+                "m.service": 0,
+                "m.concentration": 0,
+                "m.fatigue": 0,
+                "m.emissions": 0,
+                "m.cash": 0
+              },
+              "authorizedInterventionIds": []
+            },
+            "authority": "Meridian executive committee; plant councils retain the right to reject unsafe workload changes.",
+            "rationale": "Restore reliability through a second supplier and paid training. Depend on laboratory timing rather than a new internal asset.",
+            "mandateIds": [
+              "mandate-1-1",
+              "mandate-1-2",
+              "mandate-1-3"
+            ],
+            "createdAt": "2027-04-12T01:00:00.000Z"
+          }
+        ],
+        "mandates": [
+          {
+            "id": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "interventionId": "m.audit",
+            "agentId": "m.supply-agent",
+            "scopeId": "m.supply",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "m.money",
+                "amount": 0.8,
+                "consumed": 0.8
+              },
+              {
+                "capabilityId": "m.technical",
+                "amount": 1000,
+                "consumed": 1000
+              },
+              {
+                "capabilityId": "m.lots",
+                "amount": 2,
+                "consumed": 2
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "m.service",
+                "amount": 2
+              },
+              {
+                "objectiveId": "m.concentration",
+                "amount": -3
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 37,
+            "issuedRevision": 1,
+            "finishMonths": 1,
+            "observedFactor": 0.95,
+            "createdAt": "2027-04-12T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "interventionId": "m.qualify",
+            "agentId": "m.supply-agent",
+            "scopeId": "m.supply",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "m.money",
+                "amount": 4,
+                "consumed": 4
+              },
+              {
+                "capabilityId": "m.technical",
+                "amount": 4500,
+                "consumed": 4500
+              },
+              {
+                "capabilityId": "m.lots",
+                "amount": 20,
+                "consumed": 20
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "m.service",
+                "amount": 10
+              },
+              {
+                "objectiveId": "m.concentration",
+                "amount": -22
+              }
+            ],
+            "dependencies": [
+              "mandate-1-1"
+            ],
+            "expiresAt": 37,
+            "issuedRevision": 1,
+            "finishMonths": 4,
+            "observedFactor": 0.7,
+            "createdAt": "2027-04-12T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "interventionId": "m.training",
+            "agentId": "m.people-agent",
+            "scopeId": "m.people",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "m.money",
+                "amount": 2,
+                "consumed": 2
+              },
+              {
+                "capabilityId": "m.technical",
+                "amount": 3500,
+                "consumed": 3500
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "m.service",
+                "amount": 4
+              },
+              {
+                "objectiveId": "m.fatigue",
+                "amount": -1.5
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 37,
+            "issuedRevision": 1,
+            "finishMonths": 3,
+            "observedFactor": 0.9,
+            "createdAt": "2027-04-12T01:00:00.000Z"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "outcome-5-1",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.service",
+            "expected": 2,
+            "observed": 1.9,
+            "source": "Synthetic completion · Supply",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-2",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.concentration",
+            "expected": -3,
+            "observed": -2.85,
+            "source": "Synthetic completion · Supply",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-3",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.service",
+            "expected": 4,
+            "observed": 3.6,
+            "source": "Synthetic completion · Teams",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-4",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.fatigue",
+            "expected": -1.5,
+            "observed": -1.35,
+            "source": "Synthetic completion · Teams",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-8-5",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.service",
+            "expected": 10,
+            "observed": 7,
+            "source": "Synthetic completion · Supply",
+            "createdAt": "2027-04-12T08:00:00.000Z"
+          },
+          {
+            "id": "outcome-8-6",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "m.concentration",
+            "expected": -22,
+            "observed": -15.4,
+            "source": "Synthetic completion · Supply",
+            "createdAt": "2027-04-12T08:00:00.000Z"
+          }
+        ],
+        "events": [
+          {
+            "id": "event-1-1",
+            "kind": "decision",
+            "title": "Qualify and train",
+            "detail": "Meridian executive committee; plant councils retain the right to reject unsafe workload changes.: Restore reliability through a second supplier and paid training. Depend on laboratory timing rather than a new internal asset.",
+            "scopeId": "m.company",
+            "referenceId": "decision-1-1",
+            "createdAt": "2027-04-12T01:00:00.000Z"
+          },
+          {
+            "id": "event-2-2",
+            "kind": "accepted",
+            "title": "Audit the component chain",
+            "detail": "Supply accepted the frozen resource ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-1",
+            "createdAt": "2027-04-12T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-3",
+            "kind": "accepted",
+            "title": "Qualify a second supplier",
+            "detail": "Supply accepted the frozen resource ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-2",
+            "createdAt": "2027-04-12T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-4",
+            "kind": "accepted",
+            "title": "Cross-train plant teams",
+            "detail": "Teams accepted the frozen resource ceiling.",
+            "scopeId": "m.people",
+            "referenceId": "mandate-1-3",
+            "createdAt": "2027-04-12T02:00:00.000Z"
+          },
+          {
+            "id": "event-3-5",
+            "kind": "progress",
+            "title": "Audit the component chain",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-1",
+            "progress": 1,
+            "createdAt": "2027-04-12T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-6",
+            "kind": "blocked",
+            "title": "Qualify a second supplier",
+            "detail": "Waiting for the required mandate to complete.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-2",
+            "createdAt": "2027-04-12T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-7",
+            "kind": "progress",
+            "title": "Cross-train plant teams",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.people",
+            "referenceId": "mandate-1-3",
+            "progress": 1,
+            "createdAt": "2027-04-12T03:00:00.000Z"
+          },
+          {
+            "id": "event-4-8",
+            "kind": "progress",
+            "title": "Audit the component chain",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-1",
+            "progress": 2,
+            "createdAt": "2027-04-12T04:00:00.000Z"
+          },
+          {
+            "id": "event-4-9",
+            "kind": "progress",
+            "title": "Cross-train plant teams",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.people",
+            "referenceId": "mandate-1-3",
+            "progress": 2,
+            "createdAt": "2027-04-12T04:00:00.000Z"
+          },
+          {
+            "id": "event-5-10",
+            "kind": "progress",
+            "title": "Audit the component chain",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-1",
+            "progress": 3,
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-11",
+            "kind": "outcome",
+            "title": "On-time delivery",
+            "detail": "1.9 observed; 2 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.supply",
+            "referenceId": "outcome-5-1",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-12",
+            "kind": "outcome",
+            "title": "Single-source exposure",
+            "detail": "-2.85 observed; -3 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.supply",
+            "referenceId": "outcome-5-2",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-13",
+            "kind": "progress",
+            "title": "Cross-train plant teams",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.people",
+            "referenceId": "mandate-1-3",
+            "progress": 3,
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-14",
+            "kind": "outcome",
+            "title": "On-time delivery",
+            "detail": "3.6 observed; 4 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.people",
+            "referenceId": "outcome-5-3",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-15",
+            "kind": "outcome",
+            "title": "Fatigue",
+            "detail": "-1.35 observed; -1.5 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.people",
+            "referenceId": "outcome-5-4",
+            "createdAt": "2027-04-12T05:00:00.000Z"
+          },
+          {
+            "id": "event-6-16",
+            "kind": "progress",
+            "title": "Qualify a second supplier",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-2",
+            "progress": 1,
+            "createdAt": "2027-04-12T06:00:00.000Z"
+          },
+          {
+            "id": "event-7-17",
+            "kind": "progress",
+            "title": "Qualify a second supplier",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-2",
+            "progress": 2,
+            "createdAt": "2027-04-12T07:00:00.000Z"
+          },
+          {
+            "id": "event-8-18",
+            "kind": "progress",
+            "title": "Qualify a second supplier",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "m.supply",
+            "referenceId": "mandate-1-2",
+            "progress": 3,
+            "createdAt": "2027-04-12T08:00:00.000Z"
+          },
+          {
+            "id": "event-8-19",
+            "kind": "outcome",
+            "title": "On-time delivery",
+            "detail": "7 observed; 10 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.supply",
+            "referenceId": "outcome-8-5",
+            "createdAt": "2027-04-12T08:00:00.000Z"
+          },
+          {
+            "id": "event-8-20",
+            "kind": "outcome",
+            "title": "Single-source exposure",
+            "detail": "-15.4 observed; -22 expected. Synthetic result, not field evidence.",
+            "scopeId": "m.supply",
+            "referenceId": "outcome-8-6",
+            "createdAt": "2027-04-12T08:00:00.000Z"
+          },
+          {
+            "id": "event-9-21",
+            "kind": "claim",
+            "title": "Technical allocation",
+            "detail": "16000 → 10000 hours. Source revision retained.",
+            "scopeId": "m.north",
+            "referenceId": "m.skill-claim",
+            "change": {
+              "before": 16000,
+              "value": 10000
+            },
+            "createdAt": "2027-04-12T09:00:00.000Z"
+          }
+        ]
+      },
+      {
+        "version": 2,
+        "profile": {
+          "id": "atlas",
+          "name": "Open Atlas",
+          "icon": "commons",
+          "subtitle": "Knowledge · institutions · commons",
+          "question": "How can a shared knowledge commons grow without losing consent or maintainability?",
+          "context": "A fictional federation of a public library, two research labs and a civic archive maintains openly reusable climate-adaptation material. Their memberships overlap but their permissions do not. Volunteer time is pledged and finite. The federation must choose between deeper verification and wider reuse; unpublished personal records cannot be traded for reach.",
+          "date": "2027-02-01",
+          "horizonMonths": 18,
+          "authority": "Open Atlas stewardship council; originating institutions retain publication rights and participants retain consent rights.",
+          "principles": [
+            "No private personal record may be exposed.",
+            "Consent is specific, revocable and separate from institutional membership.",
+            "Do not create a maintenance burden above the present allocation.",
+            "Preserve open reuse and the ability to fork without central permission."
+          ],
+          "scopes": [
+            {
+              "id": "a.commons",
+              "name": "Open Atlas federation",
+              "parentId": null,
+              "relatedIds": [],
+              "kind": "Commons",
+              "steward": "Mina Sol · council convenor",
+              "description": "An 18-month shared program has $1.2 million, bounded volunteer pledges and independent institutional commitments."
+            },
+            {
+              "id": "a.library",
+              "name": "Public library",
+              "parentId": null,
+              "relatedIds": [
+                "a.commons",
+                "a.archive"
+              ],
+              "kind": "Institution",
+              "steward": "Dara Lin · public librarian",
+              "description": "Hosts openly licensed materials and assists contributors. Hosting does not confer rights over unpublished records."
+            },
+            {
+              "id": "a.labs",
+              "name": "Research partnership",
+              "parentId": null,
+              "relatedIds": [
+                "a.commons",
+                "a.library"
+              ],
+              "kind": "Institution",
+              "steward": "Samir Vale · research steward",
+              "description": "Two independent labs validate claims. Their reviewers also contribute to the archive; the same pledged hours cannot be allocated twice."
+            },
+            {
+              "id": "a.archive",
+              "name": "Civic archive",
+              "parentId": null,
+              "relatedIds": [
+                "a.commons",
+                "a.library",
+                "a.participants"
+              ],
+              "kind": "Institution",
+              "steward": "Noor Ames · archive steward",
+              "description": "Holds adaptation records and unpublished oral histories. Only the specifically consented collection can enter the commons."
+            },
+            {
+              "id": "a.participants",
+              "name": "Contributor assembly",
+              "parentId": null,
+              "relatedIds": [
+                "a.commons",
+                "a.archive",
+                "a.labs"
+              ],
+              "kind": "Assembly",
+              "steward": "Tess Okoro · elected delegate",
+              "description": "Contributors belong to several institutions but retain individual publication rights. Neither a lab nor the council can override withdrawal."
+            }
+          ],
+          "objectives": [
+            {
+              "id": "a.reuse",
+              "scopeId": "a.commons",
+              "label": "Reusable materials",
+              "unit": "items",
+              "baseline": 300,
+              "target": 1000,
+              "direction": "increase",
+              "description": "Materials with an open license, usable metadata and an exportable file. Items are counted once across the selected work packages."
+            },
+            {
+              "id": "a.verified",
+              "scopeId": "a.labs",
+              "label": "Verified claims",
+              "unit": "%",
+              "baseline": 40,
+              "target": 85,
+              "direction": "increase",
+              "protection": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Share of the reference collection with a traceable evidence check. Forecast changes are percentage-point proxies, not guarantees of truth."
+            },
+            {
+              "id": "a.governed",
+              "scopeId": "a.participants",
+              "label": "Rights resolved",
+              "unit": "%",
+              "baseline": 65,
+              "target": 100,
+              "direction": "increase",
+              "protection": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Share of the reference collection with explicit reuse rights and a withdrawal route. A license alone does not establish participant consent."
+            },
+            {
+              "id": "a.privacy",
+              "scopeId": "a.participants",
+              "label": "Private records exposed",
+              "unit": "records",
+              "baseline": 0,
+              "target": 0,
+              "direction": "decrease",
+              "protection": {
+                "max": 0
+              },
+              "description": "Protected limit on exposure of unpublished personal records. Aggregate openness cannot compensate for even one exposure."
+            },
+            {
+              "id": "a.maintenance",
+              "scopeId": "a.library",
+              "label": "Maintenance burden",
+              "unit": "hours / week",
+              "baseline": 26,
+              "target": 20,
+              "direction": "decrease",
+              "protection": {
+                "max": 26
+              },
+              "description": "Estimated recurring work after the program. Volunteer pledges cover program delivery; they do not silently absorb future maintenance."
+            }
+          ],
+          "claims": [
+            {
+              "id": "a.budget-claim",
+              "scopeId": "a.commons",
+              "label": "Federation grant",
+              "value": 1.2,
+              "unit": "million $",
+              "status": "observed",
+              "min": 0,
+              "max": 2,
+              "step": 0.05,
+              "source": {
+                "title": "Grant award · synthetic",
+                "author": "Mina Sol",
+                "date": "2027-01-09",
+                "excerpt": "The 18-month grant commits $1.2 million to federation work. Future fundraising is excluded from available funding."
+              }
+            },
+            {
+              "id": "a.volunteer-claim",
+              "scopeId": "a.participants",
+              "label": "Opt-in volunteer time",
+              "value": 2400,
+              "unit": "hours",
+              "status": "contested",
+              "min": 0,
+              "max": 4000,
+              "step": 100,
+              "source": {
+                "title": "Pledge reconciliation · synthetic",
+                "author": "Tess Okoro",
+                "date": "2027-01-28",
+                "excerpt": "Named, opt-in pledges total 2,400 hours after removing duplicate pledges across institutions. Contributors may withdraw unworked time."
+              },
+              "dissent": "About 1,000 hours depend on a university term timetable that has not been confirmed."
+            },
+            {
+              "id": "a.partner-claim",
+              "scopeId": "a.labs",
+              "label": "Institutional review time",
+              "value": 800,
+              "unit": "hours",
+              "status": "observed",
+              "min": 0,
+              "max": 1400,
+              "step": 50,
+              "source": {
+                "title": "Partner letters · synthetic",
+                "author": "Samir Vale",
+                "date": "2027-01-17",
+                "excerpt": "The library, labs and archive commit 800 paid hours for this program. The same staff listed in multiple letters were counted once."
+              }
+            },
+            {
+              "id": "a.storage-claim",
+              "scopeId": "a.library",
+              "label": "Replication allocation",
+              "value": 20,
+              "unit": "TB",
+              "status": "observed",
+              "min": 0,
+              "max": 40,
+              "step": 1,
+              "source": {
+                "title": "Hosting allocation · synthetic",
+                "author": "Dara Lin",
+                "date": "2027-01-20",
+                "excerpt": "Partners reserve 20 TB including required replicated copies. Unfunded personal drives are not federation infrastructure."
+              }
+            },
+            {
+              "id": "a.consent-claim",
+              "scopeId": "a.participants",
+              "label": "Publication permissions",
+              "value": 180,
+              "unit": "records",
+              "status": "observed",
+              "min": 0,
+              "max": 400,
+              "step": 10,
+              "source": {
+                "title": "Participant permission register · synthetic",
+                "author": "Tess Okoro",
+                "date": "2027-01-30",
+                "excerpt": "180 record-specific provisional permissions are active. Openly licensed public reference material uses a separate rights review; no silent personal-record release is assumed."
+              }
+            },
+            {
+              "id": "a.lead-claim",
+              "scopeId": "a.labs",
+              "label": "Verification lead",
+              "value": 4,
+              "unit": "months",
+              "status": "contested",
+              "min": 1,
+              "max": 18,
+              "step": 1,
+              "source": {
+                "title": "Review calendar · synthetic",
+                "author": "Samir Vale",
+                "date": "2027-01-29",
+                "excerpt": "The labs offer a four-month evidence review after catalog reconciliation. This relies on two named reviewers completing a separate public-health study."
+              },
+              "dissent": "The current study could extend the queue to sixteen months."
+            },
+            {
+              "id": "a.translation-claim",
+              "scopeId": "a.library",
+              "label": "Translation response",
+              "value": 0.8,
+              "unit": "response ratio",
+              "status": "assumed",
+              "min": 0.2,
+              "max": 1.2,
+              "step": 0.05,
+              "source": {
+                "title": "Translation pilot estimate · synthetic",
+                "author": "Dara Lin",
+                "date": "2027-01-25",
+                "excerpt": "At the working response ratio of 0.8, translated bundles are expected to add 180 reusable items. Pilot readers have not yet checked technical accuracy."
+              }
+            },
+            {
+              "id": "a.verification-claim",
+              "scopeId": "a.labs",
+              "label": "Evidence-review response",
+              "value": 0.9,
+              "unit": "response ratio",
+              "status": "assumed",
+              "min": 0.25,
+              "max": 1.2,
+              "step": 0.05,
+              "source": {
+                "title": "Reviewer sample · synthetic",
+                "author": "Samir Vale",
+                "date": "2027-01-26",
+                "excerpt": "A small sample suggests a 0.9 response ratio, modeled as a 20-point increase in verified claims. Ambiguous claims must retain their contested status after review."
+              }
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "a.money",
+              "scopeIds": [
+                "a.library",
+                "a.labs",
+                "a.archive",
+                "a.participants"
+              ],
+              "label": "Funding",
+              "unit": "million $",
+              "amount": 1.2,
+              "claimId": "a.budget-claim",
+              "provider": "Federation grant",
+              "period": "18 months"
+            },
+            {
+              "id": "a.volunteers",
+              "scopeIds": [
+                "a.library",
+                "a.labs",
+                "a.archive",
+                "a.participants"
+              ],
+              "label": "Volunteer pledges",
+              "unit": "hours",
+              "amount": 2400,
+              "claimId": "a.volunteer-claim",
+              "provider": "Named contributors",
+              "period": "18 months; revocable"
+            },
+            {
+              "id": "a.partners",
+              "scopeIds": [
+                "a.library",
+                "a.labs",
+                "a.archive",
+                "a.participants"
+              ],
+              "label": "Partner staff",
+              "unit": "hours",
+              "amount": 800,
+              "claimId": "a.partner-claim",
+              "provider": "Institutional letters",
+              "period": "18 months"
+            },
+            {
+              "id": "a.storage",
+              "scopeIds": [
+                "a.library",
+                "a.archive"
+              ],
+              "label": "Replicated storage",
+              "unit": "TB",
+              "amount": 20,
+              "claimId": "a.storage-claim",
+              "provider": "Library and archive",
+              "period": "18 months"
+            },
+            {
+              "id": "a.permissions",
+              "scopeIds": [
+                "a.archive",
+                "a.participants"
+              ],
+              "label": "Participant permission",
+              "unit": "records",
+              "amount": 180,
+              "claimId": "a.consent-claim",
+              "provider": "Contributor assembly",
+              "period": "Current register"
+            }
+          ],
+          "interventions": [
+            {
+              "id": "a.catalog",
+              "scopeId": "a.library",
+              "title": "Reconcile the public catalog",
+              "mechanism": "Deduplicate already-public materials, trace licenses and produce a shared exportable catalog before dependent work.",
+              "agentId": "a.library-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.15
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 300
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 120
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "amount": 2
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.reuse",
+                  "amount": 120
+                },
+                {
+                  "objectiveId": "a.verified",
+                  "amount": 5
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 5
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": -2
+                }
+              ],
+              "leadMonths": 2,
+              "reversible": true,
+              "observedFactor": 0.95
+            },
+            {
+              "id": "a.verify",
+              "scopeId": "a.labs",
+              "title": "Review the reference claims",
+              "mechanism": "Check the reconciled collection against dated evidence, retaining disagreement and provenance. Verification is a bounded review, not a declaration of universal truth.",
+              "agentId": "a.research-agent",
+              "dependencies": [
+                "a.catalog"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.2
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 500
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 240
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.verified",
+                  "amount": 20,
+                  "scaleClaimId": "a.verification-claim",
+                  "scaleBase": 0.9
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 10
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": 2
+                }
+              ],
+              "leadMonths": 4,
+              "leadClaimId": "a.lead-claim",
+              "reversible": true,
+              "observedFactor": 0.72
+            },
+            {
+              "id": "a.translate",
+              "scopeId": "a.library",
+              "title": "Translate reusable bundles",
+              "mechanism": "Translate distinct public technical materials after catalog reconciliation. Reader validation limits modeled reach; no personal records enter this package.",
+              "agentId": "a.library-agent",
+              "dependencies": [
+                "a.catalog"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.16
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 420
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 60
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "amount": 1
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.reuse",
+                  "amount": 180,
+                  "scaleClaimId": "a.translation-claim",
+                  "scaleBase": 0.8
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 3
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": 1
+                }
+              ],
+              "leadMonths": 3,
+              "reversible": true,
+              "observedFactor": 0.8
+            },
+            {
+              "id": "a.consent",
+              "scopeId": "a.participants",
+              "title": "Resolve participant permissions",
+              "mechanism": "Review 100 provisional permissions with contributors, separate private material from public files and establish an accessible withdrawal path.",
+              "agentId": "a.rights-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.12
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 300
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 180
+                },
+                {
+                  "capabilityId": "a.permissions",
+                  "amount": 100
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 20
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": -1
+                }
+              ],
+              "leadMonths": 3,
+              "reversible": true,
+              "observedFactor": 0.9
+            },
+            {
+              "id": "a.archive-release",
+              "scopeId": "a.archive",
+              "title": "Release the consented archive",
+              "mechanism": "Publish a distinct permitted collection after catalog and consent review, with replicated files and no private-record exposure.",
+              "agentId": "a.archive-agent",
+              "dependencies": [
+                "a.catalog",
+                "a.consent"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.3
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 800
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 240
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "amount": 10
+                },
+                {
+                  "capabilityId": "a.permissions",
+                  "amount": 50
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.reuse",
+                  "amount": 320
+                },
+                {
+                  "objectiveId": "a.verified",
+                  "amount": 5
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 5
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": 3
+                }
+              ],
+              "leadMonths": 4,
+              "reversible": true,
+              "observedFactor": 0.75
+            },
+            {
+              "id": "a.fork-kit",
+              "scopeId": "a.library",
+              "title": "Publish a portable fork kit",
+              "mechanism": "Package verified public material, schemas and offline tooling so independent institutions can reuse and leave the federation without asking central permission.",
+              "agentId": "a.library-agent",
+              "dependencies": [
+                "a.catalog",
+                "a.verify"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.25
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 650
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "amount": 160
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "amount": 6
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.reuse",
+                  "amount": 240
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": 5
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": -5
+                }
+              ],
+              "leadMonths": 5,
+              "reversible": true,
+              "observedFactor": 0.85
+            },
+            {
+              "id": "a.bulk",
+              "scopeId": "a.archive",
+              "title": "Import the entire archive",
+              "mechanism": "A proposed bulk release would include 20 unpublished personal records and unresolved rights. Its apparent reach is inadmissible under the privacy protection.",
+              "agentId": "a.archive-agent",
+              "dependencies": [],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "amount": 0.1
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "amount": 200
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "amount": 15
+                },
+                {
+                  "capabilityId": "a.permissions",
+                  "amount": 180
+                }
+              ],
+              "effects": [
+                {
+                  "objectiveId": "a.reuse",
+                  "amount": 1200
+                },
+                {
+                  "objectiveId": "a.verified",
+                  "amount": -15
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "amount": -20
+                },
+                {
+                  "objectiveId": "a.privacy",
+                  "amount": 20
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "amount": 12
+                }
+              ],
+              "leadMonths": 1,
+              "reversible": false,
+              "observedFactor": 0.6
+            }
+          ],
+          "strategies": [
+            {
+              "id": "a.trust",
+              "name": "Rights and evidence",
+              "thesis": "Resolve publication rights and verify the existing collection before seeking scale. Leave capacity for contributors who withdraw.",
+              "interventionIds": [
+                "a.catalog",
+                "a.verify",
+                "a.consent"
+              ]
+            },
+            {
+              "id": "a.federate",
+              "name": "Portable commons",
+              "thesis": "Make reviewed public knowledge reusable across independent institutions. Favor portability and lower maintenance over expanding the personal archive.",
+              "interventionIds": [
+                "a.catalog",
+                "a.verify",
+                "a.translate",
+                "a.fork-kit"
+              ]
+            },
+            {
+              "id": "a.everything",
+              "name": "Publish everything",
+              "thesis": "Test the tempting reach-maximizing portfolio against volunteer pledges, institutional allocations, maintenance and private-record protection.",
+              "interventionIds": [
+                "a.catalog",
+                "a.verify",
+                "a.translate",
+                "a.consent",
+                "a.archive-release",
+                "a.fork-kit",
+                "a.bulk"
+              ]
+            }
+          ],
+          "agents": [
+            {
+              "id": "a.library-agent",
+              "name": "Library",
+              "initials": "LB",
+              "role": "Public-material coordination agent",
+              "scopeIds": [
+                "a.library"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "a.research-agent",
+              "name": "Research",
+              "initials": "RS",
+              "role": "Evidence review agent",
+              "scopeIds": [
+                "a.labs"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "a.rights-agent",
+              "name": "Rights",
+              "initials": "RT",
+              "role": "Contributor-directed consent agent",
+              "scopeIds": [
+                "a.participants"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            },
+            {
+              "id": "a.archive-agent",
+              "name": "Archive",
+              "initials": "AR",
+              "role": "Archive publication agent",
+              "scopeIds": [
+                "a.archive"
+              ],
+              "actions": [
+                "investigate",
+                "propose",
+                "deliver"
+              ]
+            }
+          ],
+          "shocks": [
+            {
+              "id": "a.time-shock",
+              "name": "Pledges withdrawn",
+              "claimId": "a.volunteer-claim",
+              "value": 1400,
+              "description": "The university timetable changes and contributors withdraw 1,000 unworked hours. No agent may assume free replacement labor."
+            },
+            {
+              "id": "a.review-shock",
+              "name": "Evidence review delayed",
+              "claimId": "a.lead-claim",
+              "value": 16,
+              "description": "Reviewers extend the public-health study. Verification takes sixteen months after catalog work; the dependent fork kit misses the program horizon."
+            }
+          ]
+        },
+        "revision": 9,
+        "tick": 9,
+        "claimValues": {
+          "a.budget-claim": 1.2,
+          "a.volunteer-claim": 1400,
+          "a.partner-claim": 800,
+          "a.storage-claim": 20,
+          "a.consent-claim": 180,
+          "a.lead-claim": 4,
+          "a.translation-claim": 0.8,
+          "a.verification-claim": 0.9
+        },
+        "decisions": [
+          {
+            "id": "decision-1-1",
+            "strategyId": "a.trust",
+            "revision": 0,
+            "claimValues": {
+              "a.budget-claim": 1.2,
+              "a.volunteer-claim": 2400,
+              "a.partner-claim": 800,
+              "a.storage-claim": 20,
+              "a.consent-claim": 180,
+              "a.lead-claim": 4,
+              "a.translation-claim": 0.8,
+              "a.verification-claim": 0.9
+            },
+            "evaluation": {
+              "strategyId": "a.trust",
+              "feasible": true,
+              "violations": [],
+              "assumptions": [
+                "a.budget-claim",
+                "a.consent-claim",
+                "a.lead-claim",
+                "a.partner-claim",
+                "a.storage-claim",
+                "a.verification-claim",
+                "a.volunteer-claim"
+              ],
+              "resources": [
+                {
+                  "capabilityId": "a.money",
+                  "required": 0.47,
+                  "available": 1.2,
+                  "total": 1.2,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "a.volunteers",
+                  "required": 1100,
+                  "available": 2400,
+                  "total": 2400,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "a.partners",
+                  "required": 540,
+                  "available": 800,
+                  "total": 800,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "a.storage",
+                  "required": 2,
+                  "available": 20,
+                  "total": 20,
+                  "committed": 0
+                },
+                {
+                  "capabilityId": "a.permissions",
+                  "required": 100,
+                  "available": 180,
+                  "total": 180,
+                  "committed": 0
+                }
+              ],
+              "outcomes": [
+                {
+                  "objectiveId": "a.reuse",
+                  "value": 420,
+                  "delta": 120,
+                  "target": 1000,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "a.verified",
+                  "value": 65,
+                  "delta": 25,
+                  "target": 85,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "a.governed",
+                  "value": 100,
+                  "delta": 35,
+                  "target": 100,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "a.privacy",
+                  "value": 0,
+                  "delta": 0,
+                  "target": 0,
+                  "protected": true
+                },
+                {
+                  "objectiveId": "a.maintenance",
+                  "value": 25,
+                  "delta": -1,
+                  "target": 20,
+                  "protected": true
+                }
+              ],
+              "schedule": [
+                {
+                  "interventionId": "a.catalog",
+                  "start": 0,
+                  "finish": 2
+                },
+                {
+                  "interventionId": "a.verify",
+                  "start": 2,
+                  "finish": 6
+                },
+                {
+                  "interventionId": "a.consent",
+                  "start": 0,
+                  "finish": 3
+                }
+              ]
+            },
+            "snapshot": {
+              "commitments": {
+                "a.money": 0,
+                "a.volunteers": 0,
+                "a.partners": 0,
+                "a.storage": 0,
+                "a.permissions": 0
+              },
+              "baselineDeltas": {
+                "a.reuse": 0,
+                "a.verified": 0,
+                "a.governed": 0,
+                "a.privacy": 0,
+                "a.maintenance": 0
+              },
+              "authorizedInterventionIds": []
+            },
+            "authority": "Open Atlas stewardship council; originating institutions retain publication rights and participants retain consent rights.",
+            "rationale": "Resolve publication rights and verify the existing collection before seeking scale. Leave capacity for contributors who withdraw.",
+            "mandateIds": [
+              "mandate-1-1",
+              "mandate-1-2",
+              "mandate-1-3"
+            ],
+            "createdAt": "2027-02-01T01:00:00.000Z"
+          }
+        ],
+        "mandates": [
+          {
+            "id": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "interventionId": "a.catalog",
+            "agentId": "a.library-agent",
+            "scopeId": "a.library",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "a.money",
+                "amount": 0.15,
+                "consumed": 0.15
+              },
+              {
+                "capabilityId": "a.volunteers",
+                "amount": 300,
+                "consumed": 300
+              },
+              {
+                "capabilityId": "a.partners",
+                "amount": 120,
+                "consumed": 120
+              },
+              {
+                "capabilityId": "a.storage",
+                "amount": 2,
+                "consumed": 2
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "a.reuse",
+                "amount": 120
+              },
+              {
+                "objectiveId": "a.verified",
+                "amount": 5
+              },
+              {
+                "objectiveId": "a.governed",
+                "amount": 5
+              },
+              {
+                "objectiveId": "a.maintenance",
+                "amount": -2
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 55,
+            "issuedRevision": 1,
+            "finishMonths": 2,
+            "observedFactor": 0.95,
+            "createdAt": "2027-02-01T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "interventionId": "a.verify",
+            "agentId": "a.research-agent",
+            "scopeId": "a.labs",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "a.money",
+                "amount": 0.2,
+                "consumed": 0.2
+              },
+              {
+                "capabilityId": "a.volunteers",
+                "amount": 500,
+                "consumed": 500
+              },
+              {
+                "capabilityId": "a.partners",
+                "amount": 240,
+                "consumed": 240
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "a.verified",
+                "amount": 20
+              },
+              {
+                "objectiveId": "a.governed",
+                "amount": 10
+              },
+              {
+                "objectiveId": "a.maintenance",
+                "amount": 2
+              }
+            ],
+            "dependencies": [
+              "mandate-1-1"
+            ],
+            "expiresAt": 55,
+            "issuedRevision": 1,
+            "finishMonths": 6,
+            "observedFactor": 0.72,
+            "createdAt": "2027-02-01T01:00:00.000Z"
+          },
+          {
+            "id": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "interventionId": "a.consent",
+            "agentId": "a.rights-agent",
+            "scopeId": "a.participants",
+            "status": "completed",
+            "progress": 3,
+            "resources": [
+              {
+                "capabilityId": "a.money",
+                "amount": 0.12,
+                "consumed": 0.12
+              },
+              {
+                "capabilityId": "a.volunteers",
+                "amount": 300,
+                "consumed": 300
+              },
+              {
+                "capabilityId": "a.partners",
+                "amount": 180,
+                "consumed": 180
+              },
+              {
+                "capabilityId": "a.permissions",
+                "amount": 100,
+                "consumed": 100
+              }
+            ],
+            "expectedEffects": [
+              {
+                "objectiveId": "a.governed",
+                "amount": 20
+              },
+              {
+                "objectiveId": "a.maintenance",
+                "amount": -1
+              }
+            ],
+            "dependencies": [],
+            "expiresAt": 55,
+            "issuedRevision": 1,
+            "finishMonths": 3,
+            "observedFactor": 0.9,
+            "createdAt": "2027-02-01T01:00:00.000Z"
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "outcome-5-1",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.reuse",
+            "expected": 120,
+            "observed": 114,
+            "source": "Synthetic completion · Library",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-2",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.verified",
+            "expected": 5,
+            "observed": 4.75,
+            "source": "Synthetic completion · Library",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-3",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.governed",
+            "expected": 5,
+            "observed": 4.75,
+            "source": "Synthetic completion · Library",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-4",
+            "mandateId": "mandate-1-1",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.maintenance",
+            "expected": -2,
+            "observed": -1.9,
+            "source": "Synthetic completion · Library",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-5",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.governed",
+            "expected": 20,
+            "observed": 18,
+            "source": "Synthetic completion · Rights",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-5-6",
+            "mandateId": "mandate-1-3",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.maintenance",
+            "expected": -1,
+            "observed": -0.9,
+            "source": "Synthetic completion · Rights",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "outcome-8-7",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.verified",
+            "expected": 20,
+            "observed": 14.4,
+            "source": "Synthetic completion · Research",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "outcome-8-8",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.governed",
+            "expected": 10,
+            "observed": 7.2,
+            "source": "Synthetic completion · Research",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "outcome-8-9",
+            "mandateId": "mandate-1-2",
+            "decisionId": "decision-1-1",
+            "objectiveId": "a.maintenance",
+            "expected": 2,
+            "observed": 1.44,
+            "source": "Synthetic completion · Research",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          }
+        ],
+        "events": [
+          {
+            "id": "event-1-1",
+            "kind": "decision",
+            "title": "Rights and evidence",
+            "detail": "Open Atlas stewardship council; originating institutions retain publication rights and participants retain consent rights.: Resolve publication rights and verify the existing collection before seeking scale. Leave capacity for contributors who withdraw.",
+            "scopeId": "a.commons",
+            "referenceId": "decision-1-1",
+            "createdAt": "2027-02-01T01:00:00.000Z"
+          },
+          {
+            "id": "event-2-2",
+            "kind": "accepted",
+            "title": "Reconcile the public catalog",
+            "detail": "Library accepted the frozen resource ceiling.",
+            "scopeId": "a.library",
+            "referenceId": "mandate-1-1",
+            "createdAt": "2027-02-01T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-3",
+            "kind": "accepted",
+            "title": "Review the reference claims",
+            "detail": "Research accepted the frozen resource ceiling.",
+            "scopeId": "a.labs",
+            "referenceId": "mandate-1-2",
+            "createdAt": "2027-02-01T02:00:00.000Z"
+          },
+          {
+            "id": "event-2-4",
+            "kind": "accepted",
+            "title": "Resolve participant permissions",
+            "detail": "Rights accepted the frozen resource ceiling.",
+            "scopeId": "a.participants",
+            "referenceId": "mandate-1-3",
+            "createdAt": "2027-02-01T02:00:00.000Z"
+          },
+          {
+            "id": "event-3-5",
+            "kind": "progress",
+            "title": "Reconcile the public catalog",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.library",
+            "referenceId": "mandate-1-1",
+            "progress": 1,
+            "createdAt": "2027-02-01T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-6",
+            "kind": "blocked",
+            "title": "Review the reference claims",
+            "detail": "Waiting for the required mandate to complete.",
+            "scopeId": "a.labs",
+            "referenceId": "mandate-1-2",
+            "createdAt": "2027-02-01T03:00:00.000Z"
+          },
+          {
+            "id": "event-3-7",
+            "kind": "progress",
+            "title": "Resolve participant permissions",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.participants",
+            "referenceId": "mandate-1-3",
+            "progress": 1,
+            "createdAt": "2027-02-01T03:00:00.000Z"
+          },
+          {
+            "id": "event-4-8",
+            "kind": "progress",
+            "title": "Reconcile the public catalog",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.library",
+            "referenceId": "mandate-1-1",
+            "progress": 2,
+            "createdAt": "2027-02-01T04:00:00.000Z"
+          },
+          {
+            "id": "event-4-9",
+            "kind": "progress",
+            "title": "Resolve participant permissions",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.participants",
+            "referenceId": "mandate-1-3",
+            "progress": 2,
+            "createdAt": "2027-02-01T04:00:00.000Z"
+          },
+          {
+            "id": "event-5-10",
+            "kind": "progress",
+            "title": "Reconcile the public catalog",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.library",
+            "referenceId": "mandate-1-1",
+            "progress": 3,
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-11",
+            "kind": "outcome",
+            "title": "Reusable materials",
+            "detail": "114 observed; 120 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.library",
+            "referenceId": "outcome-5-1",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-12",
+            "kind": "outcome",
+            "title": "Verified claims",
+            "detail": "4.75 observed; 5 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.library",
+            "referenceId": "outcome-5-2",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-13",
+            "kind": "outcome",
+            "title": "Rights resolved",
+            "detail": "4.75 observed; 5 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.library",
+            "referenceId": "outcome-5-3",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-14",
+            "kind": "outcome",
+            "title": "Maintenance burden",
+            "detail": "-1.9 observed; -2 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.library",
+            "referenceId": "outcome-5-4",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-15",
+            "kind": "progress",
+            "title": "Resolve participant permissions",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.participants",
+            "referenceId": "mandate-1-3",
+            "progress": 3,
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-16",
+            "kind": "outcome",
+            "title": "Rights resolved",
+            "detail": "18 observed; 20 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.participants",
+            "referenceId": "outcome-5-5",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-5-17",
+            "kind": "outcome",
+            "title": "Maintenance burden",
+            "detail": "-0.9 observed; -1 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.participants",
+            "referenceId": "outcome-5-6",
+            "createdAt": "2027-02-01T05:00:00.000Z"
+          },
+          {
+            "id": "event-6-18",
+            "kind": "progress",
+            "title": "Review the reference claims",
+            "detail": "Simulated specialist 1/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.labs",
+            "referenceId": "mandate-1-2",
+            "progress": 1,
+            "createdAt": "2027-02-01T06:00:00.000Z"
+          },
+          {
+            "id": "event-7-19",
+            "kind": "progress",
+            "title": "Review the reference claims",
+            "detail": "Simulated specialist 2/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.labs",
+            "referenceId": "mandate-1-2",
+            "progress": 2,
+            "createdAt": "2027-02-01T07:00:00.000Z"
+          },
+          {
+            "id": "event-8-20",
+            "kind": "progress",
+            "title": "Review the reference claims",
+            "detail": "Simulated specialist 3/3; consumption stays within the frozen ceiling.",
+            "scopeId": "a.labs",
+            "referenceId": "mandate-1-2",
+            "progress": 3,
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "event-8-21",
+            "kind": "outcome",
+            "title": "Verified claims",
+            "detail": "14.4 observed; 20 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.labs",
+            "referenceId": "outcome-8-7",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "event-8-22",
+            "kind": "outcome",
+            "title": "Rights resolved",
+            "detail": "7.2 observed; 10 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.labs",
+            "referenceId": "outcome-8-8",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "event-8-23",
+            "kind": "outcome",
+            "title": "Maintenance burden",
+            "detail": "1.44 observed; 2 expected. Synthetic result, not field evidence.",
+            "scopeId": "a.labs",
+            "referenceId": "outcome-8-9",
+            "createdAt": "2027-02-01T08:00:00.000Z"
+          },
+          {
+            "id": "event-9-24",
+            "kind": "claim",
+            "title": "Opt-in volunteer time",
+            "detail": "2400 → 1400 hours. Source revision retained.",
+            "scopeId": "a.participants",
+            "referenceId": "a.volunteer-claim",
+            "change": {
+              "before": 2400,
+              "value": 1400
+            },
+            "createdAt": "2027-02-01T09:00:00.000Z"
+          }
+        ]
+      }
+    ]
+  }
+}

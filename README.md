@@ -1,145 +1,56 @@
 # Project Zenith
 
-Zenith is an operational planning workbench for matching demand, labor, time,
-materials, equipment, and execution feedback into reviewable plans.
+**Strategic coordination for humans and agents: understand a changing world, choose coherent strategies, delegate bounded action, and revise from evidence.**
 
-The original repository was a small Python/Tkinter prototype for ranking workers
-against open roles. The current revamp keeps that origin, but the active codebase
-is now a multi-package planning platform with:
+The active web application implements a local coordination kernel around shared primitives: scopes, objectives, claims, capabilities, interventions, mandates and outcomes. Philosophy appears as explicit ends, protected limits, revisable knowledge and revocable authority. The [product vision](docs/product_vision.md) and the owner's [endstate](docs/endstate.md) define the larger direction.
 
-- a FastAPI backend
-- SQLAlchemy models and Alembic migrations
-- shared Pydantic schemas
-- an OR-Tools-backed planning engine
-- a Next.js operator console
-- planner, API, migration, and web build checks
+## Use the platform
 
-## Current Architecture
+Choose **Begin** for a fresh guided decision or **Worked case** for a populated synthetic history. The examples span three settings:
 
-| Path | Purpose |
-| --- | --- |
-| `apps/api` | FastAPI application, SQLAlchemy models, Alembic migrations, and service-layer workflows. |
-| `apps/web` | Next.js operator UI for organizations, workforce, demand, resources, planner runs, results, dispatch, and reports. |
-| `packages/schemas` | Shared Pydantic contracts used by the API and planner. |
-| `services/planner` | Constrained planning engine using OR-Tools CP-SAT. |
-| `tests` | Planner and API regression tests. |
-| `docs` | Product, domain, architecture, roadmap, local development, and testing notes. |
-| `project_zenith.py` | Legacy desktop prototype retained as project history. |
-| `input.txt` | Sample roster data for the legacy prototype. |
+| World | Strategic question | Projection |
+| --- | --- | --- |
+| Harbor | Regional energy, housing and workforce transition without involuntary displacement | 36 months |
+| Meridian | Manufacturing resilience without exhausting people or operating cash | 12 months |
+| Open Atlas | An independent knowledge federation that preserves consent and maintainability | 18 months |
 
-## What It Does Now
+Each uses the same engine, dated synthetic sources, overlapping institutions, bounded capabilities and alternative portfolios. Worked cases contain an accountable decision, completed simulated mandates, forecast error and a subsequent source revision. A custom world starts smaller; a validated raw `Profile` import can define a different domain.
 
-The current system models an organization as structured planning data:
+**Situation · Strategies · Mandates · Ledger** organize the workspace. Top agent avatars open authority details. Compare objectives and dependencies, inspect a source, revise a claim, authorize a feasible strategy, accept bounded mandates, advance the simulated specialists and reconcile outcomes. **New instance** starts an independent comparison from the complete profile without erasing the original history.
 
-- organizations, locations, planning units, users, and roles
-- workers, skills, certifications, availability windows, shift templates, and breaks
-- work orders, requirements, dependencies, and service-level policies
-- materials, inventory positions, equipment, and equipment availability
-- planning horizons, scenarios, plan runs, assignments, overrides, publication, reservations, dispatch queues, and execution events
+Minimal glass belongs to navigation and controls; data uses solid surfaces. Familiar actions use accessible icons. The application is a local demonstration: no live agent execution, shared organizational authority or external data ingestion is implied.
 
-The planner produces persisted plan runs with assignment candidates, selected
-work, unassigned reasons, reservation effects, and review/reporting surfaces.
-Published assignments can be reassigned, cancelled, handed off, and updated with
-field execution events.
+## Run
 
-## Local Development
-
-From the repository root:
-
-```bash
-python3 -m venv .venv
-make install-python
-make install-web
+```sh
+bun install --frozen-lockfile
+bun run build:web
+bun run start:web --hostname 127.0.0.1 --port 3000
 ```
 
-Run the API with local SQLite:
+Open `http://127.0.0.1:3000`. Development uses `bun run dev:web`. No API, database migration or seed command is required.
 
-```bash
-make migrate-sqlite-local
-make api-dev-sqlite
-```
+state is saved under `zenith.coordination.v2`. export offers the current world or complete library, including profiles, frozen decisions, mandates, outcomes and receipts with a SHA-256 checksum. imports preview before application; replacing a library retains its previous raw copy. **Archive** preserves stored records: valid version-two libraries download as reopenable checksummed exports; version-one and unreadable records download verbatim.
 
-Run the web app:
+generate the [portable examples](examples/coordination/README.md) from the source profiles with `bun run examples:coordination`. `examples/coordination` contains three editable raw profiles and `worked-worlds.json`, a reproducible library of completed synthetic histories.
 
-```bash
-make web-dev
-```
+## Check
 
-Seed demo data:
-
-```bash
-make seed-demo-sqlite
-```
-
-The seed command prints organization ids and useful UI routes.
-
-## Verification
-
-Planner tests:
-
-```bash
-make test-planner
-```
-
-API tests:
-
-```bash
-make test-api
-```
-
-All Python tests:
-
-```bash
-make test-all
-```
-
-Web checks:
-
-```bash
-bun run typecheck:web
+```sh
+bun test tests/coordination
 bun run lint:web
 bun run build:web
+bun run typecheck:web
 ```
 
-Python lint:
+- `apps/web/lib/coordination`: contracts, evaluation, bounded delegation, worked profiles and file integrity.
+- `apps/web/components/coordination`: onboarding, four utility views and browser persistence.
+- `tests/coordination`: feasibility, authority, frozen history, resource accounting, deterministic replay and file checks.
 
-```bash
-.venv/bin/python -m ruff check apps/api services/planner packages/schemas tests
-```
+the coordination suite passes 47 tests / 981 assertions. lint, typechecking and the production build pass. see [the running contract](docs/mvp.md), [architecture](docs/system_architecture.md), [current status](docs/implementation_status.md), [testing](docs/testing_guide.md) and the latest coordination evidence in [design QA](design-qa.md).
 
-## Legacy Origin
+## Retained history
 
-Zenith began in late 2021 as a single-file Python/Tkinter application inspired
-by Project Cybersyn. That prototype presented itself as an "intelligent economic
-decision-making tool" and did one narrow job:
+the former Alder interface is preserved in `docs/archive/2026-10-04/alder-interface`; its calculator and regression tests remain in `apps/web/lib/commons` and `tests/commons`. the active page uses `CoordinationApp`. the Python operational prototype in `apps/api`, `packages/schemas` and `services/planner` is disconnected from the active app. existing database files and migrations were not modified.
 
-1. load a plain-text roster of workers
-2. let the user enter open jobs and desired skills
-3. rank every worker against every job
-4. export the rankings to text files
-
-The old scoring model was intentionally simple:
-
-- `+1` for each desired skill the worker had
-- `+1.5` if the worker's past-job text contained the job name
-
-That prototype is still in `project_zenith.py`. It is useful as an origin story
-and a compact statement of the original idea: make labor allocation legible and
-explainable. The current platform generalizes that idea into a structured
-planning system with persistence, constraints, review, dispatch, and actuals.
-
-The legacy script still has its original constraints: synchronous Tkinter
-callbacks, plain-text parsing, case-sensitive matching, substring experience
-checks, no database, no package structure, and no tests. Treat it as historical
-source material, not the active application.
-
-## Documentation
-
-Start with:
-
-- `docs/local_development.md`
-- `docs/testing_guide.md`
-- `docs/implementation_status.md`
-- `docs/domain_model.md`
-- `docs/system_architecture.md`
-- `docs/roadmap.md`
+The replaced implementation documents are preserved in [the October archive](docs/archive/2026-10-04/README.md). Earlier operator web source is recoverable at Git commit `541316ebd2f9ec78ab09e6c0e24d9c0f3d763034`; the [September archive](docs/archive/2026-09-12/README.md) retains its prior specifications. `project_zenith.py` and `input.txt` are historical Tkinter artifacts.

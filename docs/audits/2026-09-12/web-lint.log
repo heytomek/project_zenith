@@ -1,0 +1,19 @@
+$ bun run --cwd apps/web lint
+$ eslint .
+
+Oops! Something went wrong! :(
+
+ESLint: 10.10.0
+
+TypeError: Error while loading rule 'react/display-name': contextOrFilename.getFilename is not a function
+Occurred while linting /Users/tomek/1/repos/project_zenith/apps/web/app/layout.tsx
+    at resolveBasedir (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/version.js:31:100)
+    at detectReactVersion (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/version.js:85:19)
+    at getReactVersionFromContext (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/version.js:116:25)
+    at testReactVersion (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/version.js:181:28)
+    at usedPropTypesInstructions (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/usedPropTypes.js:307:36)
+    at Components.componentRule (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint-plugin-react@7.37.5+0b9ece263dfd1204/node_modules/eslint-plugin-react/lib/util/Components.js:940:37)
+    at createRuleListeners (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint@10.10.0+0b9ece263dfd1204/node_modules/eslint/lib/linter/linter.js:497:15)
+    at /Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint@10.10.0+0b9ece263dfd1204/node_modules/eslint/lib/linter/linter.js:623:7
+    at Array.forEach (<anonymous>)
+    at runRules (/Users/tomek/1/repos/project_zenith/node_modules/.bun/eslint@10.10.0+0b9ece263dfd1204/node_modules/eslint/lib/linter/linter.js:557:31)

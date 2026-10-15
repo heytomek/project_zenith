@@ -1,0 +1,758 @@
+{
+  "id": "harbor",
+  "name": "Harbor",
+  "icon": "region",
+  "subtitle": "Energy · housing · workforce",
+  "question": "Which investments can cut household energy burden without displacing residents?",
+  "context": "A fictional regional compact covers 1,200 occupied homes and a constrained district energy network. The compact has a $60 million appropriation, a 36-month projection, two municipal partners and an independent resident assembly. Procurement quotes, consent records and workforce estimates disagree. The figures below are synthetic planning proxies, not an engineering assessment.",
+  "date": "2027-01-06",
+  "horizonMonths": 36,
+  "authority": "Harbor compact board; resident assembly consent is required for work in occupied homes.",
+  "principles": [
+    "No involuntary displacement.",
+    "Resident consent can be withdrawn before work begins.",
+    "Regional emissions must not rise above the starting estimate.",
+    "Treat contested estimates as revisable claims, not commitments."
+  ],
+  "scopes": [
+    {
+      "id": "h.region",
+      "name": "Harbor compact",
+      "parentId": null,
+      "relatedIds": [],
+      "kind": "Region",
+      "steward": "Nadia Reyes · compact chair",
+      "description": "Two municipalities coordinate an appropriation of $60 million over 36 months. Neither owns the resident assembly nor the training college."
+    },
+    {
+      "id": "h.grid",
+      "name": "District network",
+      "parentId": "h.region",
+      "relatedIds": [
+        "h.homes",
+        "h.workforce"
+      ],
+      "kind": "Infrastructure",
+      "steward": "Jun Park · utility liaison",
+      "description": "Substation commissioning and heat-network work share scarce electrical crews. Utility consent does not authorize entry into homes."
+    },
+    {
+      "id": "h.homes",
+      "name": "Occupied housing",
+      "parentId": "h.region",
+      "relatedIds": [
+        "h.assembly",
+        "h.grid"
+      ],
+      "kind": "Housing",
+      "steward": "Amara Diallo · housing steward",
+      "description": "1,200 homes; 480 currently meet the compact's winter comfort threshold. Tenants retain separate consent rights."
+    },
+    {
+      "id": "h.workforce",
+      "name": "Skills partnership",
+      "parentId": "h.region",
+      "relatedIds": [
+        "h.grid",
+        "h.homes"
+      ],
+      "kind": "Workforce",
+      "steward": "Luis Moreno · college director",
+      "description": "The college and two unions can certify additional installers; training hours cannot substitute for qualified crew hours."
+    },
+    {
+      "id": "h.assembly",
+      "name": "Resident assembly",
+      "parentId": null,
+      "relatedIds": [
+        "h.region",
+        "h.homes"
+      ],
+      "kind": "Institution",
+      "steward": "Cora Bell · elected delegate",
+      "description": "An independent institution representing residents in both municipalities. Consent is bounded by the signed register, not assumed from participation."
+    },
+    {
+      "id": "h.fund",
+      "name": "Transition fund",
+      "parentId": "h.region",
+      "relatedIds": [
+        "h.workforce",
+        "h.assembly"
+      ],
+      "kind": "Finance",
+      "steward": "Evan Moss · public finance",
+      "description": "The appropriation funds complete packages. Unspent authority is available for contingencies; it is not additional capacity."
+    }
+  ],
+  "objectives": [
+    {
+      "id": "h.emissions",
+      "scopeId": "h.region",
+      "label": "Emissions",
+      "unit": "index",
+      "baseline": 100,
+      "target": 40,
+      "direction": "decrease",
+      "protection": {
+        "min": 0,
+        "max": 100
+      },
+      "description": "Synthetic annual regional energy emissions index. Reductions add as a planning approximation; rebound and interactions remain outside this first model."
+    },
+    {
+      "id": "h.comfort",
+      "scopeId": "h.homes",
+      "label": "Warm homes",
+      "unit": "homes",
+      "baseline": 480,
+      "target": 1080,
+      "direction": "increase",
+      "protection": {
+        "max": 1200
+      },
+      "description": "Occupied homes expected to meet the winter comfort threshold. A home is counted once within each proposed package; forecasts cannot exceed the 1,200-home stock."
+    },
+    {
+      "id": "h.skills",
+      "scopeId": "h.workforce",
+      "label": "Qualified installers",
+      "unit": "people",
+      "baseline": 90,
+      "target": 270,
+      "direction": "increase",
+      "description": "People with the agreed safety certification; forecast completion is not an employment guarantee."
+    },
+    {
+      "id": "h.displacement",
+      "scopeId": "h.assembly",
+      "label": "Involuntary moves",
+      "unit": "households",
+      "baseline": 0,
+      "target": 0,
+      "direction": "decrease",
+      "protection": {
+        "max": 0
+      },
+      "description": "A protected limit, independent of financial or carbon benefits. Any planned involuntary move makes a portfolio inadmissible."
+    },
+    {
+      "id": "h.burden",
+      "scopeId": "h.homes",
+      "label": "Energy burden",
+      "unit": "% of income",
+      "baseline": 18,
+      "target": 10,
+      "direction": "decrease",
+      "protection": {
+        "min": 0
+      },
+      "description": "Median modeled household energy expenditure as a share of disposable income. Tariff and technical savings are uncertain, additive proxies."
+    }
+  ],
+  "claims": [
+    {
+      "id": "h.budget-claim",
+      "scopeId": "h.fund",
+      "label": "Appropriation",
+      "value": 60,
+      "unit": "million $",
+      "status": "observed",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "source": {
+        "title": "Appropriation ledger · synthetic",
+        "author": "Evan Moss",
+        "date": "2026-12-18",
+        "excerpt": "The compact has $60 million of spending authority for the 36-month period. This excludes an unapproved $15 million application."
+      }
+    },
+    {
+      "id": "h.crew-claim",
+      "scopeId": "h.grid",
+      "label": "Qualified crew hours",
+      "value": 18000,
+      "unit": "hours",
+      "status": "contested",
+      "min": 0,
+      "max": 24000,
+      "step": 500,
+      "source": {
+        "title": "Contractor availability return · synthetic",
+        "author": "Jun Park",
+        "date": "2026-12-21",
+        "excerpt": "Three contractors list 18,000 qualified hours across the compact's work period. One 8,500-hour listing is also offered to a neighboring region."
+      },
+      "dissent": "The neighboring procurement may reduce our confirmed allocation to 9,500 hours."
+    },
+    {
+      "id": "h.training-claim",
+      "scopeId": "h.workforce",
+      "label": "Training allocation",
+      "value": 7200,
+      "unit": "hours",
+      "status": "observed",
+      "min": 0,
+      "max": 10000,
+      "step": 200,
+      "source": {
+        "title": "College and union allocation · synthetic",
+        "author": "Luis Moreno",
+        "date": "2026-12-12",
+        "excerpt": "The signed allocation contains 7,200 instructor and supervised-practice hours. Seats require trainees to opt in; hours do not compel attendance."
+      }
+    },
+    {
+      "id": "h.consent-claim",
+      "scopeId": "h.assembly",
+      "label": "Current consent",
+      "value": 420,
+      "unit": "households",
+      "status": "observed",
+      "min": 0,
+      "max": 1200,
+      "step": 10,
+      "source": {
+        "title": "Consent register · synthetic",
+        "author": "Cora Bell",
+        "date": "2027-01-03",
+        "excerpt": "420 households signed package-specific provisional permissions. No nonresponse is counted as consent; withdrawals must reduce this allocation before a new decision."
+      }
+    },
+    {
+      "id": "h.grid-claim",
+      "scopeId": "h.grid",
+      "label": "Connection allocation",
+      "value": 8,
+      "unit": "MVA",
+      "status": "observed",
+      "min": 0,
+      "max": 12,
+      "step": 0.5,
+      "source": {
+        "title": "Utility connection letter · synthetic",
+        "author": "Jun Park",
+        "date": "2026-12-19",
+        "excerpt": "Eight MVA are reserved for the compact after commissioning. The letter does not guarantee the commissioning date."
+      }
+    },
+    {
+      "id": "h.lead-claim",
+      "scopeId": "h.grid",
+      "label": "Commissioning lead",
+      "value": 12,
+      "unit": "months",
+      "status": "contested",
+      "min": 1,
+      "max": 36,
+      "step": 1,
+      "source": {
+        "title": "Commissioning window · synthetic",
+        "author": "Jun Park",
+        "date": "2027-01-04",
+        "excerpt": "The utility proposes commissioning 12 months after mandate acceptance. Transformer procurement has not yet been completed."
+      },
+      "dissent": "The equipment vendor gives a 24–30 month range if the current slot is lost."
+    },
+    {
+      "id": "h.yield-claim",
+      "scopeId": "h.homes",
+      "label": "Retrofit response",
+      "value": 1,
+      "unit": "response ratio",
+      "status": "assumed",
+      "min": 0.25,
+      "max": 1.5,
+      "step": 0.05,
+      "source": {
+        "title": "Winter pilot extrapolation · synthetic",
+        "author": "Amara Diallo",
+        "date": "2026-12-16",
+        "excerpt": "The baseline response ratio is 1.0, extrapolated from 28 treated homes. Weather, ventilation behavior and building condition may reduce that response; no region-wide effect has been observed."
+      }
+    },
+    {
+      "id": "h.cost-claim",
+      "scopeId": "h.fund",
+      "label": "Installed-cost index",
+      "value": 1.2,
+      "unit": "cost ratio",
+      "status": "contested",
+      "min": 0.8,
+      "max": 2,
+      "step": 0.05,
+      "source": {
+        "title": "Tender reconciliation · synthetic",
+        "author": "Evan Moss",
+        "date": "2026-12-29",
+        "excerpt": "The working quote uses a 1.2 cost index against the original estimate. The heat-loop tender excludes two road crossings."
+      },
+      "dissent": "The infrastructure committee expects a 1.5 index once road permissions are priced."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "h.money",
+      "scopeIds": [
+        "h.grid",
+        "h.homes",
+        "h.workforce"
+      ],
+      "label": "Funding",
+      "unit": "million $",
+      "amount": 60,
+      "claimId": "h.budget-claim",
+      "provider": "Transition fund",
+      "period": "36 months"
+    },
+    {
+      "id": "h.crews",
+      "scopeIds": [
+        "h.grid",
+        "h.homes"
+      ],
+      "label": "Qualified crews",
+      "unit": "hours",
+      "amount": 18000,
+      "claimId": "h.crew-claim",
+      "provider": "Three contractors",
+      "period": "36 months"
+    },
+    {
+      "id": "h.training",
+      "scopeIds": [
+        "h.workforce"
+      ],
+      "label": "Training",
+      "unit": "hours",
+      "amount": 7200,
+      "claimId": "h.training-claim",
+      "provider": "College and unions",
+      "period": "36 months"
+    },
+    {
+      "id": "h.consent",
+      "scopeIds": [
+        "h.homes",
+        "h.grid"
+      ],
+      "label": "Household consent",
+      "unit": "households",
+      "amount": 420,
+      "claimId": "h.consent-claim",
+      "provider": "Resident assembly",
+      "period": "Current register"
+    },
+    {
+      "id": "h.connection",
+      "scopeIds": [
+        "h.grid",
+        "h.homes"
+      ],
+      "label": "Connections",
+      "unit": "MVA",
+      "amount": 8,
+      "claimId": "h.grid-claim",
+      "provider": "District utility",
+      "period": "After commissioning"
+    }
+  ],
+  "interventions": [
+    {
+      "id": "h.network",
+      "scopeId": "h.grid",
+      "title": "Commission the network",
+      "mechanism": "Reserve transformer delivery and commission the district connection before dependent housing work begins.",
+      "agentId": "h.infrastructure-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 8,
+          "scaleClaimId": "h.cost-claim",
+          "scaleBase": 1.2
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 2500
+        },
+        {
+          "capabilityId": "h.connection",
+          "amount": 2
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -4
+        }
+      ],
+      "leadMonths": 12,
+      "leadClaimId": "h.lead-claim",
+      "reversible": false,
+      "observedFactor": 0.85
+    },
+    {
+      "id": "h.pilot",
+      "scopeId": "h.homes",
+      "title": "Treat the winter cohort",
+      "mechanism": "Insulate and rebalance 80 consenting homes with current qualified crews; retain a measured comparison cohort.",
+      "agentId": "h.housing-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 6,
+          "scaleClaimId": "h.cost-claim",
+          "scaleBase": 1.2
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 1800
+        },
+        {
+          "capabilityId": "h.consent",
+          "amount": 80
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -6,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        },
+        {
+          "objectiveId": "h.comfort",
+          "amount": 80,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        },
+        {
+          "objectiveId": "h.burden",
+          "amount": -0.7,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        }
+      ],
+      "leadMonths": 4,
+      "reversible": true,
+      "observedFactor": 0.8
+    },
+    {
+      "id": "h.train",
+      "scopeId": "h.workforce",
+      "title": "Certify the next cohort",
+      "mechanism": "Fund 90 opt-in trainees through the college and union certification pathway; do not count their hours as crew capacity in this portfolio.",
+      "agentId": "h.workforce-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 4
+        },
+        {
+          "capabilityId": "h.training",
+          "amount": 3600
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.skills",
+          "amount": 90
+        }
+      ],
+      "leadMonths": 6,
+      "reversible": true,
+      "observedFactor": 0.9
+    },
+    {
+      "id": "h.retrofit",
+      "scopeId": "h.homes",
+      "title": "Retrofit 280 homes",
+      "mechanism": "Combine insulation, ventilation and heat-pump work after network commissioning and certification. Only separately reserved crew hours supply the work.",
+      "agentId": "h.housing-agent",
+      "dependencies": [
+        "h.network",
+        "h.train"
+      ],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 24,
+          "scaleClaimId": "h.cost-claim",
+          "scaleBase": 1.2
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 9000
+        },
+        {
+          "capabilityId": "h.consent",
+          "amount": 280
+        },
+        {
+          "capabilityId": "h.connection",
+          "amount": 3
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -26,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        },
+        {
+          "objectiveId": "h.comfort",
+          "amount": 280,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        },
+        {
+          "objectiveId": "h.burden",
+          "amount": -3,
+          "scaleClaimId": "h.yield-claim",
+          "scaleBase": 1
+        }
+      ],
+      "leadMonths": 10,
+      "reversible": false,
+      "observedFactor": 0.78
+    },
+    {
+      "id": "h.heat-loop",
+      "scopeId": "h.grid",
+      "title": "Build the shared heat loop",
+      "mechanism": "Connect a separate 240-home consenting cohort to district heat after commissioning. Road-crossing cost remains contested.",
+      "agentId": "h.infrastructure-agent",
+      "dependencies": [
+        "h.network"
+      ],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 20,
+          "scaleClaimId": "h.cost-claim",
+          "scaleBase": 1.2
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 8500
+        },
+        {
+          "capabilityId": "h.consent",
+          "amount": 240
+        },
+        {
+          "capabilityId": "h.connection",
+          "amount": 4
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -28
+        },
+        {
+          "objectiveId": "h.comfort",
+          "amount": 240
+        },
+        {
+          "objectiveId": "h.burden",
+          "amount": -2.4
+        }
+      ],
+      "leadMonths": 15,
+      "reversible": false,
+      "observedFactor": 0.7
+    },
+    {
+      "id": "h.tariff",
+      "scopeId": "h.homes",
+      "title": "Offer a resident tariff",
+      "mechanism": "Enroll a separate 120-household cohort in a voluntary tariff with a capped winter price. Enrolment and exit remain opt-in.",
+      "agentId": "h.finance-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 3
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 400
+        },
+        {
+          "capabilityId": "h.consent",
+          "amount": 120
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -3
+        },
+        {
+          "objectiveId": "h.burden",
+          "amount": -2
+        }
+      ],
+      "leadMonths": 2,
+      "reversible": true,
+      "observedFactor": 0.95
+    },
+    {
+      "id": "h.clearance",
+      "scopeId": "h.homes",
+      "title": "Clear and rebuild the block",
+      "mechanism": "A developer proposes demolition and fast replacement. The proposal entails 22 involuntary moves and conflicts with the compact's protected resident limit.",
+      "agentId": "h.housing-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "h.money",
+          "amount": 8
+        },
+        {
+          "capabilityId": "h.crews",
+          "amount": 5000
+        },
+        {
+          "capabilityId": "h.consent",
+          "amount": 220
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "h.emissions",
+          "amount": -8
+        },
+        {
+          "objectiveId": "h.comfort",
+          "amount": 400
+        },
+        {
+          "objectiveId": "h.displacement",
+          "amount": 22
+        }
+      ],
+      "leadMonths": 18,
+      "reversible": false,
+      "observedFactor": 0.8
+    }
+  ],
+  "strategies": [
+    {
+      "id": "h.stabilize",
+      "name": "Winter first",
+      "thesis": "Build evidence and skills while relieving immediate bills. Preserve capital and avoid committing to the contested network window.",
+      "interventionIds": [
+        "h.pilot",
+        "h.train",
+        "h.tariff"
+      ]
+    },
+    {
+      "id": "h.transition",
+      "name": "Homes and skills",
+      "thesis": "Commit to a deeper 280-home transition, contingent on network commissioning. Reserve the full work package before agents begin.",
+      "interventionIds": [
+        "h.network",
+        "h.train",
+        "h.retrofit",
+        "h.tariff"
+      ]
+    },
+    {
+      "id": "h.accelerate",
+      "name": "Build everything",
+      "thesis": "Test the advertised fast transformation against shared resources and resident protections. High modeled benefits cannot override either constraint.",
+      "interventionIds": [
+        "h.network",
+        "h.pilot",
+        "h.train",
+        "h.retrofit",
+        "h.heat-loop",
+        "h.tariff",
+        "h.clearance"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "id": "h.infrastructure-agent",
+      "name": "Network",
+      "initials": "NW",
+      "role": "Utility liaison agent",
+      "scopeIds": [
+        "h.grid"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "h.housing-agent",
+      "name": "Homes",
+      "initials": "HM",
+      "role": "Resident-approved housing agent",
+      "scopeIds": [
+        "h.homes"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "h.workforce-agent",
+      "name": "Skills",
+      "initials": "SK",
+      "role": "College coordination agent",
+      "scopeIds": [
+        "h.workforce"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "h.finance-agent",
+      "name": "Tariffs",
+      "initials": "TF",
+      "role": "Finance and enrolment agent",
+      "scopeIds": [
+        "h.homes",
+        "h.fund"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    }
+  ],
+  "shocks": [
+    {
+      "id": "h.crew-shock",
+      "name": "Crews allocated elsewhere",
+      "claimId": "h.crew-claim",
+      "value": 9500,
+      "description": "The neighboring region accepts the overlapping contractor offer. Our confirmed qualified crew allocation falls from 18,000 to 9,500 hours."
+    },
+    {
+      "id": "h.grid-shock",
+      "name": "Transformer slot lost",
+      "claimId": "h.lead-claim",
+      "value": 30,
+      "description": "A vendor notice moves commissioning to month 30. Dependent housing work finishes after the 36-month projection and contributes no benefit inside it."
+    }
+  ]
+}

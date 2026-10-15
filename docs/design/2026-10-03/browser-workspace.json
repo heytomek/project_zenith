@@ -1,0 +1,2909 @@
+{
+  "format": "zenith-commons",
+  "version": 1,
+  "modelVersion": "healthy-homes/1.0.0",
+  "baseline": {
+    "id": "healthy-homes/2026-09-12/v1",
+    "date": "2026-09-12",
+    "months": 12,
+    "neighborhoods": [
+      {
+        "name": "Riverside",
+        "homes": 40,
+        "initialNeeds": 12,
+        "recurringNeeds": 2
+      },
+      {
+        "name": "Parkside",
+        "homes": 40,
+        "initialNeeds": 10,
+        "recurringNeeds": 1.5
+      },
+      {
+        "name": "Hilltop",
+        "homes": 40,
+        "initialNeeds": 8,
+        "recurringNeeds": 1
+      }
+    ],
+    "offeredHours": 80,
+    "repairHours": 8,
+    "currentProductiveShare": 0.45,
+    "coordinatedProductiveShare": 0.65,
+    "preventionHours": 192,
+    "preventionMaterialUnits": 80,
+    "materialUnitsPerRepair": 1
+  },
+  "workspace": {
+    "version": 1,
+    "branches": [
+      {
+        "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+        "title": "QA · cautious prevention",
+        "kind": "prevent",
+        "assumptions": {
+          "voluntaryHours": 16,
+          "leadMonths": 4,
+          "reductionPercent": 20
+        }
+      }
+    ],
+    "challenges": [
+      {
+        "id": "4430e711-d958-457e-998c-356c89437add",
+        "pathway": {
+          "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+          "title": "QA · cautious prevention",
+          "kind": "prevent",
+          "assumptions": {
+            "voluntaryHours": 16,
+            "leadMonths": 4,
+            "reductionPercent": 20
+          }
+        },
+        "target": "reductionPercent",
+        "text": "QA fixture: the 20% prevention effect needs an opt-in pilot and recurrence evidence.",
+        "createdAt": "2026-10-04T02:24:00.002Z"
+      }
+    ],
+    "decisions": [
+      {
+        "action": "QA: test a small opt-in prevention pilot",
+        "rationale": "QA fixture: learn whether a 20% prevention effect can justify the upfront work without reducing repair access.",
+        "steward": "QA demonstration",
+        "authority": "Not established; resident-led review is required before any work.",
+        "consent": "Explicit resident and contributor opt-in; either may decline without losing repair access.",
+        "reviewDate": "2026-11-03",
+        "success": "Collect recurrence and condition observations; check for delayed repairs and uneven burdens.",
+        "reversal": "Stop if a resident loses repair access or an unanticipated harm appears.",
+        "id": "6c60774b-06cb-4a00-b328-747f621c117c",
+        "parentId": null,
+        "createdAt": "2026-10-04T02:24:00.302Z",
+        "pathway": {
+          "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+          "title": "QA · cautious prevention",
+          "kind": "prevent",
+          "assumptions": {
+            "voluntaryHours": 16,
+            "leadMonths": 4,
+            "reductionPercent": 20
+          }
+        },
+        "challenges": [
+          {
+            "id": "4430e711-d958-457e-998c-356c89437add",
+            "pathway": {
+              "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+              "title": "QA · cautious prevention",
+              "kind": "prevent",
+              "assumptions": {
+                "voluntaryHours": 16,
+                "leadMonths": 4,
+                "reductionPercent": 20
+              }
+            },
+            "target": "reductionPercent",
+            "text": "QA fixture: the 20% prevention effect needs an opt-in pilot and recurrence evidence.",
+            "createdAt": "2026-10-04T02:24:00.002Z"
+          }
+        ]
+      },
+      {
+        "action": "QA revision: retain the original protections and extend observation",
+        "rationale": "QA fixture: learn whether a 20% prevention effect can justify the upfront work without reducing repair access.",
+        "steward": "QA demonstration",
+        "authority": "Not established; resident-led review is required before any work.",
+        "consent": "Explicit resident and contributor opt-in; either may decline without losing repair access.",
+        "reviewDate": "2026-11-03",
+        "success": "Collect recurrence and condition observations; check for delayed repairs and uneven burdens.",
+        "reversal": "Stop if a resident loses repair access or an unanticipated harm appears.",
+        "id": "7a7e55d6-54a8-406a-9dfe-24c4cec79972",
+        "parentId": "6c60774b-06cb-4a00-b328-747f621c117c",
+        "createdAt": "2026-10-04T02:24:00.485Z",
+        "pathway": {
+          "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+          "title": "QA · cautious prevention",
+          "kind": "prevent",
+          "assumptions": {
+            "voluntaryHours": 16,
+            "leadMonths": 4,
+            "reductionPercent": 20
+          }
+        },
+        "challenges": [
+          {
+            "id": "4430e711-d958-457e-998c-356c89437add",
+            "pathway": {
+              "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+              "title": "QA · cautious prevention",
+              "kind": "prevent",
+              "assumptions": {
+                "voluntaryHours": 16,
+                "leadMonths": 4,
+                "reductionPercent": 20
+              }
+            },
+            "target": "reductionPercent",
+            "text": "QA fixture: the 20% prevention effect needs an opt-in pilot and recurrence evidence.",
+            "createdAt": "2026-10-04T02:24:00.002Z"
+          }
+        ]
+      }
+    ],
+    "observations": [
+      {
+        "id": "5d9f234a-a9b1-4506-90ec-c169d8a94f48",
+        "decisionId": "6c60774b-06cb-4a00-b328-747f621c117c",
+        "createdAt": "2026-10-04T02:24:00.352Z",
+        "month": 3,
+        "remaining": 41,
+        "note": "QA synthetic observation; no real household data or outcome is asserted."
+      }
+    ]
+  },
+  "results": {
+    "pathways": [
+      {
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "current",
+            "title": "Current practice",
+            "kind": "current",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                12.5,
+                10,
+                7.5
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                13,
+                10,
+                7
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                13.5,
+                10,
+                6.5
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                14,
+                10,
+                6
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                14.5,
+                10,
+                5.5
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                15,
+                10,
+                5
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                15.5,
+                10,
+                4.5
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                16,
+                10,
+                4
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                16.5,
+                10,
+                3.5
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                17,
+                10,
+                3
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                17.5,
+                10,
+                2.5
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 30,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 36,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                18,
+                10,
+                2
+              ]
+            }
+          ],
+          "remaining": 30,
+          "completed": 54,
+          "incoming": 54,
+          "workHours": 432,
+          "investmentHours": 0,
+          "materialUnits": 54,
+          "recurringAtEnd": 4.5,
+          "neighborhoodRemaining": [
+            18,
+            10,
+            2
+          ],
+          "activationMonth": null,
+          "investmentComplete": true,
+          "peakRemaining": 30
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "current",
+            "title": "Current practice",
+            "kind": "current",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 32.25,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                13.375,
+                10.75,
+                8.125
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 34.5,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                14.75,
+                11.5,
+                8.25
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 36.75,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                16.125,
+                12.25,
+                8.375
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 39,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                17.5,
+                13,
+                8.5
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 41.25,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                18.875,
+                13.75,
+                8.625
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 43.5,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                20.25,
+                14.5,
+                8.75
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 45.75,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                21.625,
+                15.25,
+                8.875
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 48,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                23,
+                16,
+                9
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 50.25,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                24.375,
+                16.75,
+                9.125
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 52.5,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                25.75,
+                17.5,
+                9.25
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 54.75,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                27.125,
+                18.25,
+                9.375
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 57,
+              "incoming": 5.625,
+              "completed": 3.375,
+              "repairHours": 27,
+              "investmentHours": 0,
+              "availableHours": 27,
+              "materialUnits": 3.375,
+              "neighborhoods": [
+                28.5,
+                19,
+                9.5
+              ]
+            }
+          ],
+          "remaining": 57,
+          "completed": 40.5,
+          "incoming": 67.5,
+          "workHours": 324,
+          "investmentHours": 0,
+          "materialUnits": 40.5,
+          "recurringAtEnd": 5.625,
+          "neighborhoodRemaining": [
+            28.5,
+            19,
+            9.5
+          ],
+          "activationMonth": null,
+          "investmentComplete": true,
+          "peakRemaining": 57
+        }
+      },
+      {
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "coordinate",
+            "title": "Coordinate and share",
+            "kind": "coordinate",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 26.700000000000003,
+              "incoming": 4.5,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                10.834782608695651,
+                8.9,
+                6.965217391304348
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 23.400000000000002,
+              "incoming": 4.5,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                9.626086956521739,
+                7.800000000000001,
+                5.9739130434782615
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 20.1,
+              "incoming": 4.5,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                8.375783076203835,
+                6.700000000000001,
+                5.024216923796167
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 16.8,
+              "incoming": 4.5,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                7.085900637407496,
+                5.6000000000000005,
+                4.114099362592504
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 13.5,
+              "incoming": 4.5,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                5.758669418075174,
+                4.5,
+                3.241330581924826
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 10.2,
+              "incoming": 4.5,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                4.396579336909265,
+                3.4,
+                2.403420663090735
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 6.899999999999999,
+              "incoming": 4.5,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                3.00247601528394,
+                2.3,
+                1.597523984716059
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 3.599999999999998,
+              "incoming": 4.5,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                1.5797292679844013,
+                1.1999999999999993,
+                0.8202707320155971
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 0.2999999999999976,
+              "incoming": 4.5,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                0.13258256548090275,
+                0.0999999999999992,
+                0.06741743451909565
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 0,
+              "incoming": 4.5,
+              "completed": 4.799999999999997,
+              "repairHours": 38.39999999999998,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 4.799999999999997,
+              "neighborhoods": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 0,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 0,
+              "incoming": 4.5,
+              "completed": 4.5,
+              "repairHours": 36,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 4.5,
+              "neighborhoods": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "remaining": 0,
+          "completed": 84.00000000000001,
+          "incoming": 54,
+          "workHours": 672.0000000000001,
+          "investmentHours": 0,
+          "materialUnits": 84.00000000000001,
+          "recurringAtEnd": 4.5,
+          "neighborhoodRemaining": [
+            0,
+            0,
+            0
+          ],
+          "activationMonth": null,
+          "investmentComplete": true,
+          "peakRemaining": 30
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "coordinate",
+            "title": "Coordinate and share",
+            "kind": "coordinate",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 29.775,
+              "incoming": 5.625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                12.118947368421052,
+                9.925,
+                7.731052631578947
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 29.549999999999997,
+              "incoming": 5.625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                12.203104371097234,
+                9.85,
+                7.496895628902765
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 29.324999999999996,
+              "incoming": 5.625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                12.2578119596994,
+                9.774999999999999,
+                7.292188040300599
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 29.099999999999994,
+              "incoming": 5.625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                12.287620258290486,
+                9.7,
+                7.1123797417095105
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 28.874999999999993,
+              "incoming": 5.625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                12.296401294690792,
+                9.624999999999998,
+                6.953598705309204
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 28.649999999999995,
+              "incoming": 5.625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                12.287446292547571,
+                9.549999999999997,
+                6.812553707452426
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 28.424999999999994,
+              "incoming": 5.625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                12.263549551149953,
+                9.474999999999998,
+                6.686450448850042
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 28.199999999999996,
+              "incoming": 5.625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                12.227080685533881,
+                9.399999999999999,
+                6.572919314466114
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 27.974999999999994,
+              "incoming": 5.625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                12.180046775397201,
+                9.325,
+                6.469953224602795
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 27.749999999999996,
+              "incoming": 5.625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                12.12414577432358,
+                9.249999999999998,
+                6.375854225676416
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 27.52499999999999,
+              "incoming": 5.625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                12.06081235770057,
+                9.174999999999997,
+                6.289187642299425
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 27.29999999999999,
+              "incoming": 5.625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                11.991257235753409,
+                9.099999999999998,
+                6.208742764246585
+              ]
+            }
+          ],
+          "remaining": 27.29999999999999,
+          "completed": 70.20000000000002,
+          "incoming": 67.5,
+          "workHours": 561.6000000000001,
+          "investmentHours": 0,
+          "materialUnits": 70.20000000000002,
+          "recurringAtEnd": 5.625,
+          "neighborhoodRemaining": [
+            11.991257235753409,
+            9.099999999999998,
+            6.208742764246585
+          ],
+          "activationMonth": null,
+          "investmentComplete": true,
+          "peakRemaining": 30
+        }
+      },
+      {
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "prevent",
+            "title": "Invest in prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 32.699999999999996,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                13.269565217391303,
+                10.9,
+                8.530434782608696
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 35.4,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                14.53071528751753,
+                11.8,
+                9.06928471248247
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 38.1,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                15.78496873319343,
+                12.700000000000001,
+                9.615031266806568
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 40.8,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                17.033491181086667,
+                13.600000000000001,
+                10.166508818913332
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 35.7,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                14.964037589995264,
+                11.900000000000002,
+                8.835962410004734
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 30.6,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                12.880717454527476,
+                10.200000000000001,
+                7.519282545472523
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 25.5,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                10.782531384097616,
+                8.5,
+                6.217468615902382
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 20.4,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                8.668214192751467,
+                6.8,
+                4.931785807248531
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 15.299999999999994,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                6.536089919874346,
+                5.099999999999999,
+                3.6639100801256497
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 10.199999999999992,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                4.383784287928794,
+                3.3999999999999977,
+                2.4162157120712004
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 5.099999999999991,
+              "incoming": 2.6999999999999997,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                2.2075426254602184,
+                1.699999999999997,
+                1.1924573745397755
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 0,
+              "incoming": 2.6999999999999997,
+              "completed": 7.79999999999999,
+              "repairHours": 62.39999999999992,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.79999999999999,
+              "neighborhoods": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "remaining": 0,
+          "completed": 69.6,
+          "incoming": 39.6,
+          "workHours": 748.7999999999997,
+          "investmentHours": 192,
+          "materialUnits": 149.6,
+          "recurringAtEnd": 2.6999999999999997,
+          "neighborhoodRemaining": [
+            0,
+            0,
+            0
+          ],
+          "activationMonth": 5,
+          "investmentComplete": true,
+          "peakRemaining": 40.8
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "prevent",
+            "title": "Invest in prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 40
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 33.20357142857143,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                13.514436090225564,
+                11.067857142857143,
+                8.621278195488722
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 36.40714285714286,
+              "incoming": 5.625,
+              "completed": 2.4214285714285726,
+              "repairHours": 19.37142857142858,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                15.015743331839534,
+                12.135714285714286,
+                9.25568523958904
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 39.61071428571429,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                16.50667935197827,
+                13.20357142857143,
+                9.900463505164588
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 42.81428571428572,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                17.98926828292401,
+                14.271428571428572,
+                10.553588859933134
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 46.017857142857146,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                19.46503146984265,
+                15.339285714285715,
+                11.213539958728779
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 49.22142857142857,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                20.935135803414344,
+                16.40714285714286,
+                11.879149910871371
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 52.425,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                22.400492183259697,
+                17.475,
+                12.549507816740304
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 51.075,
+              "incoming": 4.5,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                21.892931721738936,
+                17.025000000000002,
+                12.157068278261063
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 49.72500000000001,
+              "incoming": 4.5,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.377886277345365,
+                16.575000000000003,
+                11.772113722654636
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 48.37500000000001,
+              "incoming": 4.5,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                20.855790662362047,
+                16.125000000000004,
+                11.394209337637953
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 47.025,
+              "incoming": 4.5,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                20.327064886951778,
+                15.675000000000002,
+                11.022935113048222
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 45.675000000000004,
+              "incoming": 4.5,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                19.792114288433236,
+                15.225000000000003,
+                10.657885711566765
+              ]
+            }
+          ],
+          "remaining": 45.675000000000004,
+          "completed": 46.20000000000001,
+          "incoming": 61.875,
+          "workHours": 561.6,
+          "investmentHours": 191.99999999999997,
+          "materialUnits": 126.19999999999996,
+          "recurringAtEnd": 4.5,
+          "neighborhoodRemaining": [
+            19.792114288433236,
+            15.225000000000003,
+            10.657885711566765
+          ],
+          "activationMonth": 8,
+          "investmentComplete": true,
+          "peakRemaining": 52.425
+        }
+      },
+      {
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 32.699999999999996,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                13.269565217391303,
+                10.9,
+                8.530434782608696
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 35.4,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                14.53071528751753,
+                11.8,
+                9.06928471248247
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 38.1,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                15.78496873319343,
+                12.700000000000001,
+                9.615031266806568
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 40.8,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                17.033491181086667,
+                13.600000000000001,
+                10.166508818913332
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 36.6,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                15.360040027652524,
+                12.2,
+                9.039959972347477
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 32.4,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                13.669285992436363,
+                10.799999999999999,
+                7.930714007563639
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 28.200000000000003,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                11.96094069407515,
+                9.4,
+                6.839059305924851
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 24,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                10.234672221943509,
+                8,
+                5.76532777805649
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 19.799999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                8.490090941829038,
+                6.6,
+                4.70990905817096
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 15.599999999999998,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                6.726727294552692,
+                5.199999999999999,
+                3.6732727054473067
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 11.399999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                4.94399433114066,
+                3.7999999999999994,
+                2.656005668859338
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 7.199999999999996,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                3.1411172789475152,
+                2.399999999999999,
+                1.6588827210524817
+              ]
+            }
+          ],
+          "remaining": 7.199999999999996,
+          "completed": 69.6,
+          "incoming": 46.80000000000001,
+          "workHours": 748.8,
+          "investmentHours": 192,
+          "materialUnits": 149.60000000000002,
+          "recurringAtEnd": 3.6000000000000005,
+          "neighborhoodRemaining": [
+            3.1411172789475152,
+            2.399999999999999,
+            1.6588827210524817
+          ],
+          "activationMonth": 5,
+          "investmentComplete": true,
+          "peakRemaining": 40.8
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 33.20357142857143,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                13.514436090225564,
+                11.067857142857143,
+                8.621278195488722
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 36.40714285714286,
+              "incoming": 5.625,
+              "completed": 2.4214285714285726,
+              "repairHours": 19.37142857142858,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                15.015743331839534,
+                12.135714285714286,
+                9.25568523958904
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 39.61071428571429,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                16.50667935197827,
+                13.20357142857143,
+                9.900463505164588
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 42.81428571428572,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                17.98926828292401,
+                14.271428571428572,
+                10.553588859933134
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 46.017857142857146,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                19.46503146984265,
+                15.339285714285715,
+                11.213539958728779
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 49.22142857142857,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                20.935135803414344,
+                16.40714285714286,
+                11.879149910871371
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 52.425,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                22.400492183259697,
+                17.475,
+                12.549507816740304
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 51.6375,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                22.142027225276323,
+                17.212500000000002,
+                12.282972774723678
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 50.85,
+              "incoming": 5.0625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                21.87538949568432,
+                16.950000000000003,
+                12.02461050431568
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 50.06250000000001,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.601203874405478,
+                16.687500000000004,
+                11.773796125594522
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 49.275000000000006,
+              "incoming": 5.0625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                21.32005570814204,
+                16.425000000000004,
+                11.52994429185796
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 48.487500000000004,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.03249277476029,
+                16.162500000000005,
+                11.292507225239712
+              ]
+            }
+          ],
+          "remaining": 48.487500000000004,
+          "completed": 46.20000000000001,
+          "incoming": 64.6875,
+          "workHours": 561.6,
+          "investmentHours": 191.99999999999997,
+          "materialUnits": 126.19999999999996,
+          "recurringAtEnd": 5.0625,
+          "neighborhoodRemaining": [
+            21.03249277476029,
+            16.162500000000005,
+            11.292507225239712
+          ],
+          "activationMonth": 8,
+          "investmentComplete": true,
+          "peakRemaining": 52.425
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "6c60774b-06cb-4a00-b328-747f621c117c",
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 32.699999999999996,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                13.269565217391303,
+                10.9,
+                8.530434782608696
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 35.4,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                14.53071528751753,
+                11.8,
+                9.06928471248247
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 38.1,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                15.78496873319343,
+                12.700000000000001,
+                9.615031266806568
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 40.8,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                17.033491181086667,
+                13.600000000000001,
+                10.166508818913332
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 36.6,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                15.360040027652524,
+                12.2,
+                9.039959972347477
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 32.4,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                13.669285992436363,
+                10.799999999999999,
+                7.930714007563639
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 28.200000000000003,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                11.96094069407515,
+                9.4,
+                6.839059305924851
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 24,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                10.234672221943509,
+                8,
+                5.76532777805649
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 19.799999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                8.490090941829038,
+                6.6,
+                4.70990905817096
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 15.599999999999998,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                6.726727294552692,
+                5.199999999999999,
+                3.6732727054473067
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 11.399999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                4.94399433114066,
+                3.7999999999999994,
+                2.656005668859338
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 7.199999999999996,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                3.1411172789475152,
+                2.399999999999999,
+                1.6588827210524817
+              ]
+            }
+          ],
+          "remaining": 7.199999999999996,
+          "completed": 69.6,
+          "incoming": 46.80000000000001,
+          "workHours": 748.8,
+          "investmentHours": 192,
+          "materialUnits": 149.60000000000002,
+          "recurringAtEnd": 3.6000000000000005,
+          "neighborhoodRemaining": [
+            3.1411172789475152,
+            2.399999999999999,
+            1.6588827210524817
+          ],
+          "activationMonth": 5,
+          "investmentComplete": true,
+          "peakRemaining": 40.8
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 33.20357142857143,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                13.514436090225564,
+                11.067857142857143,
+                8.621278195488722
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 36.40714285714286,
+              "incoming": 5.625,
+              "completed": 2.4214285714285726,
+              "repairHours": 19.37142857142858,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                15.015743331839534,
+                12.135714285714286,
+                9.25568523958904
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 39.61071428571429,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                16.50667935197827,
+                13.20357142857143,
+                9.900463505164588
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 42.81428571428572,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                17.98926828292401,
+                14.271428571428572,
+                10.553588859933134
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 46.017857142857146,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                19.46503146984265,
+                15.339285714285715,
+                11.213539958728779
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 49.22142857142857,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                20.935135803414344,
+                16.40714285714286,
+                11.879149910871371
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 52.425,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                22.400492183259697,
+                17.475,
+                12.549507816740304
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 51.6375,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                22.142027225276323,
+                17.212500000000002,
+                12.282972774723678
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 50.85,
+              "incoming": 5.0625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                21.87538949568432,
+                16.950000000000003,
+                12.02461050431568
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 50.06250000000001,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.601203874405478,
+                16.687500000000004,
+                11.773796125594522
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 49.275000000000006,
+              "incoming": 5.0625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                21.32005570814204,
+                16.425000000000004,
+                11.52994429185796
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 48.487500000000004,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.03249277476029,
+                16.162500000000005,
+                11.292507225239712
+              ]
+            }
+          ],
+          "remaining": 48.487500000000004,
+          "completed": 46.20000000000001,
+          "incoming": 64.6875,
+          "workHours": 561.6,
+          "investmentHours": 191.99999999999997,
+          "materialUnits": 126.19999999999996,
+          "recurringAtEnd": 5.0625,
+          "neighborhoodRemaining": [
+            21.03249277476029,
+            16.162500000000005,
+            11.292507225239712
+          ],
+          "activationMonth": 8,
+          "investmentComplete": true,
+          "peakRemaining": 52.425
+        }
+      },
+      {
+        "id": "7a7e55d6-54a8-406a-9dfe-24c4cec79972",
+        "expected": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": false,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 32.699999999999996,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                13.269565217391303,
+                10.9,
+                8.530434782608696
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 35.4,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                14.53071528751753,
+                11.8,
+                9.06928471248247
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 38.1,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                15.78496873319343,
+                12.700000000000001,
+                9.615031266806568
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 40.8,
+              "incoming": 4.5,
+              "completed": 1.8000000000000007,
+              "repairHours": 14.400000000000006,
+              "investmentHours": 48,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 21.8,
+              "neighborhoods": [
+                17.033491181086667,
+                13.600000000000001,
+                10.166508818913332
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 36.6,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                15.360040027652524,
+                12.2,
+                9.039959972347477
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 32.4,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                13.669285992436363,
+                10.799999999999999,
+                7.930714007563639
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 28.200000000000003,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                11.96094069407515,
+                9.4,
+                6.839059305924851
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 24,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                10.234672221943509,
+                8,
+                5.76532777805649
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 19.799999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                8.490090941829038,
+                6.6,
+                4.70990905817096
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 15.599999999999998,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000001,
+              "repairHours": 62.400000000000006,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000001,
+              "neighborhoods": [
+                6.726727294552692,
+                5.199999999999999,
+                3.6732727054473067
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 11.399999999999997,
+              "incoming": 3.6000000000000005,
+              "completed": 7.8,
+              "repairHours": 62.4,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.8,
+              "neighborhoods": [
+                4.94399433114066,
+                3.7999999999999994,
+                2.656005668859338
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 7.199999999999996,
+              "incoming": 3.6000000000000005,
+              "completed": 7.800000000000002,
+              "repairHours": 62.40000000000001,
+              "investmentHours": 0,
+              "availableHours": 62.400000000000006,
+              "materialUnits": 7.800000000000002,
+              "neighborhoods": [
+                3.1411172789475152,
+                2.399999999999999,
+                1.6588827210524817
+              ]
+            }
+          ],
+          "remaining": 7.199999999999996,
+          "completed": 69.6,
+          "incoming": 46.80000000000001,
+          "workHours": 748.8,
+          "investmentHours": 192,
+          "materialUnits": 149.60000000000002,
+          "recurringAtEnd": 3.6000000000000005,
+          "neighborhoodRemaining": [
+            3.1411172789475152,
+            2.399999999999999,
+            1.6588827210524817
+          ],
+          "activationMonth": 5,
+          "investmentComplete": true,
+          "peakRemaining": 40.8
+        },
+        "pessimistic": {
+          "modelVersion": "healthy-homes/1.0.0",
+          "baselineId": "healthy-homes/2026-09-12/v1",
+          "pathway": {
+            "id": "23a3b6a2-ee18-4820-aa80-6fd9d2b4836f",
+            "title": "QA · cautious prevention",
+            "kind": "prevent",
+            "assumptions": {
+              "voluntaryHours": 16,
+              "leadMonths": 4,
+              "reductionPercent": 20
+            }
+          },
+          "stress": true,
+          "months": [
+            {
+              "month": 0,
+              "remaining": 30,
+              "incoming": 0,
+              "completed": 0,
+              "repairHours": 0,
+              "investmentHours": 0,
+              "availableHours": 0,
+              "materialUnits": 0,
+              "neighborhoods": [
+                12,
+                10,
+                8
+              ]
+            },
+            {
+              "month": 1,
+              "remaining": 33.20357142857143,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                13.514436090225564,
+                11.067857142857143,
+                8.621278195488722
+              ]
+            },
+            {
+              "month": 2,
+              "remaining": 36.40714285714286,
+              "incoming": 5.625,
+              "completed": 2.4214285714285726,
+              "repairHours": 19.37142857142858,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                15.015743331839534,
+                12.135714285714286,
+                9.25568523958904
+              ]
+            },
+            {
+              "month": 3,
+              "remaining": 39.61071428571429,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                16.50667935197827,
+                13.20357142857143,
+                9.900463505164588
+              ]
+            },
+            {
+              "month": 4,
+              "remaining": 42.81428571428572,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                17.98926828292401,
+                14.271428571428572,
+                10.553588859933134
+              ]
+            },
+            {
+              "month": 5,
+              "remaining": 46.017857142857146,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                19.46503146984265,
+                15.339285714285715,
+                11.213539958728779
+              ]
+            },
+            {
+              "month": 6,
+              "remaining": 49.22142857142857,
+              "incoming": 5.625,
+              "completed": 2.4214285714285717,
+              "repairHours": 19.371428571428574,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.849999999999998,
+              "neighborhoods": [
+                20.935135803414344,
+                16.40714285714286,
+                11.879149910871371
+              ]
+            },
+            {
+              "month": 7,
+              "remaining": 52.425,
+              "incoming": 5.625,
+              "completed": 2.421428571428572,
+              "repairHours": 19.371428571428577,
+              "investmentHours": 27.428571428571427,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 13.85,
+              "neighborhoods": [
+                22.400492183259697,
+                17.475,
+                12.549507816740304
+              ]
+            },
+            {
+              "month": 8,
+              "remaining": 51.6375,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                22.142027225276323,
+                17.212500000000002,
+                12.282972774723678
+              ]
+            },
+            {
+              "month": 9,
+              "remaining": 50.85,
+              "incoming": 5.0625,
+              "completed": 5.850000000000001,
+              "repairHours": 46.80000000000001,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.850000000000001,
+              "neighborhoods": [
+                21.87538949568432,
+                16.950000000000003,
+                12.02461050431568
+              ]
+            },
+            {
+              "month": 10,
+              "remaining": 50.06250000000001,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.601203874405478,
+                16.687500000000004,
+                11.773796125594522
+              ]
+            },
+            {
+              "month": 11,
+              "remaining": 49.275000000000006,
+              "incoming": 5.0625,
+              "completed": 5.85,
+              "repairHours": 46.8,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.85,
+              "neighborhoods": [
+                21.32005570814204,
+                16.425000000000004,
+                11.52994429185796
+              ]
+            },
+            {
+              "month": 12,
+              "remaining": 48.487500000000004,
+              "incoming": 5.0625,
+              "completed": 5.8500000000000005,
+              "repairHours": 46.800000000000004,
+              "investmentHours": 0,
+              "availableHours": 46.800000000000004,
+              "materialUnits": 5.8500000000000005,
+              "neighborhoods": [
+                21.03249277476029,
+                16.162500000000005,
+                11.292507225239712
+              ]
+            }
+          ],
+          "remaining": 48.487500000000004,
+          "completed": 46.20000000000001,
+          "incoming": 64.6875,
+          "workHours": 561.6,
+          "investmentHours": 191.99999999999997,
+          "materialUnits": 126.19999999999996,
+          "recurringAtEnd": 5.0625,
+          "neighborhoodRemaining": [
+            21.03249277476029,
+            16.162500000000005,
+            11.292507225239712
+          ],
+          "activationMonth": 8,
+          "investmentComplete": true,
+          "peakRemaining": 52.425
+        }
+      }
+    ]
+  },
+  "sha256": "31e9e95cc6ef415bc90b7653d8403d0ed47f141bf330987e589a5c01f60010cc"
+}

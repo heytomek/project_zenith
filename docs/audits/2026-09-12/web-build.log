@@ -1,0 +1,33 @@
+$ bun run --cwd apps/web build
+$ next build
+▲ Next.js 16.3.5 (Turbopack)
+✓ Running next.config.ts took 19ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 162ms
+  Running TypeScript ...
+  Finished TypeScript in 2.7s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/3) ...
+✓ Generating static pages using 9 workers (3/3) in 72ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /orgs/[organizationId]
+├ ƒ /orgs/[organizationId]/demand/policies
+├ ƒ /orgs/[organizationId]/demand/work-orders
+├ ƒ /orgs/[organizationId]/overview
+├ ƒ /orgs/[organizationId]/planning/reports
+├ ƒ /orgs/[organizationId]/planning/results
+├ ƒ /orgs/[organizationId]/planning/run
+├ ƒ /orgs/[organizationId]/resources/equipment
+├ ƒ /orgs/[organizationId]/resources/materials
+├ ƒ /orgs/[organizationId]/settings/organization
+├ ƒ /orgs/[organizationId]/workforce/catalog
+└ ƒ /orgs/[organizationId]/workforce/workers
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

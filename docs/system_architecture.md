@@ -1,340 +1,51 @@
-# System Architecture
-
-## Architecture goal
-
-Build Zenith as a planning platform, not a desktop utility.
-
-The architecture should support:
-
-- structured multi-tenant data
-- long-running planning jobs
-- versioned scenarios
-- explainable outputs
-- human review and overrides
-- future expansion into network-level coordination
-
-## Recommended implementation stack
-
-Use a pragmatic split:
-
-- backend API and planning services in Python
-- frontend in web technologies
-- relational storage in PostgreSQL
-- background jobs through Redis-backed workers
-
-Recommended concrete stack:
-
-- `FastAPI` for the application API
-- `SQLAlchemy` and `Alembic` for persistence and migrations
-- `PostgreSQL` as the system of record
-- `Redis` for queues, caching, and ephemeral coordination
-- `Celery` or `RQ` for asynchronous planning jobs
-- `OR-Tools` for initial constrained optimization
-- `Next.js` with React and TypeScript for the operator UI
-- `OpenAPI` generated client bindings between API and web app
-
-This choice keeps the planning logic in Python, where optimization and scientific tooling are strongest, while giving the UI a serious operational surface.
-
-## High-level system components
-
-### 1. Web application
-
-Used by planners, managers, and dispatchers for:
-
-- data management
-- scenario setup
-- plan review
-- issue inspection
-- approval and overrides
-- execution monitoring
-
-### 2. API application
-
-Primary responsibilities:
-
-- authentication and authorization
-- CRUD for core planning entities
-- validation and normalization
-- orchestration of plan runs
-- exposure of read models and reports
-
-### 3. Planning engine
-
-Primary responsibilities:
-
-- feasible candidate generation
-- constraint model construction
-- scoring and optimization
-- production of explainable results and diagnostics
-
-### 4. Background worker tier
-
-Primary responsibilities:
-
-- imports
-- long-running plan generation
-- scenario comparison jobs
-- recalculation of derived metrics
-
-### 5. Database
-
-Primary responsibilities:
-
-- canonical entity storage
-- versioned scenarios and plan runs
-- audit trail
-- execution and actuals history
-
-### 6. Integration layer
-
-Primary responsibilities:
-
-- importing worker master data
-- importing work orders or demand feeds
-- syncing inventory and equipment state
-- emitting assignments to execution systems later
-
-## Proposed service boundaries
-
-The first build should stay compact. Do not over-microservice it.
-
-Recommended initial services:
-
-### `apps/api`
-
-FastAPI app exposing:
-
-- auth
-- organizations, units, locations
-- workers, skills, certifications, calendars
-- work orders, requirements, dependencies
-- facilities, equipment, inventory positions
-- scenarios, plan runs, assignments, overrides
-
-### `apps/web`
-
-Next.js app exposing:
-
-- planner dashboard
-- work queue and backlog views
-- capacity map
-- scenario builder
-- plan results and issue review
-- override and publish workflows
-
-### `services/planner`
-
-Python package or service containing:
-
-- candidate filtering
-- constraint assembly
-- objective weighting
-- solver integration
-- explanation generation
-
-This can start as an internal module in the API repo and be split later if needed.
-
-### `workers/jobs`
-
-Background processes for:
-
-- imports
-- plan runs
-- recalculations
-- notifications
-
-## Data model strategy
-
-Use PostgreSQL as the source of truth.
-
-Initial schema groups:
-
-- `identity`: organizations, users, roles
-- `org`: planning units, locations, regions
-- `workforce`: workers, skills, certifications, calendars
-- `operations`: work orders, requirements, dependencies
-- `resources`: facilities, equipment, materials, inventory
-- `planning`: horizons, rules, objectives, scenarios, plan runs, assignments
-- `execution`: events, actuals, overrides
-
-Principles:
-
-- use UUID primary keys
-- store all operational times in UTC
-- keep local timezone metadata on locations and calendars
-- make every plan run immutable after completion
-- keep scenario inheritance explicit, not implicit
-
-## Planning engine design
-
-The planning engine should run in clear stages.
-
-### Stage 1: normalization
-
-Resolve raw operational inputs into canonical planning facts:
-
-- duration
-- headcount needed
-- location
-- skill and certification requirements
-- equipment and material needs
-- service-level deadlines
-
-### Stage 2: eligibility filtering
-
-Eliminate impossible candidates using hard constraints:
-
-- worker unavailable
-- missing certification
-- equipment unavailable
-- location mismatch without travel allowance
-- missing material or facility access
-
-### Stage 3: scoring and optimization
-
-Build a constrained optimization model with weighted objectives such as:
-
-- maximize completed demand
-- minimize overtime
-- minimize travel
-- prioritize critical work
-- smooth workload imbalance
-
-### Stage 4: diagnostics
-
-Produce explainable outputs:
-
-- why an item was assigned
-- why something remained unassigned
-- which constraints were active
-- where bottlenecks occurred
-
-### Stage 5: publication
-
-Persist outputs as immutable plan artifacts and expose them for approval.
-
-## UI surface
-
-The first web UI should include:
-
-### Planner dashboard
-
-- backlog by priority and due date
-- current capacity by site
-- plan-run status
-- major bottlenecks and alerts
-
-### Workforce management
-
-- workers
-- skills
-- certifications
-- calendars and leave
-
-### Work intake
-
-- work orders
-- dependencies
-- service classes
-
-### Resource views
-
-- facilities
-- equipment availability
-- inventory positions
-
-### Scenario and plan review
-
-- create scenario
-- run plan
-- inspect assignments
-- inspect unassigned work
-- compare scenarios
-- approve, reject, override
-
-### Execution monitoring
-
-- dispatched work
-- actual vs planned
-- variance and failure reasons
-
-## Security and authorization
-
-At minimum, support role-based access:
-
-- `admin`
-- `planner`
-- `dispatcher`
-- `manager`
-- `viewer`
-
-Later, move toward policy-based access for cross-unit governance.
-
-All plan changes should be auditable:
-
-- who changed what
-- when
-- why
-- what prior state existed
-
-## Deployment approach
-
-Initial deployment target:
-
-- one PostgreSQL instance
-- one Redis instance
-- one API service
-- one worker service
-- one web app
-
-This is enough for a serious early product and keeps operations manageable.
-
-Containerization:
-
-- Docker for local development
-- Docker Compose for local integration
-- managed Postgres and Redis in hosted environments
-
-## Suggested repository layout for the rewrite
-
-```text
-project_zenith/
-  apps/
-    api/
-    web/
-  services/
-    planner/
-  packages/
-    client/
-    schemas/
-  docs/
-  infra/
-    docker/
-  tests/
-    integration/
-    planner/
+# System architecture
+
+Updated October 4, 2026. The active system is a browser-local strategic coordination kernel and Next.js interface. It realizes a first inspectable loop from evidence to strategy, bounded delegation and outcomes; [product vision](product_vision.md) defines the larger scope.
+
+## Active boundary
+
+```mermaid
+flowchart LR
+  Sources["Profile + dated claims"] --> Core["Coordination kernel"]
+  UI["Human workspace"] --> Core
+  Core --> Decisions["Frozen decisions + mandates"]
+  Decisions --> Agents["Local simulated specialists"]
+  Agents --> Outcomes["Outcomes + receipts"]
+  Outcomes --> Core
+  Core --> Library["Validated local library"]
+  Library --> Files["Checksummed JSON"]
 ```
 
-## Architecture decisions for v1
+The retained Python API, operational solver and database are outside this boundary. The active page mounts `CoordinationApp`; it does not call the earlier `commons` interface or API.
 
-Be explicit about the first build:
+| Module | Responsibility |
+| --- | --- |
+| `lib/coordination/types.ts` | Shared primitive and state contracts |
+| `lib/coordination/core.ts` | Pure validation, evaluation, commands and deterministic replay |
+| `lib/coordination/profiles.ts` | Domain fixtures and smaller custom profile construction |
+| `lib/coordination/examples.ts` | Worked histories built with kernel commands |
+| `lib/coordination/storage.ts` | Library validation, canonical checksum and file envelope |
+| `components/coordination/use-library.ts` | Hydrated local storage, synchronization and stale-write guards |
+| `components/coordination` | Onboarding, four views, accessible controls and inspections |
 
-- single database, not sharded
-- monorepo, not separate repos
-- modular monolith for API, not distributed microservices
-- optimization through OR-Tools first, not custom solver infrastructure
-- manual review gate before publication
+Paths in the table are relative to `apps/web`.
 
-Those decisions optimize for speed, coherence, and maintainability.
+## Model and command semantics
 
-## What can come later
+A strategy selects declared interventions. Resources are summed per capability and checked against current capacity less retained commitments. Dependencies determine earliest completion. Effects contribute only when completion lies within the projection horizon; missing a target is distinct from breaching a protected limit. No optimizer, probability model or composite ethical score is implemented.
 
-As the system grows, architecture can expand into:
+Authorization freezes claim values, evaluation, prior commitments and authority. Mandates freeze resource ceilings, expected effects, dependencies, execution factors and expiry. Acceptance checks explicit agent rights and capability offers; containment alone grants neither.
 
-- event streaming for high-frequency state changes
-- forecasting services
-- simulation services
-- federated cross-organization planning
-- optimization clusters for larger solve workloads
+The simulated runtime advances work in three bounded progress steps. Dependencies must complete before successors advance. A capacity reduction can block execution; stopping retains reservations until acknowledgement. Completed or partially stopped work keeps its consumed resources. Logical simulation ticks are not elapsed planning months.
 
-Those are future scaling decisions, not day-one requirements.
+## Persistence and portability
+
+A version-two `Library` contains independent world workspaces and an active identity. Browser state uses `zenith.coordination.v2`; replacement imports retain a raw previous copy. Earlier version-one keys remain untouched.
+
+Exports contain the complete library in a canonical SHA-256 envelope. Import checks file shape and size, validates contracts, reproduces frozen evaluations and replays the event trace. The checksum detects modification; it does not prove authorship, legitimacy or trust in evidence.
+
+## Production boundary
+
+This implementation has no remote connectors, live agent provider, authenticated decision makers, server database, shared reservations or signed cross-institutional commitments. Independent new instances restart an example; they are not new claims on a shared real-world budget.
+
+The former architecture specification is retained [unchanged in the archive](archive/2026-10-04/system_architecture.md).

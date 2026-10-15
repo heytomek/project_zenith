@@ -1,42 +1,26 @@
-# Zenith Web
+# Zenith web
 
-This app will become the primary operator interface for planners, dispatchers, and managers.
+The active page mounts `CoordinationApp`: a local strategic coordination workspace for humans and simulated specialist agents. See the [root README](../../README.md), [running contract](../../docs/mvp.md) and [architecture](../../docs/system_architecture.md).
 
-Current implemented scope:
+From the repository root:
 
-- organization selection from the home page
-- organization-scoped app shell with a collapsible left sidebar
-- overview page
-- settings flow for organization, locations, and planning units
-- workforce flow for workers, skills, certifications, and worker availability management
-- demand flow for work orders, requirements, dependencies, and service-level policies
-- resource flow for materials, inventory, equipment types, equipment units, and availability
-- planner flow for constrained-plan execution and latest-result review
-- planning-horizon management and horizon-linked run configuration
-- manager-facing operations reports with bottleneck dashboards, trend buckets, and CSV export
+```sh
+bun run dev:web
+```
 
-Recent UX additions:
+For a stable production preview:
 
-- icon-backed navigation and page headers across the operator shell
-- planner run page quick-access cards for workforce, demand, and resources
-- grouped planner-result review buckets for workforce, demand, resource, and planner issues
-- deep links from planner results into selected workers, work orders, and equipment units
-- saved scenario management on the planner run page
-- persisted plan runs with recent-run review on the results page
-- two-run planner comparison on the results page, with assignment, shortage, and issue deltas
-- scenario cloning on the run page plus rerun/save-as-scenario actions on the results page
-- scenario labels, notes, status management, and branch-history review on the run page
-- execution workflow controls on the results page for manual assignment override, run approval, and assignment publication
-- persistent worker, material, and equipment reservation creation when a run is published
-- published-assignment execution capture on the results page, including started, blocked, and completed event logging
-- published reassignment and assignment cancellation on the results page for both single-worker and crew assignments, with audit events and reservation release/recreate behavior
-- bulk dispatch handoff controls on the results page to update `pending`/`ready`/`sent`/`acknowledged` state across selected published assignments
-- saved dispatch queues on the results page with reusable exception filters and queue-level canned actions
-- organization-scoped dispatch queue template management on the results page, including template CRUD, run-queue instantiation from templates, and role-gated queue/template apply controls with actor-user selection
-- plan-vs-actual review on the results page, including delay and duration variance across published assignments
-- deeper execution analytics on the results page, including blocked reasons and rollups by worker, site, and current work-type grouping
-- operations reports page with worker, location, material, and equipment rollups, bottleneck cards, assignment-date trend buckets, and assignment-level CSV export
-- worker page support for recurring shift templates and break rules used directly by planner scheduling
+```sh
+bun run build:web
+bun run start:web --hostname 127.0.0.1 --port 3000
+```
 
-Implementation planning for the first real operator UI now lives in
-[`docs/planner_ux_plan.md`](../../docs/planner_ux_plan.md).
+The only application route is `/`. Its views are `#situation`, `#strategies`, `#mandates` and `#ledger`. Unknown legacy hashes fall back to Situation. Agent avatars open scoped authority details.
+
+Onboarding offers fresh guided setup, a worked synthetic case, a custom world or file import. Harbor, Meridian and Open Atlas use the same coordination contracts and engine. Worked cases are populated through the same commands exposed in the interface.
+
+all computation and persistence stay in the browser. the local key is `zenith.coordination.v2`; export offers the current world or complete library in a checksummed envelope. a raw validated `Profile` import adds a fresh world. Archive downloads valid version-two libraries as reopenable exports and preserves version-one or unreadable records verbatim. the Python API is disconnected; the older Alder interface is preserved in `docs/archive/2026-10-04/alder-interface`, with its calculator and tests retained separately.
+
+run `bun run examples:coordination` from the repository root to regenerate the editable profiles and worked library in [`examples/coordination`](../../examples/coordination/README.md).
+
+No live model provider, agent runtime, authentication, external connector or server persistence is implemented.

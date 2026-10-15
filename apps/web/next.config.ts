@@ -1,17 +1,4 @@
 import type { NextConfig } from "next";
-
-const apiOrigin = process.env.ZENITH_API_ORIGIN ?? "http://127.0.0.1:8000";
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${apiOrigin}/api/:path*`,
-      },
-    ];
-  },
-};
-
+// The commons is self-contained. Never proxy public traffic into the legacy operator API.
+const nextConfig: NextConfig = { reactStrictMode: true };
 export default nextConfig;

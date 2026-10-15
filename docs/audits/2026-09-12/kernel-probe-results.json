@@ -1,0 +1,89 @@
+{
+  "redundant_crew": {
+    "status": "completed",
+    "assignments": [
+      {
+        "work_order_id": "job",
+        "worker_id": "A",
+        "worker_name": "A",
+        "crew_worker_ids": [
+          "A",
+          "B"
+        ],
+        "crew_worker_names": [
+          "A",
+          "B"
+        ],
+        "crew_size_required": 1,
+        "score": 6,
+        "matched_skill_codes": [
+          "a",
+          "b",
+          "c"
+        ],
+        "matched_certification_codes": [],
+        "reserved_material_quantities": {},
+        "reserved_equipment_ids": [],
+        "scheduled_start_at": null,
+        "scheduled_end_at": null,
+        "estimated_travel_minutes": 0,
+        "estimated_overtime_minutes": 0
+      }
+    ],
+    "unassigned": [],
+    "issues": [
+      "Optimization planner created 1 assignments, left 0 work orders unassigned, and optimized crew sizing, travel, overtime, and workload balance."
+    ]
+  },
+  "due_only_intervals": {
+    "status": "completed",
+    "assignments": [
+      {
+        "work_order_id": "0",
+        "worker_id": "A",
+        "worker_name": "A",
+        "crew_worker_ids": [
+          "A"
+        ],
+        "crew_worker_names": [
+          "A"
+        ],
+        "crew_size_required": 1,
+        "score": 0,
+        "matched_skill_codes": [],
+        "matched_certification_codes": [],
+        "reserved_material_quantities": {},
+        "reserved_equipment_ids": [],
+        "scheduled_start_at": "2026-09-12T12:00:00Z",
+        "scheduled_end_at": "2026-09-12T12:00:00Z",
+        "estimated_travel_minutes": 0,
+        "estimated_overtime_minutes": 0
+      },
+      {
+        "work_order_id": "1",
+        "worker_id": "A",
+        "worker_name": "A",
+        "crew_worker_ids": [
+          "A"
+        ],
+        "crew_worker_names": [
+          "A"
+        ],
+        "crew_size_required": 1,
+        "score": 0,
+        "matched_skill_codes": [],
+        "matched_certification_codes": [],
+        "reserved_material_quantities": {},
+        "reserved_equipment_ids": [],
+        "scheduled_start_at": "2026-09-12T12:00:00Z",
+        "scheduled_end_at": "2026-09-12T12:00:00Z",
+        "estimated_travel_minutes": 0,
+        "estimated_overtime_minutes": 0
+      }
+    ],
+    "unassigned": [],
+    "issues": [
+      "Optimization planner created 2 assignments, left 0 work orders unassigned, and optimized crew sizing, travel, overtime, and workload balance."
+    ]
+  }
+}

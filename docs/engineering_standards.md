@@ -1,5 +1,7 @@
 # Engineering Standards
 
+> Historical operational-platform reference. The September 12, 2026 [product direction](product_vision.md), [rebuild sequence](roadmap.md), and [current audit](audits/2026-09-12/README.md) supersede its product scope and unverified status claims. Existing schema and implementation details remain useful as a baseline.
+
 ## Objective
 
 These standards exist to keep Zenith coherent as it grows from a prototype into a planning platform.

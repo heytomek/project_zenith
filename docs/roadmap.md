@@ -1,385 +1,87 @@
-# Roadmap
+# Zenith: strategic coordination build sequence
 
-## Roadmap objective
+Updated October 4, 2026. [Product direction](product_vision.md): a strategic coordination layer for accountable human decision makers and specialist agents. Its purpose is to understand a changing situation, compare consequential courses of action, delegate bounded authority and learn from results across nested scopes. Small demonstrations test this architecture; they do not define the product as a maintenance tool.
 
-Turn Project Zenith from a single-file ranking prototype into a production-grade planning platform.
+## Current implementation
 
-This roadmap assumes we are building toward the concrete `v1` defined in the other docs:
+The application remains the local Alder calculator and decision journal described in [mvp.md](mvp.md). It computes a deterministic repair model, retains assumptions and stress comparisons, freezes decision versions, records observations and verifies portable exports. Its named team and source documents are synthetic fixture content. There is no connected world model, strategic portfolio engine, authenticated delegation or agent runtime. [Design QA](../design-qa.md) records interface and model checks, not evidence for those proposed capabilities.
 
-- multi-site labor and resource planning
-- daily and weekly planning horizon
-- structured constraints
-- scenario generation
-- review and override workflow
-- plan vs actual feedback
+## 1. Make the foundation executable
 
-## Delivery strategy
+Translate the owner's [endstate](endstate.md) into explicit, revisable decision rules: durable flourishing and relief of involuntary suffering as ends; agency, ecological limits and legible, revocable power as protections; truthfulness, uncertainty and preserved options as requirements for reasoning. These rules must appear in objectives, constraints, authority and review, rather than only in a mission statement. Different participants can disagree about values and causal claims without the system collapsing them into one hidden score.
 
-Do not try to jump directly to the final vision.
+Define the first version of the shared contract:
 
-Build in layers:
+| Primitive | Required behavior |
+| --- | --- |
+| Scope | A decision boundary with accountable authority, participants, time horizon and containment or overlap relationships. Nesting grants no authority. A child cannot silently claim a parent's authority or another scope's resources. |
+| Objective | Desired outcomes, affected parties, observable measures and protected conditions. Distinguish hard protections from preferences; retain unresolved value conflicts. |
+| Claim | A dated assertion with source provenance, units, scope, epistemic state and revision history. Distinguish observation, inference, forecast and assumption. Conflicting sources remain inspectable. |
+| Capability | A provider's available capacity, timing, resource requirements and conditions of use, including existing commitments and one underlying resource identity across scopes. |
+| Intervention | A proposed causal change with dependencies, resource demands, expected effects, alternatives and uncertainty. |
+| Mandate | A delegated purpose, recipient, allowed actions, resource ceiling, scope, expiry, escalation conditions and revocation state. An instruction alone does not establish authority. |
+| Outcome | A versioned prediction or observation tied to an objective, intervention and review horizon. Preserve the frozen expectation when new evidence changes the forecast. |
 
-1. foundation and canonical data model
-2. operational planning kernel
-3. review, execution, and feedback
-4. tactical coordination and scenario analysis
-5. broader network planning
+Human views and machine clients use the same identified objects and revisions. Scope relationships, source versions and commitments must be queryable. Overlapping scopes can share a capability without owning each other, and aggregation cannot count that capability twice. Begin with typed records and explicit links; storage technology does not prove that these semantics work.
 
-## Phase 0: Product framing and repo reset
+Supporting contracts include reproducible model/run manifests and durable decision events. A decision event identifies its accountable authority, selected portfolio, frozen input/model/run references, authorized mandates, disagreement and review triggers. These contracts connect reasoning to an authorization boundary without adding another top-level primitive.
 
-Target: 1 to 2 weeks
+Acceptance: a published schema and coherent fixtures connect every candidate intervention to objectives, claims, dependencies and required capabilities; every mandate identifies the granting authority and boundaries; every reported outcome has an inspectable basis. All units and time intervals are explicit. The existing three-slider model stays a separate historical demonstration until this contract is verified.
 
-Goal:
+## 2. Build one complete strategic loop
 
-- lock product scope for `v1`
-- start a fresh implementation path without being constrained by the Tkinter prototype
+Use a synthetic regional transition spanning energy, housing and workforce development. The top-level question is which investment sequence should reduce household energy insecurity, strengthen energy resilience and build durable local capability under shared capital and workforce limits. It must also expose distributional effects and protected conditions, including consent and displacement risk. This is a worked strategic decision, not a claim that Zenith has validated the region's outcomes.
 
-Deliverables:
+The fixture contains a regional scope, three program scopes and several delivery scopes, including one independently governed provider participating through an overlapping scope. It draws on distinct source snapshots: energy demand and network capacity; housing condition and household exposure; capital commitments; training cohorts and qualified workforce availability; project lead times; and relevant protections. Include a stale source, conflicting estimates and one important unmeasured effect. Store explicit source dates and uncertainty rather than manufacturing confidence.
 
-- finalized product vision
-- finalized domain model
-- finalized architecture choice
-- rewrite repository structure
-- engineering standards and contribution guide
+Compare three strategies with the same inputs:
 
-Implementation tasks:
+1. **Supply first:** prioritize energy infrastructure, with housing interventions following enabling capacity.
+2. **Demand first:** prioritize housing efficiency and household exposure, with energy investment staged later.
+3. **Coordinated transition:** sequence training, housing and energy investments together to use shared capacity and preserve future options.
 
-- create monorepo structure under `apps/`, `services/`, `packages/`, and `docs/`
-- choose package manager and formatting tools
-- set up linting, type checking, and test runners
-- define coding standards and migration workflow
-- create initial ERD and migration plan
+Use a twelve-month resource commitment horizon and a thirty-six-month outcome horizon. The fixture must make at least one shared budget or workforce constraint bind, one intervention depend on another's completion and one portfolio infeasible. Report the violated constraint and affected interventions. Compare feasible portfolios across outcomes, costs, distribution, timing, uncertainty and reversibility; do not present a universal winner where objectives conflict.
 
-Exit criteria:
+Implement actual resource accounting, dependency evaluation and small portfolio enumeration before adding a general solver. A changed source must change the feasible set or forecast where its modeled relation warrants it. Causal effects without sufficient evidence remain labeled assumptions; a mathematically feasible portfolio is not proof of social benefit.
 
-- repo boots locally
-- docs align on scope and vocabulary
-- first migrations are ready to be written
+The complete loop is:
 
-## Phase 1: Platform foundation
+1. Ingest and validate heterogeneous source snapshots into the scoped model.
+2. Identify important changes, conflicts, unknowns and binding capabilities.
+3. Compute and compare intervention portfolios against declared objectives and protections.
+4. Have the accountable human select a course and retain the tradeoff and conditions for revisiting it.
+5. Issue bounded mandates to energy, housing, workforce and evidence-review specialist clients; acceptance checks and reserves authorized capacity atomically against the common resource ledger.
+6. Record acknowledgement, proposed or completed actions, resource consumption and exceptions.
+7. Reconcile observed outcomes against frozen expectations, revise relevant claims and require a decision when the mandate's bounds no longer permit continuation.
 
-Target: 2 to 4 weeks
+First use simulated machine clients with deterministic messages. Label simulated execution and synthetic outcomes throughout the trace. The coordinator must still enforce scope, revision, expiry, revocation, resource ceilings and allowed actions in code; clients obeying a written prompt is insufficient. Concurrent acceptance must not over-reserve shared capacity. Revocation releases only unconsumed reservations after an acknowledged stop or handover; in-flight commitments remain accounted for. Real autonomous agents and external writeback are later integrations, not implied by this demonstration.
 
-Goal:
+Acceptance: the demonstration moves from source snapshots to three computed strategies, an approved portfolio, acknowledged mandates and a reviewed outcome without manual rewriting between steps. A resource shock or dependency failure creates a concrete exception: the specialist cannot simply expand spending or borrow another program's authority. The human sees the affected objective, available options, uncertainty and the decision required; the resulting revision updates commitments and mandates consistently.
 
-- establish the canonical backend and frontend skeleton
+## 3. Verify coordination, not only presentation
 
-Deliverables:
+Apply the [validation protocol](usefulness-test.md) to both human decisions and machine contracts. Run deterministic tests for shared capacity, time buckets, unit conversion, dependencies, protected conditions, duplicate commitments, stale revisions, acknowledgement, expiry, revocation and out-of-scope actions. The trace must explain accepted and rejected actions from the stored authority and model version.
 
-- FastAPI application
-- Next.js application
-- PostgreSQL schema bootstrap
-- auth and role model
-- basic organization setup flow
+Ask senior decision makers to reconstruct a consequential multi-program decision using authorized source extracts. Run this research alongside the synthetic build; do not make the absence of an existing competitor a prerequisite. Evaluate whether the model makes the situation, tradeoffs, commitments and reasons to change course clearer, and whether specialist clients can operate within the same contracts without needing the human interface.
 
-Implementation tasks:
+Acceptance: participants can identify the objective, binding constraint, relevant uncertainty, authority boundary and intervention requiring their judgment without developer explanation. Test actual changes to decisions and review effort against the existing process; a favorable reaction or a cleaner screen does not establish value. No outreach or partner access has been performed by writing this roadmap.
 
-- scaffold `apps/api` and `apps/web`
-- configure PostgreSQL, Redis, Alembic, and SQLAlchemy
-- add auth with local development credentials first
-- define base schemas for organizations, users, roles, planning units, and locations
-- add health checks and environment configuration
-- create seed data command
+## 4. Connect real sources and bounded agents
 
-Exit criteria:
+Replace one simulated source and one simulated specialist at a time while retaining the same contract tests. Add authenticated principals, server-side authorization, durable transactional reservations, idempotent messages, durable action traces and recovery before shared live commitments. Incorporate external permissions and execution acknowledgements; displaying a mandate is not execution.
 
-- a user can log in
-- an organization can be created
-- planning units and locations can be managed
-- CI validates formatting, tests, and migrations
+A bounded pilot should involve an accountable decision owner, more than one interacting program and an authorized set of external actions. Compare predictions with observed results and preserve the explanation for changed expectations. Hosting, production writeback and external agent actions require their applicable authorization; the local demonstration creates none of those permissions.
 
-## Phase 2: Workforce and demand modeling
+Acceptance: the same decision can be replayed from its input versions; delegated actions respect live policy; interruption and retry do not duplicate commitments; revoked authority prevents subsequent actions within the declared enforcement boundary. Measure decision preparation and review effort, constraint failures, outcome error and whether the chosen strategy changed for a defensible reason.
 
-Target: 3 to 5 weeks
+## 5. Expand by nesting and federation
 
-Goal:
+Extend the same primitives across organizations and larger decision horizons. Add cross-scope capability offers, conditional commitments, negotiated dependencies and explicit responsibility for joint outcomes. Preserve overlapping relationships as well as containment; one provider may participate in several programs through the same underlying resource identity. Local participants retain the authority to refuse or revoke an offer under its recorded terms. A higher scope can aggregate evidence and compare coordination options without inventing control over lower scopes.
 
-- replace free-text matching with canonical workforce and work-order models
+The long-term product supports institutional and regional self-direction: humans choose ends and consequential tradeoffs; agents continually gather evidence, explore interventions, carry out bounded mandates and surface decisions requiring broader authority. Scaled-down use employs the same contracts with fewer scopes and simpler models.
 
-Deliverables:
+Acceptance: compare independent and coordinated strategies using declared terms and available evidence. Demonstrate an improvement that survives actual execution and review, or retain the independent choice. Progress does not require monopolizing functions already served by other products; it requires delivering a better strategic decision and coordination loop.
 
-- worker management
-- skills and certifications
-- availability calendars
-- work-order intake
-- requirements model
+## Boundaries
 
-Implementation tasks:
-
-- create schemas and CRUD for workers, skills, worker skills, certifications, and worker certifications
-- add recurring and ad hoc availability windows
-- create work-order schema with priority, due date, location, duration, and status
-- create work requirements and dependencies
-- implement CSV import for workers and work orders
-- validate required fields and normalization rules
-
-Exit criteria:
-
-- planners can load a realistic workforce dataset
-- planners can create and edit work orders with structured requirements
-- the system can identify worker eligibility using hard rules
-
-## Phase 3: Planning kernel MVP
-
-Target: 4 to 6 weeks
-
-Goal:
-
-- deliver the first serious planning engine
-
-Deliverables:
-
-- planning horizon management
-- constraint rules and objective functions
-- scenario creation
-- first plan-run engine
-- explainable assignment results
-
-Implementation tasks:
-
-- model planning horizons, scenarios, and plan runs
-- implement candidate filtering based on skills, certifications, availability, and location
-- implement initial objective model:
-  - maximize work completion
-  - minimize overtime
-  - minimize travel
-  - prioritize urgent work
-- integrate OR-Tools for constrained assignment
-- store plan results, issues, and metrics
-- expose APIs for plan creation and plan retrieval
-- build plan review screens in the web app
-
-Exit criteria:
-
-- a planner can generate a plan for a daily or weekly horizon
-- the system returns assignments and unassigned work with reasons
-- results are persisted and inspectable
-
-## Phase 4: Resource constraints and operational execution
-
-Target: 4 to 6 weeks
-
-Goal:
-
-- move beyond labor-only planning and close the loop with actual operations
-
-Deliverables:
-
-- facilities and equipment models
-- material and inventory positions
-- reservations against planned work
-- dispatch and actuals recording
-- override workflow
-
-Implementation tasks:
-
-- add facilities, equipment types, equipment, and equipment availability calendars
-- add materials and inventory positions by location
-- extend work requirements to equipment and material dependencies
-- implement resource reservation model
-- add manual override and approval flow
-- add assignment publication state
-- add actual start, finish, and variance capture
-
-Exit criteria:
-
-- generated plans respect equipment and material constraints
-- planners can override assignments and record why
-- actual execution can be compared against the published plan
-
-## Phase 5: Scenario comparison and management reporting
-
-Target: 3 to 5 weeks
-
-Goal:
-
-- support real planning decisions instead of one-shot schedule generation
-
-Deliverables:
-
-- scenario cloning and branching
-- comparison metrics
-- bottleneck reporting
-- utilization and backlog analytics
-
-Implementation tasks:
-
-- implement scenario inheritance
-- create scenario comparison view
-- calculate workload, SLA risk, backlog age, and shortage metrics
-- add summary dashboards for planners and managers
-- add exportable plan reports
-
-Exit criteria:
-
-- planners can compare at least two scenarios side by side
-- managers can see why one scenario is preferable
-- bottlenecks are explicit rather than implicit
-
-## Phase 6: Network coordination
-
-Target: 6 to 10 weeks
-
-Goal:
-
-- expand Zenith from one operating unit to a coordinated system
-
-Deliverables:
-
-- cross-unit capacity sharing
-- inter-site transfer logic
-- federated shortage visibility
-- policy-aware routing of work
-
-Implementation tasks:
-
-- model transfer costs and travel policies
-- support worker borrowing across units
-- support shared equipment pools
-- add regional planning views
-- add policy constraints at region and organization levels
-
-Exit criteria:
-
-- planners can rebalance work across units
-- the system can show the tradeoffs of local vs network-wide optimization
-
-## Phase 7: Forecasting and adaptive planning
-
-Target: 6 to 8 weeks
-
-Goal:
-
-- let Zenith anticipate future problems instead of only reacting
-
-Deliverables:
-
-- demand forecasting inputs
-- shortage prediction
-- what-if simulation
-- hiring and training signal generation
-
-Implementation tasks:
-
-- ingest historical work-order and actuals data
-- build forecastable demand classes
-- estimate expected load and capacity gaps
-- add simulation runs against alternative demand assumptions
-- generate recommended hiring, training, or procurement actions
-
-Exit criteria:
-
-- planners can run future-looking scenarios
-- management can identify likely shortages before the planning window begins
-
-## Cross-cutting workstreams
-
-These should run throughout the roadmap.
-
-### Data quality
-
-- normalization
-- deduplication
-- import validation
-- audit fields
-
-### Testing
-
-- unit tests for domain rules
-- integration tests for API flows
-- planner tests with fixture scenarios
-- regression tests for solver outputs
-
-### Explainability
-
-- reason codes for assignment choices
-- reason codes for unassigned work
-- surfaced binding constraints
-
-### Governance
-
-- approval workflows
-- override logging
-- role-based permissions
-- immutable plan history
-
-## First implementation milestone
-
-The most important near-term milestone is not "finish the system." It is:
-
-"Generate and review a valid weekly labor plan for one organization across multiple sites using structured worker, skill, availability, and work-order data."
-
-If we reach that milestone, Zenith becomes a real planning product.
-
-## Detailed first-build backlog
-
-This is the concrete order I would implement next.
-
-### Sprint A: bootstrap
-
-- create `apps/api`, `apps/web`, `services/planner`, and `packages/schemas`
-- set up formatting, linting, tests, and Docker-based local services
-- create base environment management
-
-### Sprint B: core schema
-
-- organizations
-- planning units
-- locations
-- users and roles
-- workers
-- skills
-- worker skills
-
-### Sprint C: scheduling inputs
-
-- certifications
-- worker certifications
-- calendars
-- availability windows
-- work orders
-- work requirements
-
-### Sprint D: planning engine v0
-
-- candidate filtering
-- eligibility checks
-- simple scoring model
-- first persisted plan run
-
-### Sprint E: planner review UI
-
-- backlog view
-- workforce view
-- scenario creation
-- plan results
-- unassigned work diagnostics
-
-### Sprint F: optimization upgrade
-
-- OR-Tools solver integration
-- hard and soft constraints
-- workload and overtime controls
-- explanation generation
-
-## What not to do
-
-Avoid these failure modes:
-
-- rebuilding the old prototype in a prettier UI
-- overcommitting to national-scale planning language before the operational layer works
-- modeling everything before a single plan can run
-- splitting too early into many services
-- hiding planning assumptions inside ad hoc code
-
-## Definition of success for v1
-
-`v1` is successful when:
-
-- planners trust the system enough to generate weekly plans with it
-- managers can inspect why plans look the way they do
-- assignments respect real-world capacity and eligibility constraints
-- unassigned work is explainable
-- actual outcomes can be compared against planned ones
-
-At that point, Zenith has crossed the line from interesting prototype to serious platform.
+Do not build a dispatch interface, generic dashboard, ontology editor or organization administration suite as a substitute for the strategic loop. Do not hide moral conflicts inside objective weights, infer consent, present synthetic results as observed benefits or describe unimplemented policy as enforced. Broader models, solvers and agent integrations should extend a verified contract rather than become disconnected feature collections.

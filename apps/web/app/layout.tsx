@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-
 export const metadata: Metadata = {
-  title: "Zenith Planning Platform",
-  description: "Operational and economic planning platform scaffold",
+  title: "Zenith",
+  description:
+    "Strategic coordination for humans and agents. Understand shared conditions, compare strategies, delegate bounded authority, and learn from outcomes.",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
@@ -16,4 +15,3 @@ export default function RootLayout({
     </html>
   );
 }
-

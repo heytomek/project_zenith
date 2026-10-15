@@ -1,0 +1,798 @@
+{
+  "id": "atlas",
+  "name": "Open Atlas",
+  "icon": "commons",
+  "subtitle": "Knowledge · institutions · commons",
+  "question": "How can a shared knowledge commons grow without losing consent or maintainability?",
+  "context": "A fictional federation of a public library, two research labs and a civic archive maintains openly reusable climate-adaptation material. Their memberships overlap but their permissions do not. Volunteer time is pledged and finite. The federation must choose between deeper verification and wider reuse; unpublished personal records cannot be traded for reach.",
+  "date": "2027-02-01",
+  "horizonMonths": 18,
+  "authority": "Open Atlas stewardship council; originating institutions retain publication rights and participants retain consent rights.",
+  "principles": [
+    "No private personal record may be exposed.",
+    "Consent is specific, revocable and separate from institutional membership.",
+    "Do not create a maintenance burden above the present allocation.",
+    "Preserve open reuse and the ability to fork without central permission."
+  ],
+  "scopes": [
+    {
+      "id": "a.commons",
+      "name": "Open Atlas federation",
+      "parentId": null,
+      "relatedIds": [],
+      "kind": "Commons",
+      "steward": "Mina Sol · council convenor",
+      "description": "An 18-month shared program has $1.2 million, bounded volunteer pledges and independent institutional commitments."
+    },
+    {
+      "id": "a.library",
+      "name": "Public library",
+      "parentId": null,
+      "relatedIds": [
+        "a.commons",
+        "a.archive"
+      ],
+      "kind": "Institution",
+      "steward": "Dara Lin · public librarian",
+      "description": "Hosts openly licensed materials and assists contributors. Hosting does not confer rights over unpublished records."
+    },
+    {
+      "id": "a.labs",
+      "name": "Research partnership",
+      "parentId": null,
+      "relatedIds": [
+        "a.commons",
+        "a.library"
+      ],
+      "kind": "Institution",
+      "steward": "Samir Vale · research steward",
+      "description": "Two independent labs validate claims. Their reviewers also contribute to the archive; the same pledged hours cannot be allocated twice."
+    },
+    {
+      "id": "a.archive",
+      "name": "Civic archive",
+      "parentId": null,
+      "relatedIds": [
+        "a.commons",
+        "a.library",
+        "a.participants"
+      ],
+      "kind": "Institution",
+      "steward": "Noor Ames · archive steward",
+      "description": "Holds adaptation records and unpublished oral histories. Only the specifically consented collection can enter the commons."
+    },
+    {
+      "id": "a.participants",
+      "name": "Contributor assembly",
+      "parentId": null,
+      "relatedIds": [
+        "a.commons",
+        "a.archive",
+        "a.labs"
+      ],
+      "kind": "Assembly",
+      "steward": "Tess Okoro · elected delegate",
+      "description": "Contributors belong to several institutions but retain individual publication rights. Neither a lab nor the council can override withdrawal."
+    }
+  ],
+  "objectives": [
+    {
+      "id": "a.reuse",
+      "scopeId": "a.commons",
+      "label": "Reusable materials",
+      "unit": "items",
+      "baseline": 300,
+      "target": 1000,
+      "direction": "increase",
+      "description": "Materials with an open license, usable metadata and an exportable file. Items are counted once across the selected work packages."
+    },
+    {
+      "id": "a.verified",
+      "scopeId": "a.labs",
+      "label": "Verified claims",
+      "unit": "%",
+      "baseline": 40,
+      "target": 85,
+      "direction": "increase",
+      "protection": {
+        "min": 0,
+        "max": 100
+      },
+      "description": "Share of the reference collection with a traceable evidence check. Forecast changes are percentage-point proxies, not guarantees of truth."
+    },
+    {
+      "id": "a.governed",
+      "scopeId": "a.participants",
+      "label": "Rights resolved",
+      "unit": "%",
+      "baseline": 65,
+      "target": 100,
+      "direction": "increase",
+      "protection": {
+        "min": 0,
+        "max": 100
+      },
+      "description": "Share of the reference collection with explicit reuse rights and a withdrawal route. A license alone does not establish participant consent."
+    },
+    {
+      "id": "a.privacy",
+      "scopeId": "a.participants",
+      "label": "Private records exposed",
+      "unit": "records",
+      "baseline": 0,
+      "target": 0,
+      "direction": "decrease",
+      "protection": {
+        "max": 0
+      },
+      "description": "Protected limit on exposure of unpublished personal records. Aggregate openness cannot compensate for even one exposure."
+    },
+    {
+      "id": "a.maintenance",
+      "scopeId": "a.library",
+      "label": "Maintenance burden",
+      "unit": "hours / week",
+      "baseline": 26,
+      "target": 20,
+      "direction": "decrease",
+      "protection": {
+        "max": 26
+      },
+      "description": "Estimated recurring work after the program. Volunteer pledges cover program delivery; they do not silently absorb future maintenance."
+    }
+  ],
+  "claims": [
+    {
+      "id": "a.budget-claim",
+      "scopeId": "a.commons",
+      "label": "Federation grant",
+      "value": 1.2,
+      "unit": "million $",
+      "status": "observed",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "source": {
+        "title": "Grant award · synthetic",
+        "author": "Mina Sol",
+        "date": "2027-01-09",
+        "excerpt": "The 18-month grant commits $1.2 million to federation work. Future fundraising is excluded from available funding."
+      }
+    },
+    {
+      "id": "a.volunteer-claim",
+      "scopeId": "a.participants",
+      "label": "Opt-in volunteer time",
+      "value": 2400,
+      "unit": "hours",
+      "status": "contested",
+      "min": 0,
+      "max": 4000,
+      "step": 100,
+      "source": {
+        "title": "Pledge reconciliation · synthetic",
+        "author": "Tess Okoro",
+        "date": "2027-01-28",
+        "excerpt": "Named, opt-in pledges total 2,400 hours after removing duplicate pledges across institutions. Contributors may withdraw unworked time."
+      },
+      "dissent": "About 1,000 hours depend on a university term timetable that has not been confirmed."
+    },
+    {
+      "id": "a.partner-claim",
+      "scopeId": "a.labs",
+      "label": "Institutional review time",
+      "value": 800,
+      "unit": "hours",
+      "status": "observed",
+      "min": 0,
+      "max": 1400,
+      "step": 50,
+      "source": {
+        "title": "Partner letters · synthetic",
+        "author": "Samir Vale",
+        "date": "2027-01-17",
+        "excerpt": "The library, labs and archive commit 800 paid hours for this program. The same staff listed in multiple letters were counted once."
+      }
+    },
+    {
+      "id": "a.storage-claim",
+      "scopeId": "a.library",
+      "label": "Replication allocation",
+      "value": 20,
+      "unit": "TB",
+      "status": "observed",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "source": {
+        "title": "Hosting allocation · synthetic",
+        "author": "Dara Lin",
+        "date": "2027-01-20",
+        "excerpt": "Partners reserve 20 TB including required replicated copies. Unfunded personal drives are not federation infrastructure."
+      }
+    },
+    {
+      "id": "a.consent-claim",
+      "scopeId": "a.participants",
+      "label": "Publication permissions",
+      "value": 180,
+      "unit": "records",
+      "status": "observed",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "source": {
+        "title": "Participant permission register · synthetic",
+        "author": "Tess Okoro",
+        "date": "2027-01-30",
+        "excerpt": "180 record-specific provisional permissions are active. Openly licensed public reference material uses a separate rights review; no silent personal-record release is assumed."
+      }
+    },
+    {
+      "id": "a.lead-claim",
+      "scopeId": "a.labs",
+      "label": "Verification lead",
+      "value": 4,
+      "unit": "months",
+      "status": "contested",
+      "min": 1,
+      "max": 18,
+      "step": 1,
+      "source": {
+        "title": "Review calendar · synthetic",
+        "author": "Samir Vale",
+        "date": "2027-01-29",
+        "excerpt": "The labs offer a four-month evidence review after catalog reconciliation. This relies on two named reviewers completing a separate public-health study."
+      },
+      "dissent": "The current study could extend the queue to sixteen months."
+    },
+    {
+      "id": "a.translation-claim",
+      "scopeId": "a.library",
+      "label": "Translation response",
+      "value": 0.8,
+      "unit": "response ratio",
+      "status": "assumed",
+      "min": 0.2,
+      "max": 1.2,
+      "step": 0.05,
+      "source": {
+        "title": "Translation pilot estimate · synthetic",
+        "author": "Dara Lin",
+        "date": "2027-01-25",
+        "excerpt": "At the working response ratio of 0.8, translated bundles are expected to add 180 reusable items. Pilot readers have not yet checked technical accuracy."
+      }
+    },
+    {
+      "id": "a.verification-claim",
+      "scopeId": "a.labs",
+      "label": "Evidence-review response",
+      "value": 0.9,
+      "unit": "response ratio",
+      "status": "assumed",
+      "min": 0.25,
+      "max": 1.2,
+      "step": 0.05,
+      "source": {
+        "title": "Reviewer sample · synthetic",
+        "author": "Samir Vale",
+        "date": "2027-01-26",
+        "excerpt": "A small sample suggests a 0.9 response ratio, modeled as a 20-point increase in verified claims. Ambiguous claims must retain their contested status after review."
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "a.money",
+      "scopeIds": [
+        "a.library",
+        "a.labs",
+        "a.archive",
+        "a.participants"
+      ],
+      "label": "Funding",
+      "unit": "million $",
+      "amount": 1.2,
+      "claimId": "a.budget-claim",
+      "provider": "Federation grant",
+      "period": "18 months"
+    },
+    {
+      "id": "a.volunteers",
+      "scopeIds": [
+        "a.library",
+        "a.labs",
+        "a.archive",
+        "a.participants"
+      ],
+      "label": "Volunteer pledges",
+      "unit": "hours",
+      "amount": 2400,
+      "claimId": "a.volunteer-claim",
+      "provider": "Named contributors",
+      "period": "18 months; revocable"
+    },
+    {
+      "id": "a.partners",
+      "scopeIds": [
+        "a.library",
+        "a.labs",
+        "a.archive",
+        "a.participants"
+      ],
+      "label": "Partner staff",
+      "unit": "hours",
+      "amount": 800,
+      "claimId": "a.partner-claim",
+      "provider": "Institutional letters",
+      "period": "18 months"
+    },
+    {
+      "id": "a.storage",
+      "scopeIds": [
+        "a.library",
+        "a.archive"
+      ],
+      "label": "Replicated storage",
+      "unit": "TB",
+      "amount": 20,
+      "claimId": "a.storage-claim",
+      "provider": "Library and archive",
+      "period": "18 months"
+    },
+    {
+      "id": "a.permissions",
+      "scopeIds": [
+        "a.archive",
+        "a.participants"
+      ],
+      "label": "Participant permission",
+      "unit": "records",
+      "amount": 180,
+      "claimId": "a.consent-claim",
+      "provider": "Contributor assembly",
+      "period": "Current register"
+    }
+  ],
+  "interventions": [
+    {
+      "id": "a.catalog",
+      "scopeId": "a.library",
+      "title": "Reconcile the public catalog",
+      "mechanism": "Deduplicate already-public materials, trace licenses and produce a shared exportable catalog before dependent work.",
+      "agentId": "a.library-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.15
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 300
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 120
+        },
+        {
+          "capabilityId": "a.storage",
+          "amount": 2
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.reuse",
+          "amount": 120
+        },
+        {
+          "objectiveId": "a.verified",
+          "amount": 5
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": 5
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": -2
+        }
+      ],
+      "leadMonths": 2,
+      "reversible": true,
+      "observedFactor": 0.95
+    },
+    {
+      "id": "a.verify",
+      "scopeId": "a.labs",
+      "title": "Review the reference claims",
+      "mechanism": "Check the reconciled collection against dated evidence, retaining disagreement and provenance. Verification is a bounded review, not a declaration of universal truth.",
+      "agentId": "a.research-agent",
+      "dependencies": [
+        "a.catalog"
+      ],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.2
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 500
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 240
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.verified",
+          "amount": 20,
+          "scaleClaimId": "a.verification-claim",
+          "scaleBase": 0.9
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": 10
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": 2
+        }
+      ],
+      "leadMonths": 4,
+      "leadClaimId": "a.lead-claim",
+      "reversible": true,
+      "observedFactor": 0.72
+    },
+    {
+      "id": "a.translate",
+      "scopeId": "a.library",
+      "title": "Translate reusable bundles",
+      "mechanism": "Translate distinct public technical materials after catalog reconciliation. Reader validation limits modeled reach; no personal records enter this package.",
+      "agentId": "a.library-agent",
+      "dependencies": [
+        "a.catalog"
+      ],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.16
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 420
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 60
+        },
+        {
+          "capabilityId": "a.storage",
+          "amount": 1
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.reuse",
+          "amount": 180,
+          "scaleClaimId": "a.translation-claim",
+          "scaleBase": 0.8
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": 3
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": 1
+        }
+      ],
+      "leadMonths": 3,
+      "reversible": true,
+      "observedFactor": 0.8
+    },
+    {
+      "id": "a.consent",
+      "scopeId": "a.participants",
+      "title": "Resolve participant permissions",
+      "mechanism": "Review 100 provisional permissions with contributors, separate private material from public files and establish an accessible withdrawal path.",
+      "agentId": "a.rights-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.12
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 300
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 180
+        },
+        {
+          "capabilityId": "a.permissions",
+          "amount": 100
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.governed",
+          "amount": 20
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": -1
+        }
+      ],
+      "leadMonths": 3,
+      "reversible": true,
+      "observedFactor": 0.9
+    },
+    {
+      "id": "a.archive-release",
+      "scopeId": "a.archive",
+      "title": "Release the consented archive",
+      "mechanism": "Publish a distinct permitted collection after catalog and consent review, with replicated files and no private-record exposure.",
+      "agentId": "a.archive-agent",
+      "dependencies": [
+        "a.catalog",
+        "a.consent"
+      ],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.3
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 800
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 240
+        },
+        {
+          "capabilityId": "a.storage",
+          "amount": 10
+        },
+        {
+          "capabilityId": "a.permissions",
+          "amount": 50
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.reuse",
+          "amount": 320
+        },
+        {
+          "objectiveId": "a.verified",
+          "amount": 5
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": 5
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": 3
+        }
+      ],
+      "leadMonths": 4,
+      "reversible": true,
+      "observedFactor": 0.75
+    },
+    {
+      "id": "a.fork-kit",
+      "scopeId": "a.library",
+      "title": "Publish a portable fork kit",
+      "mechanism": "Package verified public material, schemas and offline tooling so independent institutions can reuse and leave the federation without asking central permission.",
+      "agentId": "a.library-agent",
+      "dependencies": [
+        "a.catalog",
+        "a.verify"
+      ],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.25
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 650
+        },
+        {
+          "capabilityId": "a.partners",
+          "amount": 160
+        },
+        {
+          "capabilityId": "a.storage",
+          "amount": 6
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.reuse",
+          "amount": 240
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": 5
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": -5
+        }
+      ],
+      "leadMonths": 5,
+      "reversible": true,
+      "observedFactor": 0.85
+    },
+    {
+      "id": "a.bulk",
+      "scopeId": "a.archive",
+      "title": "Import the entire archive",
+      "mechanism": "A proposed bulk release would include 20 unpublished personal records and unresolved rights. Its apparent reach is inadmissible under the privacy protection.",
+      "agentId": "a.archive-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "a.money",
+          "amount": 0.1
+        },
+        {
+          "capabilityId": "a.volunteers",
+          "amount": 200
+        },
+        {
+          "capabilityId": "a.storage",
+          "amount": 15
+        },
+        {
+          "capabilityId": "a.permissions",
+          "amount": 180
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "a.reuse",
+          "amount": 1200
+        },
+        {
+          "objectiveId": "a.verified",
+          "amount": -15
+        },
+        {
+          "objectiveId": "a.governed",
+          "amount": -20
+        },
+        {
+          "objectiveId": "a.privacy",
+          "amount": 20
+        },
+        {
+          "objectiveId": "a.maintenance",
+          "amount": 12
+        }
+      ],
+      "leadMonths": 1,
+      "reversible": false,
+      "observedFactor": 0.6
+    }
+  ],
+  "strategies": [
+    {
+      "id": "a.trust",
+      "name": "Rights and evidence",
+      "thesis": "Resolve publication rights and verify the existing collection before seeking scale. Leave capacity for contributors who withdraw.",
+      "interventionIds": [
+        "a.catalog",
+        "a.verify",
+        "a.consent"
+      ]
+    },
+    {
+      "id": "a.federate",
+      "name": "Portable commons",
+      "thesis": "Make reviewed public knowledge reusable across independent institutions. Favor portability and lower maintenance over expanding the personal archive.",
+      "interventionIds": [
+        "a.catalog",
+        "a.verify",
+        "a.translate",
+        "a.fork-kit"
+      ]
+    },
+    {
+      "id": "a.everything",
+      "name": "Publish everything",
+      "thesis": "Test the tempting reach-maximizing portfolio against volunteer pledges, institutional allocations, maintenance and private-record protection.",
+      "interventionIds": [
+        "a.catalog",
+        "a.verify",
+        "a.translate",
+        "a.consent",
+        "a.archive-release",
+        "a.fork-kit",
+        "a.bulk"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "id": "a.library-agent",
+      "name": "Library",
+      "initials": "LB",
+      "role": "Public-material coordination agent",
+      "scopeIds": [
+        "a.library"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "a.research-agent",
+      "name": "Research",
+      "initials": "RS",
+      "role": "Evidence review agent",
+      "scopeIds": [
+        "a.labs"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "a.rights-agent",
+      "name": "Rights",
+      "initials": "RT",
+      "role": "Contributor-directed consent agent",
+      "scopeIds": [
+        "a.participants"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "a.archive-agent",
+      "name": "Archive",
+      "initials": "AR",
+      "role": "Archive publication agent",
+      "scopeIds": [
+        "a.archive"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    }
+  ],
+  "shocks": [
+    {
+      "id": "a.time-shock",
+      "name": "Pledges withdrawn",
+      "claimId": "a.volunteer-claim",
+      "value": 1400,
+      "description": "The university timetable changes and contributors withdraw 1,000 unworked hours. No agent may assume free replacement labor."
+    },
+    {
+      "id": "a.review-shock",
+      "name": "Evidence review delayed",
+      "claimId": "a.lead-claim",
+      "value": 16,
+      "description": "Reviewers extend the public-health study. Verification takes sixteen months after catalog work; the dependent fork kit misses the program horizon."
+    }
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "id": "meridian",
+  "name": "Meridian",
+  "icon": "enterprise",
+  "subtitle": "Manufacturing · supply · resilience",
+  "question": "How do we restore reliable delivery without exhausting people or cash?",
+  "context": "A fictional manufacturer operates two plants and serves a concentrated customer base. A critical component supplier missed three delivery windows. Engineering hours, cash commitments and customer service compete across sites; reported machine capacity does not imply available skilled labor. All contracts and figures in this example are synthetic.",
+  "date": "2027-04-12",
+  "horizonMonths": 12,
+  "authority": "Meridian executive committee; plant councils retain the right to reject unsafe workload changes.",
+  "principles": [
+    "Do not increase the recorded fatigue index.",
+    "Preserve at least $5 million of operating cash.",
+    "Do not increase the emissions estimate.",
+    "Separate quoted supplier performance from verified deliveries."
+  ],
+  "scopes": [
+    {
+      "id": "m.company",
+      "name": "Meridian group",
+      "parentId": null,
+      "relatedIds": [],
+      "kind": "Enterprise",
+      "steward": "Inez Rao · chief executive",
+      "description": "A 12-month recovery program allocates $18 million; plant teams and suppliers retain distinct authorities."
+    },
+    {
+      "id": "m.north",
+      "name": "North plant",
+      "parentId": "m.company",
+      "relatedIds": [
+        "m.supply",
+        "m.people"
+      ],
+      "kind": "Plant",
+      "steward": "Malik Reed · plant director",
+      "description": "Produces the constrained component. Its technical team also supports the South plant; hours cannot be committed twice."
+    },
+    {
+      "id": "m.south",
+      "name": "South plant",
+      "parentId": "m.company",
+      "relatedIds": [
+        "m.north",
+        "m.people"
+      ],
+      "kind": "Plant",
+      "steward": "Rosa Kim · plant director",
+      "description": "Assembly and final delivery depend on components from North and the external supplier."
+    },
+    {
+      "id": "m.supply",
+      "name": "Supplier network",
+      "parentId": null,
+      "relatedIds": [
+        "m.company",
+        "m.north"
+      ],
+      "kind": "External network",
+      "steward": "Owen Shah · procurement",
+      "description": "Two candidate suppliers can qualify reserved lots; neither is owned by Meridian. Quoted lead times are contested."
+    },
+    {
+      "id": "m.people",
+      "name": "Plant councils",
+      "parentId": null,
+      "relatedIds": [
+        "m.north",
+        "m.south"
+      ],
+      "kind": "Institution",
+      "steward": "Lena Ortiz · council delegate",
+      "description": "Councils represent the two plants on workload and safety. Overtime is a proposed intervention, not an automatic resource."
+    }
+  ],
+  "objectives": [
+    {
+      "id": "m.service",
+      "scopeId": "m.company",
+      "label": "On-time delivery",
+      "unit": "%",
+      "baseline": 72,
+      "target": 95,
+      "direction": "increase",
+      "protection": {
+        "min": 0,
+        "max": 100
+      },
+      "description": "Modeled deliveries meeting the promised date. Portfolio effects use distinct customer cohorts and remain forecasts; rates above 100% are inadmissible."
+    },
+    {
+      "id": "m.concentration",
+      "scopeId": "m.supply",
+      "label": "Single-source exposure",
+      "unit": "%",
+      "baseline": 62,
+      "target": 25,
+      "direction": "decrease",
+      "protection": {
+        "min": 0,
+        "max": 100
+      },
+      "description": "Share of critical demand with only one qualified source. Qualification is a dependency, not presumed from an offer."
+    },
+    {
+      "id": "m.fatigue",
+      "scopeId": "m.people",
+      "label": "Fatigue",
+      "unit": "index",
+      "baseline": 6,
+      "target": 4,
+      "direction": "decrease",
+      "protection": {
+        "min": 0,
+        "max": 6
+      },
+      "description": "Synthetic workload and fatigue proxy, protected at the current value. A high delivery forecast cannot compensate for a violation."
+    },
+    {
+      "id": "m.emissions",
+      "scopeId": "m.company",
+      "label": "Emissions",
+      "unit": "kt CO₂e",
+      "baseline": 26,
+      "target": 20,
+      "direction": "decrease",
+      "protection": {
+        "min": 0,
+        "max": 26
+      },
+      "description": "Estimated annual operating emissions. Changes in product mix and energy contracts need a later model revision."
+    },
+    {
+      "id": "m.cash",
+      "scopeId": "m.company",
+      "label": "Operating cash",
+      "unit": "million $",
+      "baseline": 8,
+      "target": 10,
+      "direction": "increase",
+      "protection": {
+        "min": 5
+      },
+      "description": "Cash remaining after modeled working-capital effects. The investment appropriation is tracked separately; inventory ties up operating cash."
+    }
+  ],
+  "claims": [
+    {
+      "id": "m.budget-claim",
+      "scopeId": "m.company",
+      "label": "Recovery appropriation",
+      "value": 18,
+      "unit": "million $",
+      "status": "observed",
+      "min": 0,
+      "max": 25,
+      "step": 0.5,
+      "source": {
+        "title": "Capital committee minute · synthetic",
+        "author": "Inez Rao",
+        "date": "2027-04-06",
+        "excerpt": "The committee approved $18 million for the 12-month recovery package. This is separate from the $8 million working-capital baseline."
+      }
+    },
+    {
+      "id": "m.skill-claim",
+      "scopeId": "m.north",
+      "label": "Technical allocation",
+      "value": 16000,
+      "unit": "hours",
+      "status": "contested",
+      "min": 0,
+      "max": 22000,
+      "step": 500,
+      "source": {
+        "title": "Cross-plant capacity reconciliation · synthetic",
+        "author": "Malik Reed",
+        "date": "2027-04-08",
+        "excerpt": "After current production commitments, the two plants list 16,000 technical hours for recovery work. A maintenance shutdown may claim 6,000 of those hours."
+      },
+      "dissent": "South's maintenance team has not released its shutdown reservation."
+    },
+    {
+      "id": "m.machine-claim",
+      "scopeId": "m.north",
+      "label": "Trial-cell time",
+      "value": 2000,
+      "unit": "machine hours",
+      "status": "observed",
+      "min": 0,
+      "max": 4000,
+      "step": 100,
+      "source": {
+        "title": "Trial-cell reservation · synthetic",
+        "author": "Rosa Kim",
+        "date": "2027-04-02",
+        "excerpt": "2,000 machine hours are reserved for tooling trials and efficiency validation. Technical labor remains a separate constraint."
+      }
+    },
+    {
+      "id": "m.lots-claim",
+      "scopeId": "m.supply",
+      "label": "Reserved supplier lots",
+      "value": 80,
+      "unit": "lots",
+      "status": "observed",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "source": {
+        "title": "Supplier reservation letters · synthetic",
+        "author": "Owen Shah",
+        "date": "2027-04-09",
+        "excerpt": "Letters reserve 80 lots across qualification and inventory options. They are not accepted production deliveries."
+      }
+    },
+    {
+      "id": "m.energy-claim",
+      "scopeId": "m.south",
+      "label": "Trial energy allocation",
+      "value": 4500,
+      "unit": "MWh",
+      "status": "observed",
+      "min": 0,
+      "max": 6000,
+      "step": 100,
+      "source": {
+        "title": "Energy contract allocation · synthetic",
+        "author": "Rosa Kim",
+        "date": "2027-03-30",
+        "excerpt": "The recovery program may consume up to 4,500 MWh of separately contracted trial energy. Carbon effects are evaluated independently."
+      }
+    },
+    {
+      "id": "m.lead-claim",
+      "scopeId": "m.supply",
+      "label": "Supplier qualification lead",
+      "value": 3,
+      "unit": "months",
+      "status": "contested",
+      "min": 1,
+      "max": 18,
+      "step": 1,
+      "source": {
+        "title": "Qualification sequence · synthetic",
+        "author": "Owen Shah",
+        "date": "2027-04-10",
+        "excerpt": "The supplier quotes three months of qualification after the component audit. Its test laboratory slot is provisional."
+      },
+      "dissent": "The laboratory has a twelve-month queue if the reserved slot is reassigned."
+    },
+    {
+      "id": "m.price-claim",
+      "scopeId": "m.north",
+      "label": "Tooling price",
+      "value": 1,
+      "unit": "cost ratio",
+      "status": "contested",
+      "min": 0.5,
+      "max": 2.5,
+      "step": 0.05,
+      "source": {
+        "title": "Tooling quote · synthetic",
+        "author": "Malik Reed",
+        "date": "2027-04-05",
+        "excerpt": "The $6 million cell estimate uses a price ratio of 1.0. Imported fixtures and integration work are not fixed-price."
+      },
+      "dissent": "The supplier has indicated a possible 80% increase after a currency move."
+    },
+    {
+      "id": "m.yield-claim",
+      "scopeId": "m.supply",
+      "label": "Qualification response",
+      "value": 0.75,
+      "unit": "response ratio",
+      "status": "assumed",
+      "min": 0.2,
+      "max": 1.2,
+      "step": 0.05,
+      "source": {
+        "title": "Qualification cohort estimate · synthetic",
+        "author": "Owen Shah",
+        "date": "2027-04-11",
+        "excerpt": "At a 0.75 response ratio, qualification is expected to recover 10 points of delivery reliability and remove 22 points of single-source exposure. Pilot lots have not reached final acceptance."
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "m.money",
+      "scopeIds": [
+        "m.north",
+        "m.south",
+        "m.supply",
+        "m.people"
+      ],
+      "label": "Funding",
+      "unit": "million $",
+      "amount": 18,
+      "claimId": "m.budget-claim",
+      "provider": "Capital committee",
+      "period": "12 months"
+    },
+    {
+      "id": "m.technical",
+      "scopeIds": [
+        "m.north",
+        "m.south",
+        "m.supply",
+        "m.people"
+      ],
+      "label": "Technical teams",
+      "unit": "hours",
+      "amount": 16000,
+      "claimId": "m.skill-claim",
+      "provider": "Both plants",
+      "period": "12 months"
+    },
+    {
+      "id": "m.machine",
+      "scopeIds": [
+        "m.north",
+        "m.south"
+      ],
+      "label": "Trial cell",
+      "unit": "machine hours",
+      "amount": 2000,
+      "claimId": "m.machine-claim",
+      "provider": "North plant",
+      "period": "12 months"
+    },
+    {
+      "id": "m.lots",
+      "scopeIds": [
+        "m.supply"
+      ],
+      "label": "Supplier reservations",
+      "unit": "lots",
+      "amount": 80,
+      "claimId": "m.lots-claim",
+      "provider": "External suppliers",
+      "period": "Current letters"
+    },
+    {
+      "id": "m.energy",
+      "scopeIds": [
+        "m.north",
+        "m.south",
+        "m.supply"
+      ],
+      "label": "Trial energy",
+      "unit": "MWh",
+      "amount": 4500,
+      "claimId": "m.energy-claim",
+      "provider": "Energy contract",
+      "period": "12 months"
+    }
+  ],
+  "interventions": [
+    {
+      "id": "m.audit",
+      "scopeId": "m.supply",
+      "title": "Audit the component chain",
+      "mechanism": "Reconcile acceptance criteria, failure causes and two candidate supplier routes before qualification or tooling commitments.",
+      "agentId": "m.supply-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 0.8
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 1000
+        },
+        {
+          "capabilityId": "m.lots",
+          "amount": 2
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 2
+        },
+        {
+          "objectiveId": "m.concentration",
+          "amount": -3
+        }
+      ],
+      "leadMonths": 1,
+      "reversible": true,
+      "observedFactor": 0.95
+    },
+    {
+      "id": "m.qualify",
+      "scopeId": "m.supply",
+      "title": "Qualify a second supplier",
+      "mechanism": "Validate 20 reserved lots against the audited criteria. Release production only after qualification closes.",
+      "agentId": "m.supply-agent",
+      "dependencies": [
+        "m.audit"
+      ],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 4
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 4500
+        },
+        {
+          "capabilityId": "m.lots",
+          "amount": 20
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 10,
+          "scaleClaimId": "m.yield-claim",
+          "scaleBase": 0.75
+        },
+        {
+          "objectiveId": "m.concentration",
+          "amount": -22,
+          "scaleClaimId": "m.yield-claim",
+          "scaleBase": 0.75
+        }
+      ],
+      "leadMonths": 3,
+      "leadClaimId": "m.lead-claim",
+      "reversible": true,
+      "observedFactor": 0.7
+    },
+    {
+      "id": "m.cell",
+      "scopeId": "m.north",
+      "title": "Install a flexible cell",
+      "mechanism": "Add an internally controlled component route after the audit. Commissioning consumes engineering and trial-machine time; quoted capacity alone is insufficient.",
+      "agentId": "m.plant-agent",
+      "dependencies": [
+        "m.audit"
+      ],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 6,
+          "scaleClaimId": "m.price-claim",
+          "scaleBase": 1
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 6500
+        },
+        {
+          "capabilityId": "m.machine",
+          "amount": 1500
+        },
+        {
+          "capabilityId": "m.energy",
+          "amount": 600
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 8
+        },
+        {
+          "objectiveId": "m.concentration",
+          "amount": -10
+        },
+        {
+          "objectiveId": "m.fatigue",
+          "amount": 0.5
+        }
+      ],
+      "leadMonths": 4,
+      "reversible": false,
+      "observedFactor": 0.8
+    },
+    {
+      "id": "m.training",
+      "scopeId": "m.people",
+      "title": "Cross-train plant teams",
+      "mechanism": "Protect paid training time and redistribute qualified coverage. Training benefits are forecast outcomes, not newly available technical hours in the same plan.",
+      "agentId": "m.people-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 2
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 3500
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 4
+        },
+        {
+          "objectiveId": "m.fatigue",
+          "amount": -1.5
+        }
+      ],
+      "leadMonths": 3,
+      "reversible": true,
+      "observedFactor": 0.9
+    },
+    {
+      "id": "m.efficiency",
+      "scopeId": "m.south",
+      "title": "Reduce process energy",
+      "mechanism": "Validate heat recovery and standby controls without changing production acceptance standards.",
+      "agentId": "m.energy-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 3
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 2800
+        },
+        {
+          "capabilityId": "m.machine",
+          "amount": 300
+        },
+        {
+          "capabilityId": "m.energy",
+          "amount": 200
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.emissions",
+          "amount": -5
+        },
+        {
+          "objectiveId": "m.cash",
+          "amount": 0.2
+        }
+      ],
+      "leadMonths": 3,
+      "reversible": true,
+      "observedFactor": 0.82
+    },
+    {
+      "id": "m.inventory",
+      "scopeId": "m.supply",
+      "title": "Buy a buffer stock",
+      "mechanism": "Reserve 45 accepted lots against near-term customer orders. The stock protects delivery but ties up operating cash and adds storage emissions.",
+      "agentId": "m.supply-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 5
+        },
+        {
+          "capabilityId": "m.lots",
+          "amount": 45
+        },
+        {
+          "capabilityId": "m.energy",
+          "amount": 300
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 9
+        },
+        {
+          "objectiveId": "m.cash",
+          "amount": -3.5
+        },
+        {
+          "objectiveId": "m.emissions",
+          "amount": 1.5
+        }
+      ],
+      "leadMonths": 1,
+      "reversible": true,
+      "observedFactor": 0.88
+    },
+    {
+      "id": "m.overtime",
+      "scopeId": "m.people",
+      "title": "Add an overtime shift",
+      "mechanism": "A proposed additional shift raises forecast delivery at the cost of fatigue and energy use. The plant councils have not authorized it.",
+      "agentId": "m.people-agent",
+      "dependencies": [],
+      "resources": [
+        {
+          "capabilityId": "m.money",
+          "amount": 1.5
+        },
+        {
+          "capabilityId": "m.technical",
+          "amount": 8000
+        }
+      ],
+      "effects": [
+        {
+          "objectiveId": "m.service",
+          "amount": 7
+        },
+        {
+          "objectiveId": "m.fatigue",
+          "amount": 3
+        },
+        {
+          "objectiveId": "m.emissions",
+          "amount": 2
+        }
+      ],
+      "leadMonths": 1,
+      "reversible": true,
+      "observedFactor": 0.6
+    }
+  ],
+  "strategies": [
+    {
+      "id": "m.diversify",
+      "name": "Qualify and train",
+      "thesis": "Restore reliability through a second supplier and paid training. Depend on laboratory timing rather than a new internal asset.",
+      "interventionIds": [
+        "m.audit",
+        "m.qualify",
+        "m.training"
+      ]
+    },
+    {
+      "id": "m.internal",
+      "name": "Control the bottleneck",
+      "thesis": "Invest in an internal cell, training and energy efficiency. Use more engineering capacity to gain control and lower emissions.",
+      "interventionIds": [
+        "m.audit",
+        "m.cell",
+        "m.training",
+        "m.efficiency"
+      ]
+    },
+    {
+      "id": "m.all",
+      "name": "Recovery at any cost",
+      "thesis": "Combine every requested measure. Expose overcommitted technical capacity, unsafe fatigue and depleted operating cash before authorization.",
+      "interventionIds": [
+        "m.audit",
+        "m.qualify",
+        "m.cell",
+        "m.training",
+        "m.efficiency",
+        "m.inventory",
+        "m.overtime"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "id": "m.supply-agent",
+      "name": "Supply",
+      "initials": "SU",
+      "role": "Supplier assurance agent",
+      "scopeIds": [
+        "m.supply"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "m.plant-agent",
+      "name": "Cell",
+      "initials": "CL",
+      "role": "Plant engineering agent",
+      "scopeIds": [
+        "m.north"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "m.people-agent",
+      "name": "Teams",
+      "initials": "TM",
+      "role": "Council-approved workforce agent",
+      "scopeIds": [
+        "m.people"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    },
+    {
+      "id": "m.energy-agent",
+      "name": "Energy",
+      "initials": "EN",
+      "role": "Process energy agent",
+      "scopeIds": [
+        "m.south"
+      ],
+      "actions": [
+        "investigate",
+        "propose",
+        "deliver"
+      ]
+    }
+  ],
+  "shocks": [
+    {
+      "id": "m.lead-shock",
+      "name": "Laboratory slot lost",
+      "claimId": "m.lead-claim",
+      "value": 12,
+      "description": "The external laboratory withdraws the provisional slot. Qualification now takes twelve months after the audit, beyond the recovery horizon."
+    },
+    {
+      "id": "m.capacity-shock",
+      "name": "Shutdown claims engineers",
+      "claimId": "m.skill-claim",
+      "value": 10000,
+      "description": "A required South-plant shutdown reserves 6,000 hours. Only 10,000 technical hours remain for the strategic recovery package."
+    }
+  ]
+}

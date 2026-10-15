@@ -1,194 +1,33 @@
-# Implementation Status
+# Implementation status
 
-Last updated: March 5, 2026
+Updated October 4, 2026. The owner-directed [product vision](product_vision.md) defines strategic coordination for humans and agents. This document describes the active implementation, not a production-readiness claim.
 
-This document records where the current codebase sits relative to the roadmap.
+## Implemented
 
-## High-level status
+- A generic TypeScript coordination kernel around scope, objective, claim, capability, intervention, mandate and outcome.
+- Multi-objective portfolio comparison with explicit capacity, protected conditions, causal dependencies and delegated scope. No combined normative score is assigned.
+- Frozen human decisions, proposed mandates, atomic acceptance, bounded resource consumption, dependency blocking, stop acknowledgement and expiry.
+- Deterministic simulated specialists that emit completion results and retain expected-versus-observed differences.
+- Strict profile/workspace validation and event-trace replay; current source values do not overwrite prior decision inputs.
+- Four utility views: Situation, Strategies, Mandates and Ledger; agent avatars open scoped authority.
+- Fresh guided onboarding, populated worked cases, custom worlds, raw profile imports and independent new instances.
+- Harbor, Meridian and Open Atlas: three distinct synthetic domains using one engine, with portable profiles and worked histories in `examples/coordination`.
+- Browser-local library persistence, stale-write protection, checksummed export/import, replacement recovery copies and preserved version-one archives.
 
-Zenith is no longer a planning concept only. It is now a working operational
-planning foundation with:
+The worked cases execute the same kernel commands as the UI. Each contains a prior accountable decision, completed agent mandates, outcomes and a subsequent source revision. **Begin** and **New instance** retain an untouched planning state instead.
 
-- a FastAPI backend
-- a Next.js operator UI
-- persisted organizations, workforce, demand, resources, scenarios, and plan runs
-- a first constrained optimization engine that reasons about:
-  - worker skills
-  - certifications
-  - availability windows
-  - planning horizons
-  - shift templates and break rules
-  - dependency ordering
-  - material stock
-  - equipment availability
-  - multi-worker crews
-  - site-to-site travel
-  - overtime pressure
-  - workload balance
-- a planner review flow with persisted run comparison
-- scenario cloning, rerun, save-as-scenario, labels, notes, status, and branch lineage
-- persistent worker, material, and equipment reservations attached to published assignments
-- published assignment execution tracking, plan-vs-actual review, and execution analytics
-- published-work reassignment and cancellation with audited event history, including crew-aware dispatch updates
-- bulk dispatch handoff state controls (`pending`, `ready`, `sent`, `acknowledged`) with audit events
-- saved run-scoped dispatch queues with reusable exception filters and canned queue actions
-- organization-scoped dispatch queue templates shared across runs, with role-gated queue apply controls
-- manager-facing operational reporting with CSV export, bottleneck dashboards, and trend reporting
+## Verification
 
-It is still not a full operational optimization system, execution platform, or
-cross-unit coordination platform.
+the coordination suite passed **47 tests / 981 assertions** on October 4, 2026. it covers feasibility, authority, lifecycle, consumption, source revisions, replay, fixture coherence and file integrity. the retained commons suite passed **22 tests / 10,634 assertions**. web lint, standalone TypeScript and the production build passed.
 
-## Roadmap check-in
+the coordination UI passed **157 isolated WebKit checks**, separate from the kernel unit tests, across its workflows, all three profiles and desktop, tablet and phone widths down to 320 CSS pixels. verification includes first-run import, native export/reopen, concurrent edits, recovery, complete scope-map overlaps, keyboard navigation, reduced motion and print layout; passing runs reported no application errors. see [testing](testing_guide.md) and the latest coordination section in [design QA](../design-qa.md). older Alder screenshots and counts are historical.
 
-### Phase 0: Product framing and repo reset
+## Limits and next boundaries
 
-Status: complete
+The active kernel evaluates declared intervention portfolios. It does not optimize or generate them. Effects are additive planning proxies, with optional claim-based scaling; the examples do not establish empirical validity.
 
-What is done:
+Agent execution is a bounded local simulation. There are no live agent/model integrations, external ingestion connectors, authentication, server persistence, multi-user approval or signed institutional authority. Separate library worlds are independent examples; resources are not globally coordinated across worlds.
 
-- product vision
-- domain model
-- system architecture
-- roadmap
-- monorepo structure
-- engineering standards
-- migration strategy
+Further work must add measured models and provenance adapters, real delegated runtimes, durable shared identity and authorization, and network-level coordination without duplicating resources or silently extending authority. The [roadmap](roadmap.md) governs that sequence.
 
-### Phase 1: Platform foundation
-
-Status: functionally complete for the current MVP scope
-
-What is done:
-
-- FastAPI scaffold
-- Next.js scaffold
-- SQLAlchemy and Alembic foundation
-- organizations, users, roles, planning units, locations
-- health checks and local development workflow
-- local demo seed command for full-stack planner UX testing
-
-What is still missing:
-
-- authentication
-- local dev login flow
-- verified Postgres/Redis Docker path in this environment
-
-### Phase 2: Workforce and demand modeling
-
-Status: substantially complete
-
-What is done:
-
-- workers, skills, certifications, worker capabilities
-- availability calendars and windows
-- work orders, requirements, dependencies
-- service-level policies
-- materials, inventory, equipment, equipment availability
-
-What is still missing:
-
-- CSV import
-- richer normalization/import tooling
-
-### Phase 3: Planning kernel MVP
-
-Status: functionally complete for the current MVP scope
-
-What is done:
-
-- scenarios and plan runs
-- organization-backed planning request projection
-- persisted planner results
-- result review and comparison UI
-- explainable assignments, unassigned work, and issue reporting
-- OR-Tools-backed constrained assignment solver
-- optimization across worker eligibility, schedule overlap, dependencies, material stock, equipment reuse, multi-worker crews, travel, overtime, and workload balance
-- first-class planning horizons for reusable run windows
-- worker shift templates and break rules projected into planner availability and regular-capacity calculations
-
-What is still missing:
-
-- richer solver dimensions such as inter-run crew editing and stronger shift-pattern exception handling
-
-### Phase 4: Resource constraints and operational execution
-
-Status: substantially complete
-
-What is done:
-
-- material and equipment constraints in the planner
-- persistent worker, material, and equipment reservations
-- persisted plan assignments attached to plan runs
-- manual assignment override workflow
-- run approval workflow
-- published assignment state and publication workflow
-- future plan runs automatically consume published worker, equipment, and material commitments
-- execution-event capture for published assignments
-- actual start, finish, and blocked-state recording on assignments
-- draft and published dispatch edits across both single-worker and multi-worker crew assignments
-- bulk dispatch handoff state updates for published assignments, with assignment-level audit events
-- shared dispatch queue templates and role-gated queue-action governance
-- published-work cancellation with worker, equipment, and material reservation release
-- completion-driven release of worker and equipment reservations plus material consumption
-- plan-vs-actual review summary and per-assignment variance reporting
-- deeper execution analytics for blocked reasons and rollups by worker, site, and work type
-
-What is still missing:
-
-- tighter operator workflows around exception handling and downstream execution handoff
-
-### Phase 5: Scenario comparison and management reporting
-
-Status: functionally complete for the current MVP scope, earlier than originally scheduled
-
-What is done:
-
-- scenario cloning and branching
-- persisted run comparison
-- scenario lineage metadata
-- scenario labels, notes, and branch-aware UX
-- manager-facing operations report page
-- worker, location, material, and equipment rollups
-- bottleneck dashboards across labor, sites, materials, and equipment
-- longer-horizon trend buckets across assignment throughput, execution state, and reservation pressure
-- exportable assignment-level CSV reports
-
-What is still missing:
-
-- richer reporting presentation such as saved report views and scheduled delivery
-
-### Phase 6 and beyond
-
-Status: not started
-
-- cross-unit capacity sharing
-- transfer logic
-- policy-aware network coordination
-- forecasting and adaptive planning
-
-## Assessment
-
-We have not veered off course.
-
-The main deviation from the original roadmap is sequencing, not direction:
-
-- scenario comparison and branching work from Phase 5 was pulled forward
-- that was a good trade because the current planner UX needed a tighter
-  iteration loop before deeper execution features
-
-The current system is strongest as:
-
-- an operational planning workbench with a first constrained optimization core
-
-The biggest remaining gaps are:
-
-1. auth and user access control
-2. richer reporting presentation such as saved report views and scheduled delivery
-3. tighter operator workflows around exception handling and downstream execution handoff
-4. cross-unit coordination capabilities from later roadmap phases
-
-## Recommended next steps
-
-1. add auth and user access control around planning, publication, execution, and reporting flows
-2. add saved views and scheduled delivery on top of manager reporting
-3. tighten operator exception workflows and downstream execution handoff tooling
+The previous status document is retained [unchanged in the archive](archive/2026-10-04/implementation_status.md).
