@@ -1,0 +1,37 @@
+async (page) => {
+  const checks = [];
+  const check = (ok, label) => { if (!ok) throw Error(label); checks.push(label); };
+  const library = () => page.evaluate(() => JSON.parse(localStorage.getItem('zenith.coordination.v2')));
+  await page.goto('http://127.0.0.1:3107'); await page.emulateMedia({ reducedMotion: 'reduce' });
+  const before = await library(), current = before.workspaces.find(w => w.profile.id === before.activeId);
+  await page.evaluate(() => { const lib = JSON.parse(localStorage.getItem('zenith.coordination.v2')); lib.activeId = null; localStorage.setItem('zenith.coordination.v2', JSON.stringify(lib)); });
+  await page.reload(); await page.getByText('Examples and saved work', { exact: true }).click();
+  const card = page.locator('.profile-card').filter({ hasText: current.profile.name });
+  check((await card.innerText()).includes('Imported data') && !(await card.innerText()).includes('0 months'), 'saved real data is not described as a zero-month simulation');
+  await card.click();
+  check(await page.locator('.onboard-note').count() === 0, 'selecting imported work does not label it synthetic');
+  await page.getByRole('button', { name: 'Open', exact: true }).click(); await page.getByRole('heading', { name: 'Attention', level: 1, exact: true }).waitFor();
+  check(JSON.stringify((await library()).workspaces) === JSON.stringify(before.workspaces), 'reopening saved real work preserves all source and decision history');
+  await page.getByRole('button', { name: 'Refresh data', exact: true }).click(); await page.getByText('Paste data', { exact: true }).click();
+  await page.getByLabel('Project CSV or JSON', { exact: true }).fill('Deliverable,Portfolio\nPublish research,Archive\n'); await page.getByRole('button', { name: 'Preview', exact: true }).click();
+  check(await page.getByRole('dialog').getByRole('button', { name: 'Refresh', exact: true }).isDisabled(), 'unrecognized headers require explicit mapping');
+  await page.getByLabel('Title column', { exact: true }).selectOption('Deliverable'); await page.getByLabel('Project column', { exact: true }).selectOption('Portfolio');
+  await page.getByRole('region', { name: 'Source preview', exact: true }).waitFor();
+  check((await page.getByRole('region', { name: 'Mapped project records', exact: true }).innerText()).includes('Publish research'), 'manual mapping supports a noncanonical project export');
+  await page.getByText('Report date', { exact: true }).locator('..').locator('input').fill('2999-01-01');
+  check((await page.getByRole('alert').filter({ hasText: 'future' }).innerText()).includes('future') && await page.getByRole('dialog').getByRole('button', { name: 'Refresh', exact: true }).isDisabled(), 'future report dates fail before saving');
+  await page.getByText('Report date', { exact: true }).locator('..').locator('input').fill('2026-11-02');
+  await page.setViewportSize({ width: 320, height: 844 });
+  check(await page.getByRole('dialog').evaluate(e => e.scrollWidth <= e.clientWidth) && await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), 'the import mapping dialog fits 320px');
+  await page.getByRole('dialog').getByRole('button', { name: 'Close', exact: true }).click(); await page.getByRole('dialog').waitFor({ state: 'hidden' });
+  check(JSON.stringify((await library()).workspaces) === JSON.stringify(before.workspaces), 'mapping, validation and cancellation never mutate saved data');
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.getByRole('banner').getByRole('button', { name: current.profile.name, exact: true }).click(); await page.locator('.profile-option').filter({ hasText: 'Portfolio review' }).click();
+  if (await page.getByRole('button', { name: 'Dismiss notification' }).count()) await page.getByRole('button', { name: 'Dismiss notification' }).click();
+  await page.getByRole('navigation', { name: 'Views', exact: true }).getByRole('button', { name: 'Attention', exact: true }).click();
+  await page.setViewportSize({ width: 390, height: 900 }); await page.getByRole('button', { name: 'Review Reconcile dependent commitments', exact: true }).click();
+  await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await page.screenshot({ path: '/Users/tomek/1/repos/project_zenith/docs/design/2026-11-02/real-projects/phone.png' });
+  await page.getByRole('dialog').getByRole('button', { name: 'Close', exact: true }).click();
+  return { passed: checks.length, checks };
+}

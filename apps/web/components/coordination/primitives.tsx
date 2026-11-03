@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import {
   X,
   Building2,
@@ -80,18 +80,31 @@ export function Dialog({
   children,
   onClose,
   footer,
+  className = "",
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   footer?: ReactNode;
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [closing, setClosing] = useState(false);
+  const requestClose = useCallback(() => {
+    if (timer.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      close.current();
+      return;
+    }
+    setClosing(true);
+    timer.current = setTimeout(() => close.current(), 150);
+  }, []);
   useEffect(() => {
     close.current = onClose;
   }, [onClose]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -99,42 +112,42 @@ export function Dialog({
     const focusable = () =>
       Array.from(
         dialog.querySelectorAll<HTMLElement>(
-          'button:not(:disabled),a[href],input:not(:disabled),textarea,select,[tabindex="0"]',
+          'button:not(:disabled),a[href],input:not(:disabled),textarea:not(:disabled),select:not(:disabled),summary,[tabindex="0"]',
         ),
       ).filter((node) => node.getClientRects().length);
-    (focusable()[0] ?? dialog).focus();
+    (dialog.querySelector<HTMLElement>("[data-autofocus]") ?? focusable()[0] ?? dialog).focus();
     const key = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close.current();
+      if (event.key === "Escape") requestClose();
       if (event.key === "Tab") {
         const nodes = focusable();
-        const first = nodes[0],
-          last = nodes[nodes.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first?.focus();
-        }
+        const index = nodes.indexOf(document.activeElement as HTMLElement);
+        // WebKit may omit buttons from native Tab order. Keep all dialog
+        // controls reachable without relying on that browser preference.
+        const next = event.shiftKey
+          ? index <= 0 ? nodes.length - 1 : index - 1
+          : (index + 1) % nodes.length;
+        event.preventDefault();
+        (nodes[next] ?? dialog).focus();
       }
     };
     document.addEventListener("keydown", key);
     return () => {
       document.removeEventListener("keydown", key);
       document.body.style.overflow = overflow;
-      previous?.focus();
+      if (timer.current) clearTimeout(timer.current);
+      previous?.focus({ preventScroll: true });
     };
-  }, []);
+  }, [requestClose]);
   return (
     <div
-      className="z-modal-backdrop"
+      className={`z-modal-backdrop ${closing ? "closing" : ""}`}
       onClick={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) requestClose();
       }}
     >
       <div
         ref={ref}
-        className="z-dialog"
+        className={`z-dialog ${className}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="dialog-title"
@@ -142,7 +155,7 @@ export function Dialog({
       >
         <div className="dialog-head">
           <h2 id="dialog-title">{title}</h2>
-          <IconButton icon={X} label="Close" onClick={onClose} />
+          <IconButton icon={X} label="Close" onClick={requestClose} />
         </div>
         <div className="dialog-body">{children}</div>
         {footer && <div className="dialog-footer">{footer}</div>}

@@ -15,7 +15,31 @@ Profile tests exercise the same kernel across Harbor, Meridian, Open Atlas and a
 
 on October 4, 2026, the coordination suite passed **47 tests / 981 assertions**. web lint, standalone TypeScript and the production build passed. these checks establish software behavior, not the scientific accuracy of the example forecasts.
 
-## Browser acceptance
+## November 2 real-project verification
+
+**149 coordination tests / 1,899 assertions pass.** the new tests cover CSV/JSON input and explicit mapping, calendar/numeric/identifier bounds, original-cell normalization, deterministic local review, evidence fingerprints and recurrence, immutable responses, mixed-library preservation, export/reopen, chronology and rejection of fabricated project execution. lint, standalone TypeScript, the production build and whitespace checks pass.
+
+**64 isolated WebKit checks pass:** 56 complete workflows plus 8 entry/mapping checks. they exercise actual file/paste input, header-only template download, manual column mapping, attributable findings, draft persistence, source-preserving decisions, immutable historical review, full snapshot refresh, reopened changed evidence, native export/reopen, concurrent-edit rejection, omission warnings, saved-project reopening and invalid dates. all three real-project views and decision review fit 1280, 760, 390 and 320px; actions remain reachable, keyboard focus stays contained and returns to its trigger, and normal/reduced motion behaves correctly. the run reports no application errors.
+
+see [the reproducible workflow and captures](design/2026-11-02/real-projects/README.md). browser mutations used a disposable origin and context. the in-app browser subsequently reopened the existing library on port 3000 and its importer was inspected without loading QA fixtures. these are software acceptance checks, not results from a real participant or a live data integration.
+
+## November 2 earlier reconsideration verification
+
+**111 coordination tests / 1,664 assertions pass**, including attributable evidence, current execution windows, bounded resumption, decision responses, atomic course stop, compatibility replay, remaining-course review and active synthetic episodes. lint, standalone TypeScript, the production build and whitespace checks pass.
+
+**66 isolated WebKit checks pass:** 62 source-to-review workflow checks plus 4 existing-user Explore checks. verification covers evidence provenance, fixed decision inputs, no duplicated completed outcomes, constrained continuation, stop acknowledgement, response drafts, stale cross-tab responses, actual download/reopen and frozen-record print media. Situation and Review fit 1280, 720, 390 and 320px in all three domains; response controls remain reachable, keyboard focus stays inside the modal, and reduced motion is respected. Explore appends an independent active case while preserving every existing workspace. no application errors were reported.
+
+see [reconsideration scripts and captures](design/2026-11-02/reconsideration/README.md). tests establish deterministic software behavior; simulated outcomes are not empirically validated forecasts. older counts below are historical checkpoints, not additional fresh checks.
+
+## November 2 earlier authoring verification
+
+73 coordination tests / 1,221 assertions pass, including appended strategy authoring, completed-prerequisite continuation, strict replay and derived decision guidance. lint, standalone TypeScript, the production build and whitespace checks pass.
+
+91 isolated WebKit browser checks pass with no application errors. the run exercises composing a portfolio with dependent interventions, preserving uncommitted writing through navigation/reload, freezing authorization, accepting and completing mandates, actual file download/reopen, later continuation from completed work, tampering rejection and older-file compatibility. all four views and the composer fit 1280, 720, 390 and 320px across all three domains. keyboard containment and focus restoration, pinned comparison labels, selection-driven column scrolling, page navigation and reduced motion pass. existing browser work was preserved; the acceptance run used a separate local origin and browser context.
+
+see [the script and captures](design/2026-11-02/README.md) and [design QA](../design-qa.md). the October counts below are historical rather than additional fresh checks.
+
+## October browser acceptance
 
 the rebuilt UI passed **157 isolated WebKit checks**: 30 workflow, 116 extended and 11 final targeted checks. these browser checks are separate from the kernel unit tests above. all four views across all three profiles were checked at 1280, 720, 390 and 320 CSS pixels, alongside onboarding, keyboard focus, reduced motion, print layout, native export/reopen, stale edits, cross-tab refresh and corrupt-storage recovery. final checks verified first-run file import, reopening an existing custom world without an active selection, recovery preservation and complete overlap edges in all three scope maps. passing runs reported no application errors. see the latest coordination section in [design QA](../design-qa.md); older Alder results remain historical.
 

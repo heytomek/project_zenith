@@ -1,6 +1,42 @@
 # Zenith workspace design and workflow QA
 
-latest verification: October 4, 2026. the active coordination rebuild passes browser workflows, kernel and fixture checks. this is implementation verification; external user research and empirical forecast validity remain unverified. older Alder and operator sections below are historical.
+latest verification: November 2, 2026. the active coordination product passes the checks below. this is implementation verification; external user research and empirical forecast validity remain unverified. earlier sections retain their original verification dates.
+
+## November 2: real project data and local reviewers
+
+the primary entry now accepts a CSV/JSON export or pasted records, with explicit column mapping, a source preview and a header-only template. real work uses Attention, Sources and Record. current source records are preserved separately from modeled cases; no simulated mandates, effects or authority are created. reviewers show actual commitment titles, dates, amounts, cited records and owners, with their deterministic rules available through the top avatars.
+
+unchanged reviewed facts leave the open queue; changed or recurring conditions reopen. historical decisions show their original source and review date read-only. refresh replaces the current source while retaining earlier snapshots, and warns about omitted records. unknown or missing facts remain source coverage gaps. the interface removes repeated explanatory leads, uses compact status tabs and preserves functional motion, focus and reduced-motion behavior.
+
+**149 coordination tests / 1,899 assertions and 64 isolated WebKit checks pass.** lint, standalone TypeScript, the production build and whitespace checks pass. the browser run verifies file/paste import and manual mapping; actual template/download/reopen; source and response preservation; unchanged and changed refreshes; cross-tab rejection; all three views and review at 1280, 760, 390 and 320px; keyboard containment/return; normal and reduced motion; saved real-project reopening; invalid dates; and cancelled preview isolation. no application errors were reported. browser QA found a notification intercepting a dialog action; status notifications now let pointer events pass through while keeping Dismiss interactive.
+
+the in-app browser was attempted first, then isolated WebKit covered mutations on port 3107. resetting the browser control restored in-app inspection: the current build reopened the existing library without its stale-client recovery error, and Bring project data was left ready. no acceptance fixture was added to the user's port-3000 library.
+
+see [captures and scripts](docs/design/2026-11-02/real-projects/README.md) and [the data contract](docs/project-data.md). actual user-data usefulness, live connectors, remote/LLM agents, shared identity and server persistence remain outside this verification.
+
+## November 2: earlier evidence and consequential reconsideration
+
+Explore now starts a decision already in motion, with completed work, consumed capacity and an attributable report that challenges the remaining course. existing users can append an independent example through the world picker without replacing any existing world. Harbor, Meridian and Open Atlas exercise capacity, qualification timing and a dependent release respectively.
+
+Situation has one canonical review action per course. Review compares the authorized projection, declared baseline plus recorded outcomes, and reassessed remaining consequences. changed evidence links to affected work and actual scope stewards. alternatives disclose their stop acknowledgement, restart cost and new planning-window assumptions. source and response drafts survive inspection; stale responses cannot overwrite changed state. investigation or retaining intent cannot clear a constraint, while stopping preserves spent resources and waits for acknowledgement before releasing unused reservations.
+
+**111 coordination tests / 1,664 assertions pass. 66 isolated WebKit checks pass: 62 workflow checks and 4 existing-user Explore checks.** lint, standalone TypeScript, the production build and whitespace checks pass. browser verification includes all three domains at 1280, 720, 390 and 320px, lost decision windows, corrected evidence and bounded resumption, immutable decisions, no repeated completed effects, atomic stop, native JSON download/reopen, cross-tab conflicts, keyboard containment, reduced motion and frozen-record print media. no application errors were reported. the in-app browser was inspected first and the updated Meridian case was opened there after verification.
+
+captures and runnable checks: [reconsideration QA](docs/design/2026-11-02/reconsideration/README.md). research and product interpretation: [keeping commitments coherent](docs/strategic-reconsideration.md). execution and evidence remain local and synthetic; native print-dialog behavior, live data ingestion, participant legitimacy and empirical forecast validity are unverified.
+
+## November 2: earlier strategy authoring and guided decisions
+
+replaced the large portfolio cards with compact alternatives, one comparison table, a current baseline and details on demand. **Compose** selects interventions with dependency closure and previews consequences, protections and available capacity. saving creates an appended strategy receipt; authorization remains a separate accountable action. new decisions can reuse completed prerequisites without issuing, spending or observing them again.
+
+the decision context now follows actual evidence, authorization, acceptance, execution and outcomes. current exceptions receive actionable source links; a historical blocked event cannot keep an obsolete alert alive. optional guidance completes after outcome review. uncommitted rationale and composition drafts survive navigation, dismissal and reload within the same tab, separately from the authoritative library.
+
+**73 coordination tests / 1,221 assertions pass. 91 isolated WebKit browser checks pass with `errors: []`.** lint, standalone TypeScript, production build and whitespace checks pass. the browser run covers authored decisions and continuation, real download/reopen, checksum rejection, preservation of older records, all four views and the composer across Harbor, Meridian and Open Atlas at 1280, 720, 390 and 320px, keyboard access and reduced motion.
+
+browser QA found and repaired three interaction defects: WebKit's native Tab order could skip modal buttons and escape the composer; focus restoration needed the actual composition trigger; navigation and focus restoration could leave headings behind the sticky toolbar. the final dialog explicitly cycles visible controls, restores the trigger, and preserves the background scroll on dismissal. navigating views returns to their decision context. selecting an alternative scrolls its comparison column into view, with objective labels pinned on narrow screens.
+
+captures: [comparison](docs/design/2026-11-02/strategies-desktop.png), [phone comparison](docs/design/2026-11-02/strategies-mobile.png), [composer](docs/design/2026-11-02/composer-desktop.png), [phone composer](docs/design/2026-11-02/composer-mobile.png), [situation](docs/design/2026-11-02/situation-desktop.png). the [reproducible acceptance script](docs/design/2026-11-02/README.md) is retained with the captures.
+
+scope remains local and synthetic. composition uses the world's existing intervention catalogue; arbitrary model authoring, live ingestion, authenticated shared authority and external agent execution remain later product work. no deployment or external user study is claimed.
 
 ## October 4: coordination rebuild
 

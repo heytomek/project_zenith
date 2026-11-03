@@ -1,8 +1,10 @@
 # Zenith: strategic coordination for humans and agents
 
-Owner-directed scope correction · October 4, 2026. This supersedes the maintenance-operator positioning. Existing products are references and competitors; their coverage does not limit Zenith's ambition. [Endstate](endstate.md) provides the philosophical foundation. [Roadmap](roadmap.md) defines the next demonstrable system; [implementation contract](mvp.md) describes what actually exists today.
+owner-directed strategic scope · updated November 2, 2026. This supersedes the maintenance-operator positioning. Existing products are references and competitors; their coverage does not limit Zenith's ambition. [Endstate](endstate.md) provides the philosophical foundation. [Roadmap](roadmap.md) defines the next demonstrable system; [implementation contract](mvp.md) describes what actually exists today.
 
 ## Objective
+
+**keep authorized promises coherent as conditions change.** Zenith should reveal which undertaking is affected, whose judgment is required, and what can legitimately be preserved or changed. local judgment, selective escalation and separate objective dimensions matter more than sending every signal to an executive screen.
 
 **Help humans and agents form a shared understanding of a changing world, choose coherent strategies under explicit values and constraints, coordinate their execution, and revise them from evidence.**
 
@@ -38,6 +40,8 @@ The owner's definition of endstate supplies an orientation toward durable sentie
 | Option value | Expose reversibility, irreversible commitments and the consequences of waiting. A short-term gain can reduce future freedom. |
 | Recursive improvement | Keep the original belief, prediction, decision and mandate; compare observations against them and issue new versions. Updating a plan does not rewrite its past. |
 | Broad moral and ecological scope | Include declared affected beings, ecosystems and future generations; distinguish measured impacts, proxies and unknowns. Absence of a measure does not imply absence of an effect. |
+
+the [research and product interpretation](strategic-reconsideration.md) draws on published company practice, Cybersyn's selective escalation and a Hegel-inspired examination of commitments through their own conditions. these inform our design hypothesis; they do not prove product demand, a universal ethical calculus or an automatic dialectical solution.
 
 Scopes may have distinct legitimate objectives and decision processes. The system must reveal conflicts between them rather than silently replacing local ends with a central preference. Philosophical commitments need an explicit agreed policy representation before they can be enforced by code; prose fields alone are insufficient.
 
@@ -115,7 +119,7 @@ The same contracts should also run for one smaller scope. The demonstration's co
 
 ## Relationship to the current app and market
 
-Alder remains a useful historical test fixture for calculations, records and import/export. The application currently has one hardcoded baseline, three variable assumptions and local narrative decisions; it does not implement the world model, agent mandates, shared commitments or high-level portfolio coordination described here. [The implementation contract](mvp.md) is the source of truth for runtime behavior.
+the active application now implements a browser-local coordination kernel, catalogue strategy composition, scoped mandates, sourced claim revisions and review of an authorized course against changed conditions. Explore opens active synthetic decisions across Harbor, Meridian and Open Atlas; Begin opens fresh planning. the local runtime enforces resource, scope, expiry, stop-acknowledgment and source-window rules while preserving its audit history. response options are conditional counterfactuals, not automatic institutional agreement. there are no live sources, authenticated participants or shared production commitments. Alder remains archived history. [the running contract](mvp.md) is the source of truth for implemented behavior.
 
 [The market research](product-research.md) identifies useful incumbent capabilities. Foundry, asset-management systems and decision platforms can inform the standard Zenith should exceed. Product overlap is acceptable. Success depends on decision quality, coherent integration, usability, trust and useful execution, not on proving that no competitor covers the category.
 

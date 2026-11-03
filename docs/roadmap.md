@@ -1,87 +1,74 @@
 # Zenith: strategic coordination build sequence
 
-Updated October 4, 2026. [Product direction](product_vision.md): a strategic coordination layer for accountable human decision makers and specialist agents. Its purpose is to understand a changing situation, compare consequential courses of action, delegate bounded authority and learn from results across nested scopes. Small demonstrations test this architecture; they do not define the product as a maintenance tool.
+updated November 2, 2026. the [product vision](product_vision.md) remains a strategic coordination layer for accountable humans and bounded agents, from a small initiative to a company, institution or regional transition. the owner's [endstate](endstate.md) remains unchanged. the [running contract](mvp.md) and [implementation status](implementation_status.md) describe the active product.
 
-## Current implementation
+## Current foundation
 
-The application remains the local Alder calculator and decision journal described in [mvp.md](mvp.md). It computes a deterministic repair model, retains assumptions and stress comparisons, freezes decision versions, records observations and verifies portable exports. Its named team and source documents are synthetic fixture content. There is no connected world model, strategic portfolio engine, authenticated delegation or agent runtime. [Design QA](../design-qa.md) records interface and model checks, not evidence for those proposed capabilities.
+the active application accepts real project CSV/JSON exports and reviews declared commitments through local rules. Attention groups source-backed deadline, budget, dependency and decision-request questions; Sources retains original records and versions; Record preserves human judgments. file parsing, mapping and refresh use [the source contract](project-data.md). these reviewers are deterministic local agents, not an LLM provider or live source integration.
 
-## 1. Make the foundation executable
+the modeled coordination branch connects scopes, objectives, claims, capabilities, interventions, mandates and outcomes through the same validated library. Harbor, Meridian and Open Atlas exercise distinct synthetic domains, overlapping institutions, explicit protections, shared resources and different decision horizons. imported project records do not receive fabricated model effects or synthetic execution rights.
 
-Translate the owner's [endstate](endstate.md) into explicit, revisable decision rules: durable flourishing and relief of involuntary suffering as ends; agency, ecological limits and legible, revocable power as protections; truthfulness, uncertainty and preserved options as requirements for reasoning. These rules must appear in objectives, constraints, authority and review, rather than only in a mission statement. Different participants can disagree about values and causal claims without the system collapsing them into one hidden score.
+humans inspect source claims, compare portfolios, authorize bounded action and reconcile observed differences. deterministic simulated specialists accept ceilings, wait for prerequisites, consume resources and acknowledge stops. strict imports reproduce decisions, execution and authored strategies from their trace. source changes preserve frozen expectations. these are local software behaviors; external institutions, scientific accuracy and live execution are not implied.
 
-Define the first version of the shared contract:
+the November work develops that foundation into a repeatable decision product:
 
-| Primitive | Required behavior |
-| --- | --- |
-| Scope | A decision boundary with accountable authority, participants, time horizon and containment or overlap relationships. Nesting grants no authority. A child cannot silently claim a parent's authority or another scope's resources. |
-| Objective | Desired outcomes, affected parties, observable measures and protected conditions. Distinguish hard protections from preferences; retain unresolved value conflicts. |
-| Claim | A dated assertion with source provenance, units, scope, epistemic state and revision history. Distinguish observation, inference, forecast and assumption. Conflicting sources remain inspectable. |
-| Capability | A provider's available capacity, timing, resource requirements and conditions of use, including existing commitments and one underlying resource identity across scopes. |
-| Intervention | A proposed causal change with dependencies, resource demands, expected effects, alternatives and uncertainty. |
-| Mandate | A delegated purpose, recipient, allowed actions, resource ceiling, scope, expiry, escalation conditions and revocation state. An instruction alone does not establish authority. |
-| Outcome | A versioned prediction or observation tied to an objective, intervention and review horizon. Preserve the frozen expectation when new evidence changes the forecast. |
+- **compose:** build and save portfolios from the existing intervention catalogue, with dependency closure and a live consequence/capacity preview. saving a strategy does not grant authority.
+- **continue:** reuse completed prerequisites through their original mandates when authorizing new work, preserving consumed resources and observed effects instead of performing them twice.
+- **orient:** derive the next useful action and a compact attention list from current commitments, evidence and outcomes. resolved exceptions disappear from attention without rewriting history.
+- **compare:** use compact alternatives, an explicit current baseline and on-demand mechanisms and dependencies. retain rationale drafts across navigation and same-tab reload.
+- **reconsider:** connect a changed source to remaining commitments, affected outcomes and responsible stewards; retain the authorized promise while assessing the current course. record a response without granting broader authority or hiding a live constraint.
+- **explore:** enter active synthetic capacity and timing failures, then inspect counterfactual catalogue responses after stop acknowledgment. retain spending and observations; make restart cost and a new planning window explicit.
+- **bring evidence:** map real project exports, preserve complete source snapshots and refresh without overwriting history. keep source coverage distinct from consequential findings.
+- **attend:** group explicit review conditions by project, inspect cited records and append a human judgment. unchanged relevant facts remain reviewed; changed or recurring conditions reopen.
 
-Human views and machine clients use the same identified objects and revisions. Scope relationships, source versions and commitments must be queryable. Overlapping scopes can share a capability without owning each other, and aggregation cannot count that capability twice. Begin with typed records and explicit links; storage technology does not prove that these semantics work.
+[implementation status](implementation_status.md) records verification separately from the product hypothesis. [the research](strategic-reconsideration.md) connects real organizational practice, Cybersyn and Hegel to the decision job without claiming philosophical or commercial validation. empirical model validity, participant usefulness and shared live execution remain later validation boundaries.
 
-Supporting contracts include reproducible model/run manifests and durable decision events. A decision event identifies its accountable authority, selected portfolio, frozen input/model/run references, authorized mandates, disagreement and review triggers. These contracts connect reasoning to an authorization boundary without adding another top-level primitive.
+## 1. Validate source-backed review and connect one live source
 
-Acceptance: a published schema and coherent fixtures connect every candidate intervention to objectives, claims, dependencies and required capabilities; every mandate identifies the granting authority and boundaries; every reported outcome has an inspectable basis. All units and time intervals are explicit. The existing three-slider model stays a separate historical demonstration until this contract is verified.
+the immediate acceptance task is using an authorized real project export to determine which grouped questions deserve executive attention. inspect false positives, missed consequential conditions, stale evidence and the effort needed to reconstruct a defensible response. the rule-based source review is implemented; no external participant outcome is claimed.
 
-## 2. Build one complete strategic loop
+extend file ingestion with one explicitly authorized, read-only source adapter. preserve source identity, report and observation dates, units, transformation versions and inspectable snapshots. a provider estimate, measured observation and model inference remain distinguishable. conflicting claims retain their disagreement instead of being silently averaged. a configured LLM reviewer can propose evidence-backed questions only within this boundary; it must expose cited records and uncertainty rather than treating generated text as source truth.
 
-Use a synthetic regional transition spanning energy, housing and workforce development. The top-level question is which investment sequence should reduce household energy insecurity, strengthen energy resilience and build durable local capability under shared capital and workforce limits. It must also expose distributional effects and protected conditions, including consent and displacement risk. This is a worked strategic decision, not a claim that Zenith has validated the region's outcomes.
+then agree institutional review policy: local recovery intervals, escalation destinations, participants' rights and the distinction between recorded judgment and legitimate authority. current date checks run while the browser is open; neither an always-on monitoring service nor Cybersyn-style timed escalation is implemented.
 
-The fixture contains a regional scope, three program scopes and several delivery scopes, including one independently governed provider participating through an overlapping scope. It draws on distinct source snapshots: energy demand and network capacity; housing condition and household exposure; capital commitments; training cohorts and qualified workforce availability; project lead times; and relevant protections. Include a stale source, conflicting estimates and one important unmeasured effect. Store explicit source dates and uncertainty rather than manufacturing confidence.
+acceptance: a decision maker can bring an actual export, explain why each surfaced question matters from its cited evidence, respond once to unchanged conditions, and see a changed or recurring condition return. an adapter refresh changes only the evidence it supports and keeps earlier reasoning inspectable. changed evidence never silently authorizes broader work.
 
-Compare three strategies with the same inputs:
+## 2. Finish strategic model authoring
 
-1. **Supply first:** prioritize energy infrastructure, with housing interventions following enabling capacity.
-2. **Demand first:** prioritize housing efficiency and household exposure, with energy investment staged later.
-3. **Coordinated transition:** sequence training, housing and energy investments together to use shared capacity and preserve future options.
+the current composer selects from a declared catalogue. let a steward adapt the model needed for an actual decision: desired outcomes and protected limits, scoped capability offers, dated claims, and proposed interventions with explicit causal effects and prerequisites. use contextual editing at the relevant decision surface rather than a generic ontology administration product. imported source records must not automatically become causal effects or delegated authority.
 
-Use a twelve-month resource commitment horizon and a thirty-six-month outcome horizon. The fixture must make at least one shared budget or workforce constraint bind, one intervention depend on another's completion and one portfolio infeasible. Report the violated constraint and affected interventions. Compare feasible portfolios across outcomes, costs, distribution, timing, uncertainty and reversibility; do not present a universal winner where objectives conflict.
+model changes need stable identities, versions and a stated effective boundary. changing a target, causal assumption or permission must not alter earlier authorizations. preview the affected forecasts and commitments before saving; require a new decision when a changed model cannot legitimately continue under existing authority. lower-level details belong behind the strategic choice.
 
-Implement actual resource accounting, dependency evaluation and small portfolio enumeration before adding a general solver. A changed source must change the feasible set or forecast where its modeled relation warrants it. Causal effects without sufficient evidence remain labeled assumptions; a mathematically feasible portfolio is not proof of social benefit.
+acceptance: a user can construct a small, domain-specific decision from an empty starting point, explain its assumptions and protected limits, compare alternatives, authorize bounded work and revisit it without editing JSON. a model revision leaves historical projections reproducible. the same primitives support all three example domains.
 
-The complete loop is:
+## 3. Improve causal models and strategic exploration
 
-1. Ingest and validate heterogeneous source snapshots into the scoped model.
-2. Identify important changes, conflicts, unknowns and binding capabilities.
-3. Compute and compare intervention portfolios against declared objectives and protections.
-4. Have the accountable human select a course and retain the tradeoff and conditions for revisiting it.
-5. Issue bounded mandates to energy, housing, workforce and evidence-review specialist clients; acceptance checks and reserves authorized capacity atomically against the common resource ledger.
-6. Record acknowledgement, proposed or completed actions, resource consumption and exceptions.
-7. Reconcile observed outcomes against frozen expectations, revise relevant claims and require a decision when the mandate's bounds no longer permit continuation.
+the current evaluator uses additive effects and optional claim ratios. replace those proxies where evidence warrants a stronger model. keep units, time horizons, baseline trajectories, distributions, uncertainty and omitted effects explicit. compare feasible alternatives across separate objective dimensions; do not hide value judgments inside a combined benefit score.
 
-First use simulated machine clients with deterministic messages. Label simulated execution and synthetic outcomes throughout the trace. The coordinator must still enforce scope, revision, expiry, revocation, resource ceilings and allowed actions in code; clients obeying a written prompt is insufficient. Concurrent acceptance must not over-reserve shared capacity. Revocation releases only unconsumed reservations after an acknowledged stop or handover; in-flight commitments remain accounted for. Real autonomous agents and external writeback are later integrations, not implied by this demonstration.
+add specialist model adapters and bounded portfolio exploration only after the model's inputs, versions and limits are inspectable. a solver may identify admissible or non-dominated options; consequential tradeoffs remain a human decision. expose reversibility, delayed effects and lost options alongside expected benefits.
 
-Acceptance: the demonstration moves from source snapshots to three computed strategies, an approved portfolio, acknowledged mandates and a reviewed outcome without manual rewriting between steps. A resource shock or dependency failure creates a concrete exception: the specialist cannot simply expand spending or borrow another program's authority. The human sees the affected objective, available options, uncertainty and the decision required; the resulting revision updates commitments and mandates consistently.
+acceptance: the same frozen model and input versions reproduce a projection. changed assumptions propagate to the appropriate scopes and dependencies. a model improvement is measured against observed outcomes or a defensible benchmark, not justified by a cleaner chart or a larger synthetic forecast.
 
-## 3. Verify coordination, not only presentation
+## 4. Establish shared identity and durable commitments
 
-Apply the [validation protocol](usefulness-test.md) to both human decisions and machine contracts. Run deterministic tests for shared capacity, time buckets, unit conversion, dependencies, protected conditions, duplicate commitments, stale revisions, acknowledgement, expiry, revocation and out-of-scope actions. The trace must explain accepted and rejected actions from the stored authority and model version.
+before real participants or live agents share commitments, introduce authenticated principals, server-side authorization, durable transactional reservations, idempotent commands, action receipts and recovery. human and machine clients must use the same contract. nesting alone never grants access to another scope's resources or authority.
 
-Ask senior decision makers to reconstruct a consequential multi-program decision using authorized source extracts. Run this research alongside the synthetic build; do not make the absence of an existing competitor a prerequisite. Evaluate whether the model makes the situation, tradeoffs, commitments and reasons to change course clearer, and whether specialist clients can operate within the same contracts without needing the human interface.
+replace one simulated specialist with a bounded real client. verify the permitted external action, acknowledgement and reporting path. revocation prevents further authorized effects and waits for the appropriate stop or handover acknowledgement; it cannot undo consumed resources or completed physical work. cross-provider commitments need explicit holds and a defined failure path.
 
-Acceptance: participants can identify the objective, binding constraint, relevant uncertainty, authority boundary and intervention requiring their judgment without developer explanation. Test actual changes to decisions and review effort against the existing process; a favorable reaction or a cleaner screen does not establish value. No outreach or partner access has been performed by writing this roadmap.
+acceptance: retries do not duplicate spending or work, competing acceptances cannot oversubscribe a shared pool, stale revisions fail, and revoked authority prevents new actions within the declared enforcement boundary. a bounded pilot involves an accountable owner, interacting programs and explicitly authorized external actions.
 
-## 4. Connect real sources and bounded agents
+## 5. Expand through nesting and federation
 
-Replace one simulated source and one simulated specialist at a time while retaining the same contract tests. Add authenticated principals, server-side authorization, durable transactional reservations, idempotent messages, durable action traces and recovery before shared live commitments. Incorporate external permissions and execution acknowledgements; displaying a mandate is not execution.
+extend the verified contracts across organizations and longer horizons. support conditional cross-scope offers, negotiated dependencies, narrower sub-mandates and explicit responsibility for joint outcomes. maintain overlap as well as containment: independent institutions can share a capability without owning each other, and aggregation cannot count that capability twice.
 
-A bounded pilot should involve an accountable decision owner, more than one interacting program and an authorized set of external actions. Compare predictions with observed results and preserve the explanation for changed expectations. Hosting, production writeback and external agent actions require their applicable authorization; the local demonstration creates none of those permissions.
+local participants retain their legitimate ability to refuse, condition or revoke an offer. higher scopes aggregate consequences and compare coordination options without inventing control over lower scopes. scaled-down use employs the same semantics with fewer objects and simpler models.
 
-Acceptance: the same decision can be replayed from its input versions; delegated actions respect live policy; interruption and retry do not duplicate commitments; revoked authority prevents subsequent actions within the declared enforcement boundary. Measure decision preparation and review effort, constraint failures, outcome error and whether the chosen strategy changed for a defensible reason.
+acceptance: compare independent and coordinated strategies using declared terms and inspectable evidence. preserve the independent choice when coordination does not improve the result or lacks legitimate agreement.
 
-## 5. Expand by nesting and federation
+## Product and usefulness checks
 
-Extend the same primitives across organizations and larger decision horizons. Add cross-scope capability offers, conditional commitments, negotiated dependencies and explicit responsibility for joint outcomes. Preserve overlapping relationships as well as containment; one provider may participate in several programs through the same underlying resource identity. Local participants retain the authority to refuse or revoke an offer under its recorded terms. A higher scope can aggregate evidence and compare coordination options without inventing control over lower scopes.
+continue the [validation protocol](usefulness-test.md) alongside engineering. senior decision makers should reconstruct a consequential multi-program choice from authorized evidence, identify the binding constraint and relevant uncertainty, and understand why the system requests their judgment. measure decision preparation, review effort, constraint failures, prediction error and defensible changes of course. no participant result, outreach or partner access is implied by this plan.
 
-The long-term product supports institutional and regional self-direction: humans choose ends and consequential tradeoffs; agents continually gather evidence, explore interventions, carry out bounded mandates and surface decisions requiring broader authority. Scaled-down use employs the same contracts with fewer scopes and simpler models.
+the visual direction stays calm and technically dense: alignment and typography establish hierarchy; compact symbols and progressive disclosure support understanding; motion explains state changes; restrained glass belongs to navigation and controls. preserve keyboard access and reduced-motion behavior.
 
-Acceptance: compare independent and coordinated strategies using declared terms and available evidence. Demonstrate an improvement that survives actual execution and review, or retain the independent choice. Progress does not require monopolizing functions already served by other products; it requires delivering a better strategic decision and coordination loop.
-
-## Boundaries
-
-Do not build a dispatch interface, generic dashboard, ontology editor or organization administration suite as a substitute for the strategic loop. Do not hide moral conflicts inside objective weights, infer consent, present synthetic results as observed benefits or describe unimplemented policy as enforced. Broader models, solvers and agent integrations should extend a verified contract rather than become disconnected feature collections.
+do not substitute a dispatch interface, generic dashboard, organization administration suite or elaborate graph editor for the strategic loop. do not infer consent, present synthetic results as field evidence, or describe planned policy as enforced. existing competitors do not limit the product's scope; concrete improvements to decisions and coordination determine progress.

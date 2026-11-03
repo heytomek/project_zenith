@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Check, Plus, Upload } from "lucide-react";
 import { PROFILES, makeProfile } from "@/lib/coordination/profiles";
 import type { Profile } from "@/lib/coordination/types";
-import { IconButton, Mark, WorldIcon } from "./primitives";
+import { Mark, WorldIcon } from "./primitives";
 
 export function ProfileArt({ kind }: { kind: Profile["icon"] }) {
   const nodes =
@@ -196,9 +196,10 @@ export function Onboarding({
         <span>Zenith</span>
       </div>
       <div className="onboard-heading">
-        <h1>Choose your world.</h1>
-        <p>Start fresh, or inspect a worked case.</p>
+        <h1>Start with your work.</h1>
       </div>
+      <div className="onboard-project-entry"><button className="button primary" onClick={onImport}><Upload size={17} />Bring project data<ArrowRight size={16} /></button><small>CSV or JSON · stays in your browser</small></div>
+      <details className="onboard-examples"><summary>Examples and saved work</summary>
       <div className="profile-grid" role="group" aria-label="Example worlds">
         {profiles.map((item) => (
           <button
@@ -218,8 +219,7 @@ export function Onboarding({
             </div>
             <p>{item.subtitle}</p>
             <div className="profile-details">
-              <span>{item.scopes.length} scopes</span>
-              <span>{item.horizonMonths} months</span>
+              {item.horizonMonths > 0 ? <><span>{item.scopes.length} scopes</span><span>{item.horizonMonths} months</span></> : <span>Imported data</span>}
             </div>
           </button>
         ))}
@@ -234,7 +234,6 @@ export function Onboarding({
         </div>
       )}
       <div className="onboard-actions">
-        <IconButton icon={Upload} label="Import" onClick={onImport} />
         <button className="text-button" onClick={() => setCustom(!custom)}>
           <Plus size={16} />
           {custom ? "Examples" : "New world"}
@@ -246,7 +245,7 @@ export function Onboarding({
                 className="text-button"
                 onClick={() => onStart(profile, false)}
               >
-                Worked case
+                Explore
               </button>
             )}
             <button className="primary" onClick={() => onStart(profile, true)}>
@@ -256,7 +255,8 @@ export function Onboarding({
           </>
         )}
       </div>
-      <small className="onboard-note">Synthetic cases · local simulation</small>
+      {profile.horizonMonths > 0 && <small className="onboard-note">Synthetic case · local simulation</small>}
+      </details>
     </main>
   );
 }

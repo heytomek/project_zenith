@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
   ArrowUp,
+  BookOpen,
   Check,
   ChevronRight,
   CircleDashed,
@@ -14,6 +15,7 @@ import {
   Link2,
   LockKeyhole,
   Play,
+  Plus,
   ShieldCheck,
   Square,
   TriangleAlert,
@@ -24,6 +26,7 @@ import {
   capabilityAmount,
   claimValue,
   committed,
+  currentClaimSource,
   evaluate,
   revokeMandate,
   stepAgents,
@@ -38,6 +41,10 @@ import type {
   Workspace,
 } from "@/lib/coordination/types";
 import { IconButton, metric, number } from "./primitives";
+import { StrategyComposer } from "./strategy-composer";
+import { useStrategyDraft } from "./use-strategy-draft";
+import { Attention } from "./decision-context";
+import { CourseReviews } from "./review-panel";
 
 export type View = "situation" | "strategies" | "mandates" | "ledger";
 export type Inspect =
@@ -266,9 +273,6 @@ export function Situation({
     ids = scopeSet(profile, scopeId);
   const objectives = profile.objectives.filter((item) => ids.has(item.scopeId));
   const claims = profile.claims.filter((item) => ids.has(item.scopeId));
-  const over = profile.capabilities.filter(
-    (cap) => committed(workspace, cap.id) > capabilityAmount(workspace, cap.id),
-  );
   return (
     <div className="z-situation-grid">
       <div>
@@ -280,20 +284,7 @@ export function Situation({
                   ?.description}
           </h2>
         </section>
-        {over.length > 0 && (
-          <button className="z-alert" onClick={() => navigate("mandates")}>
-            <TriangleAlert />
-            <span>
-              <strong>
-                {over.length} shared capacity{" "}
-                {over.length === 1 ? "conflict" : "conflicts"}
-              </strong>
-              Committed resources exceed revised availability. Mandates need
-              review.
-            </span>
-            <ChevronRight size={16} />
-          </button>
-        )}
+        <CourseReviews workspace={workspace} scopeId={scopeId} inspect={inspect} />
         <section className="z-section">
           <div className="section-heading">
             <h2>Objectives</h2>
@@ -380,6 +371,7 @@ export function Situation({
         </section>
       </div>
       <aside className="z-inspector">
+        <Attention workspace={workspace} scopeId={scopeId} inspect={inspect} navigate={navigate} />
         <section className="z-section">
           <div className="section-heading">
             <h2>Capacity</h2>
@@ -387,11 +379,8 @@ export function Situation({
           </div>
           <Resources workspace={workspace} scopeId={scopeId} />
         </section>
-        <section className="z-section">
-          <div className="section-heading">
-            <h2>Evidence</h2>
-            <small>{claims.length}</small>
-          </div>
+        <details className="strategy-disclosure">
+          <summary>Sources <small>{claims.length}</small></summary>
           <div className="z-facts">
             {claims.map((claim) => (
               <button
@@ -419,13 +408,7 @@ export function Situation({
               </button>
             ))}
           </div>
-        </section>
-        <button
-          className="primary button"
-          onClick={() => navigate("strategies")}
-        >
-          Compare strategies <ArrowRight size={16} />
-        </button>
+        </details>
       </aside>
     </div>
   );
@@ -434,11 +417,24 @@ export function Strategies({
   workspace,
   scopeId,
   inspect,
+  change,
   onAuthorize,
-}: ViewProps & { onAuthorize: (id: string, rationale: string) => void }) {
+}: ViewProps & { onAuthorize: (id: string, rationale: string) => boolean }) {
   const profile = workspace.profile;
-  const [selected, setSelected] = useState(profile.strategies[0].id);
-  const [rationale, setRationale] = useState("");
+  const [draft, saveDraft] = useStrategyDraft(workspace);
+  const [composing, setComposing] = useState(false);
+  const selected = profile.strategies.some(s => s.id === draft.strategyId) ? draft.strategyId : profile.strategies[0].id;
+  const rationale = draft.rationale;
+  const comparison = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const container = comparison.current;
+    const column = container?.querySelector<HTMLElement>("thead .selected");
+    const fixed = container?.querySelector("th")?.getBoundingClientRect().width ?? 0;
+    if (!container || !column) return;
+    const box = container.getBoundingClientRect(), target = column.getBoundingClientRect();
+    if (target.left >= box.left + fixed && target.right <= box.right) return;
+    container.scrollTo({ left: Math.max(0, container.scrollLeft + target.left - box.left - fixed), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [selected]);
   const evaluations = profile.strategies.map((item) =>
     evaluate(workspace, item.id),
   );
@@ -448,58 +444,40 @@ export function Strategies({
   const objectives = profile.objectives.filter((item) => ids.has(item.scopeId));
   return (
     <>
-      <div className="z-strategy-grid" role="group" aria-label="Strategies">
+      <div className="strategy-workbench">
+      <div className="strategy-toolbar">
+        <button className="button" onClick={(event) => { event.currentTarget.focus({ preventScroll: true }); setComposing(true); }}><Plus size={15} />Compose</button>
+      </div>
+      <div className="strategy-options" role="group" aria-label="Strategies">
         {profile.strategies.map((item, i) => (
           <button
             type="button"
             key={item.id}
-            className={`strategy-card ${selected === item.id ? "selected" : ""} ${!evaluations[i].feasible ? "infeasible" : ""}`}
-            onClick={() => setSelected(item.id)}
+            className={`strategy-option ${selected === item.id ? "selected" : ""} ${!evaluations[i].feasible ? "infeasible" : ""}`}
+            onClick={() => saveDraft({ ...draft, strategyId: item.id })}
             aria-pressed={selected === item.id}
           >
-            <div className="strategy-top">
-              <h2>{item.name}</h2>
+            <span className="strategy-option-name">
+              <strong>{item.name}</strong>
               {evaluations[i].feasible ? (
                 <Check size={16} aria-label="Feasible" />
               ) : (
                 <TriangleAlert size={16} aria-label="Infeasible" />
               )}
-            </div>
-            <p className="strategy-thesis">{item.thesis}</p>
-            <div className="strategy-outcome">
-              {objectives.slice(0, 2).map((objective) => {
-                const value = evaluations[i].outcomes.find(
-                  (entry) => entry.objectiveId === objective.id,
-                )!.value;
-                return (
-                  <div key={objective.id}>
-                    <span>{objective.label}</span>
-                    <strong>
-                      {number(value)}
-                      <small> {objective.unit}</small>
-                    </strong>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="strategy-footer">
-              <span>{item.interventionIds.length} interventions</span>
-              <span>
-                {evaluations[i].feasible
-                  ? "Within bounds"
-                  : `${evaluations[i].violations.length} conflicts`}
-              </span>
-            </div>
+            </span>
+            <small className="strategy-option-status">{item.interventionIds.length} interventions{!evaluations[i].feasible ? ` · ${evaluations[i].violations.length} conflicts` : ""}</small>
           </button>
         ))}
       </div>
+      <p className="strategy-summary" key={strategy.id}>{strategy.thesis}</p>
       <section className="z-section">
         <div className="section-heading">
           <h2>Consequences</h2>
-          <small>Projection at {profile.horizonMonths} months</small>
+          <small>{profile.horizonMonths} mo</small>
         </div>
         <div
           className="table-wrap"
+          ref={comparison}
           role="region"
           aria-label="Strategy consequences"
           tabIndex={0}
@@ -508,6 +486,7 @@ export function Strategies({
             <thead>
               <tr>
                 <th scope="col">Objective</th>
+                <th scope="col">Current</th>
                 {profile.strategies.map((item) => (
                   <th
                     key={item.id}
@@ -530,6 +509,7 @@ export function Strategies({
                     )}
                     <small>{objective.unit}</small>
                   </td>
+                  <td className="muted">{number(objective.baseline + workspace.outcomes.filter(o => o.objectiveId === objective.id).reduce((sum, o) => sum + o.observed, 0))}</td>
                   {evaluations.map((entry) => {
                     const outcome = entry.outcomes.find(
                       (o) => o.objectiveId === objective.id,
@@ -542,7 +522,7 @@ export function Strategies({
                         {number(outcome.value)}
                         <small>
                           {outcome.delta >= 0 ? "+" : ""}
-                          {number(outcome.delta)} from intervention
+                          {number(outcome.delta)}
                         </small>
                       </td>
                     );
@@ -557,13 +537,11 @@ export function Strategies({
           </table>
         </div>
       </section>
+      <details className="strategy-disclosure" open={evaluation.violations.length > 0}>
+        <summary>{evaluation.violations.length ? <><TriangleAlert size={15} />{evaluation.violations.length} conflicts</> : <><GitBranch size={15} />{strategy.interventionIds.length} interventions</>}</summary>
       <div className="z-situation-grid strategy-detail">
         <div>
           <section className="z-section">
-            <div className="section-heading">
-              <h2>{strategy.name}</h2>
-              <small>Whole portfolio</small>
-            </div>
             {evaluation.violations.length > 0 && (
               <div className="z-alert">
                 <TriangleAlert />
@@ -620,7 +598,6 @@ export function Strategies({
           <section className="z-section">
             <div className="section-heading">
               <h2>Model inputs</h2>
-              <small>Inspect to revise</small>
             </div>
             <div className="claim-chips">
               {evaluation.assumptions.map((id) => (
@@ -641,17 +618,18 @@ export function Strategies({
         <aside className="z-inspector">
           <div className="section-heading">
             <h2>Shared capacity</h2>
-            <small>Committed + proposed</small>
           </div>
           <Resources workspace={workspace} evaluation={evaluation} />
         </aside>
+      </div>
+      </details>
       </div>
       <form
         className="z-decision-bar"
         onSubmit={(event) => {
           event.preventDefault();
-          if (evaluation.feasible && rationale.trim())
-            onAuthorize(selected, rationale);
+          if (evaluation.feasible && rationale.trim() && onAuthorize(selected, rationale))
+            saveDraft({ strategyId: selected, rationale: "" });
         }}
       >
         <label className="sr-only" htmlFor="rationale">
@@ -663,7 +641,7 @@ export function Strategies({
           maxLength={4000}
           placeholder="Why this strategy?"
           value={rationale}
-          onChange={(event) => setRationale(event.target.value)}
+          onChange={(event) => saveDraft({ ...draft, rationale: event.target.value })}
         />
         <button
           className="button primary"
@@ -673,6 +651,11 @@ export function Strategies({
           Authorize <ArrowRight size={16} />
         </button>
       </form>
+      {composing && <StrategyComposer workspace={workspace} initialIds={[]} onClose={() => setComposing(false)} onSave={(transform, id) => {
+        if (!change(transform)) return false;
+        saveDraft({ strategyId: id, rationale: "" });
+        return true;
+      }} />}
     </>
   );
 }
@@ -829,6 +812,8 @@ export function Mandates({
   );
 }
 const eventIcons = {
+  review: BookOpen,
+  strategy: GitBranch,
   claim: CircleDashed,
   decision: GitBranch,
   accepted: ShieldCheck,
@@ -1075,20 +1060,26 @@ export function ClaimDetail({
 }: {
   workspace: Workspace;
   claim: Claim;
-  onSave: (value: number, revision: number) => void;
+  onSave: (value: number, revision: number, source?: Claim["source"]) => void;
 }) {
   const [value, setValue] = useState(String(claimValue(workspace, claim.id)));
   const [revision, setRevision] = useState(workspace.revision);
+  const [mode, setMode] = useState<"working" | "evidence">("working");
+  const [sourceTitle, setSourceTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [date, setDate] = useState(workspace.profile.date);
+  const [excerpt, setExcerpt] = useState("");
+  const source = currentClaimSource(workspace, claim.id);
   return (
     <div className="z-source">
       <div className="source-meta">
         <span className={`state-tag ${claim.status}`}>{claim.status}</span>
         <span>
-          {claim.source.author} · {claim.source.date}
+          {source.author} · {source.date}
         </span>
       </div>
-      <h3>{claim.source.title}</h3>
-      <blockquote>{claim.source.excerpt}</blockquote>
+      <h3>{source.title}</h3>
+      <blockquote>{source.excerpt}</blockquote>
       {claim.dissent && (
         <div className="z-alert">
           <TriangleAlert size={16} />
@@ -1099,9 +1090,13 @@ export function ClaimDetail({
         className="z-fields"
         onSubmit={(event) => {
           event.preventDefault();
-          onSave(Number(value), revision);
+          onSave(Number(value), revision, mode === "evidence" ? { title: sourceTitle.trim(), author: author.trim(), date, excerpt: excerpt.trim() } : undefined);
         }}
       >
+        <div className="z-tabs" role="group" aria-label="Update type">
+          <button type="button" className={mode === "working" ? "active" : ""} aria-pressed={mode === "working"} onClick={() => setMode("working")}>Working</button>
+          <button type="button" className={mode === "evidence" ? "active" : ""} aria-pressed={mode === "evidence"} onClick={() => setMode("evidence")}>Evidence</button>
+        </div>
         <label>
           {claim.label}
           <div className="input-row">
@@ -1117,6 +1112,11 @@ export function ClaimDetail({
             <span>{claim.unit}</span>
           </div>
         </label>
+        {mode === "evidence" && <div className="evidence-fields z-fields">
+          <label>Source<input required maxLength={160} value={sourceTitle} onChange={event => setSourceTitle(event.target.value)} placeholder="Report, notice, or measurement" /></label>
+          <div className="model-pair"><label>Author<input required maxLength={160} value={author} onChange={event => setAuthor(event.target.value)} /></label><label>Date<input required type="date" value={date} onChange={event => setDate(event.target.value)} /></label></div>
+          <label>Evidence<textarea required maxLength={4000} rows={3} value={excerpt} onChange={event => setExcerpt(event.target.value)} placeholder="The source statement supporting this value" /></label>
+        </div>}
         <small className="muted">
           {number(claim.min)}–{metric(claim.max, claim.unit)} · original{" "}
           {number(claim.value)}
@@ -1130,7 +1130,7 @@ export function ClaimDetail({
             revision !== workspace.revision
           }
         >
-          Revise <ArrowRight size={15} />
+          {mode === "evidence" ? "Record" : "Revise"} <ArrowRight size={15} />
         </button>
         {revision !== workspace.revision && (
           <div className="z-alert">

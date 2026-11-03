@@ -20,11 +20,14 @@ import {
 import {
   authorize,
   createWorkspace,
+  createProjectWorkspace,
+  refreshProject,
   rejectProbe,
+  recordEvidence,
   updateClaim,
   validateProfile,
 } from "@/lib/coordination/core";
-import { workedExample } from "@/lib/coordination/examples";
+import { decisionEpisode } from "@/lib/coordination/episodes";
 import { PROFILES } from "@/lib/coordination/profiles";
 import {
   exportLibrary,
@@ -55,6 +58,11 @@ import {
   type View,
 } from "./views";
 import { useLibrary } from "./use-library";
+import { DecisionContext } from "./decision-context";
+import { DecisionReconsideration } from "./review-panel";
+import { ProjectImport } from "./project-import";
+import { ProjectWorkspace } from "./project-workspace";
+import type { ProjectSnapshot } from "@/lib/coordination/project-data";
 
 const views = [
   { id: "situation", name: "Situation", icon: Compass },
@@ -62,23 +70,16 @@ const views = [
   { id: "mandates", name: "Mandates", icon: ShieldCheck },
   { id: "ledger", name: "Ledger", icon: BookOpen },
 ] as const;
-type Modal = "worlds" | "new" | "info" | "export" | "import" | null;
+type Modal = "worlds" | "new" | "info" | "export" | "import" | "project" | null;
 type ImportPreview =
   { kind: "library"; value: Library } | { kind: "profile"; value: Profile };
-const guide = {
-  situation: "Inspect a source. Its assumptions feed the comparison.",
-  strategies:
-    "Compare the tradeoffs. Authorize a strategy with your rationale.",
-  mandates: "Accept the portfolio, then advance the simulated specialists.",
-  ledger: "Compare observed outcomes with the decision’s frozen projection.",
-};
-
 export function CoordinationApp() {
   const { library, change, notice, setNotice } = useLibrary();
   const [view, setView] = useState<View>("situation");
   const [scopeId, setScopeId] = useState("");
   const [modal, setModal] = useState<Modal>(null);
   const [inspection, setInspection] = useState<Inspect | null>(null);
+  const [viewedSources, setViewedSources] = useState<string[]>([]);
   const [exportText, setExportText] = useState("");
   const [exportSnapshot, setExportSnapshot] = useState<Library | null>(null);
   const [exportMode, setExportMode] = useState<"world" | "library">("library");
@@ -86,6 +87,7 @@ export function CoordinationApp() {
   const [preview, setPreview] = useState<ImportPreview | null>(null);
   const [fileError, setFileError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [projectTarget, setProjectTarget] = useState<{ id: string; revision: number } | null>(null);
   const [archives, setArchives] = useState<{ key: string; text: string }[]>([]);
   const previousWorld = useRef<string | undefined>(undefined);
   const workspace = library?.workspaces.find(
@@ -123,6 +125,9 @@ export function CoordinationApp() {
   }, [workspace]);
   const navigate = (next: View) => {
     setView(next);
+    window.scrollTo({ top: 0, behavior: "instant" });
+    if (next === "ledger" && workspace?.outcomes.length && !library?.onboardingDone)
+      change(previous => ({ ...previous, onboardingDone: true }));
     if (window.location.hash !== `#${next}`)
       window.history.pushState(null, "", `#${next}`);
   };
@@ -161,14 +166,14 @@ export function CoordinationApp() {
         ? previous.workspaces
         : [
             ...previous.workspaces,
-            guided ? createWorkspace(profile) : workedExample(profile),
+            guided ? createWorkspace(profile) : decisionEpisode(profile),
           ],
     }));
     if (saved) {
       setScopeId("");
       setInspection(null);
       setModal(null);
-      navigate(existing || guided ? "situation" : "ledger");
+      navigate("situation");
     }
   };
   const choose = (id: string) => {
@@ -184,6 +189,30 @@ export function CoordinationApp() {
     setInspection(null);
     setFileError("");
   };
+  const openProjectImport = (refresh = false) => {
+    setProjectTarget(refresh && workspace?.project ? { id: workspace.profile.id, revision: workspace.revision } : null);
+    setModal("project");
+  };
+  const applyProject = (snapshot: ProjectSnapshot, name: string): boolean => {
+    const saved = change(previous => {
+      if (projectTarget) {
+        const target = previous.workspaces.find(item => item.profile.id === projectTarget.id);
+        if (!target || previous.activeId !== target.profile.id) throw new Error("The active project changed. Reopen the import.");
+        const refreshed = refreshProject(target, snapshot, projectTarget.revision);
+        return { ...previous, workspaces: previous.workspaces.map(item => item.profile.id === target.profile.id ? refreshed : item) };
+      }
+      const created = createProjectWorkspace(snapshot, name);
+      return { ...previous, activeId: created.profile.id, onboardingDone: true, workspaces: [...previous.workspaces, created] };
+    });
+    if (saved) { close(); setScopeId(""); if (!projectTarget) navigate("situation"); }
+    return saved;
+  };
+  const projectImport = modal === "project" && <ProjectImport
+    onSave={applyProject} onClose={close}
+    initialName={projectTarget ? workspace?.profile.name : undefined}
+    previousSnapshot={projectTarget ? workspace?.project?.snapshots.at(-1) : undefined}
+    onRestore={() => { setModal("import"); setPreview(null); setImportText(""); setFileError(""); }}
+  />;
   const openExport = async (mode: "world" | "library" = "library") => {
     if (!library || !workspace) return;
     const snapshot =
@@ -332,11 +361,7 @@ export function CoordinationApp() {
             ),
           ]}
           existingIds={library.workspaces.map((item) => item.profile.id)}
-          onImport={() => {
-            setModal("import");
-            setPreview(null);
-            setImportText("");
-          }}
+          onImport={() => openProjectImport()}
         />
         {notice && (
           <div className="onboarding-recovery">
@@ -352,6 +377,7 @@ export function CoordinationApp() {
           </div>
         )}
         {notices}
+        {projectImport}
         {modal === "import" && (
           <Dialog title={notice ? "Recover" : "Import"} onClose={close}>
             <label className="z-fields">
@@ -433,15 +459,20 @@ export function CoordinationApp() {
   const title =
     inspectClaim?.label ??
     inspectAgent?.name ??
-    (inspectDecision ? "Decision" : (inspectScope?.name ?? ""));
+    (inspectDecision ? "Review" : (inspectScope?.name ?? ""));
   const viewProps = {
     workspace,
     scopeId: activeScopeId,
-    inspect: setInspection,
+    inspect: (value: Inspect) => {
+      setInspection(value);
+      if (value.kind === "claim" && !viewedSources.includes(profile.id)) setViewedSources([...viewedSources, profile.id]);
+    },
     change: update,
   };
   return (
-    <div className="z-app">
+    <div className={workspace.project ? "project-host" : "z-app"}>
+      {workspace.project ? <ProjectWorkspace key={workspace.profile.id} workspace={workspace} change={update}
+        onWorlds={() => { setModal("worlds"); setArchives([]); }} onImport={() => openProjectImport(true)} onExport={() => openExport()} /> : <>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -509,11 +540,7 @@ export function CoordinationApp() {
             <IconButton
               icon={Upload}
               label="Import"
-              onClick={() => {
-                setModal("import");
-                setPreview(null);
-                setImportText("");
-              }}
+              onClick={() => openProjectImport()}
             />
             <IconButton
               icon={Download}
@@ -570,42 +597,10 @@ export function CoordinationApp() {
               <h1>{views.find((item) => item.id === view)?.name}</h1>
               <span className="muted mono">r{workspace.revision}</span>
             </div>
-            {!library.onboardingDone && (
-              <div className="z-guide">
-                <span className="guide-count">
-                  {views.findIndex((item) => item.id === view) + 1}/4
-                </span>
-                <p>{guide[view]}</p>
-                <button
-                  className="text-button"
-                  onClick={() => {
-                    if (view === "ledger")
-                      change((previous) => ({
-                        ...previous,
-                        onboardingDone: true,
-                      }));
-                    else
-                      navigate(
-                        views[views.findIndex((item) => item.id === view) + 1]
-                          .id,
-                      );
-                  }}
-                >
-                  {view === "ledger" ? "Done" : "Next"}
-                  <ArrowRight size={14} />
-                </button>
-                <IconButton
-                  icon={X}
-                  label="Skip guide"
-                  onClick={() =>
-                    change((previous) => ({
-                      ...previous,
-                      onboardingDone: true,
-                    }))
-                  }
-                />
-              </div>
-            )}
+            {(view !== "situation" || !workspace.decisions.length) && <DecisionContext workspace={workspace} scopeId={activeScopeId} view={view}
+              guided={!library.onboardingDone} evidenceViewed={viewedSources.includes(profile.id)}
+              inspect={viewProps.inspect} navigate={navigate}
+              dismiss={() => change(previous => ({ ...previous, onboardingDone: true }))} />}
             <div className="z-content" key={`${profile.id}-${view}`}>
               {view === "situation" && (
                 <Situation
@@ -627,8 +622,11 @@ export function CoordinationApp() {
                 <Strategies
                   {...viewProps}
                   onAuthorize={(id, rationale) => {
-                    if (update((w) => authorize(w, id, rationale)))
+                    if (update((w) => authorize(w, id, rationale))) {
                       navigate("mandates");
+                      return true;
+                    }
+                    return false;
                   }}
                 />
               )}
@@ -640,10 +638,13 @@ export function CoordinationApp() {
           </main>
         </div>
       </div>
+      </>}
       {notices}
+      {projectImport}
       {inspection && (
         <Dialog
           title={title}
+          className={inspectDecision ? "review-dialog" : ""}
           onClose={close}
           footer={
             inspectDecision && (
@@ -660,10 +661,10 @@ export function CoordinationApp() {
               key={`${profile.id}-${inspectClaim.id}`}
               workspace={workspace}
               claim={inspectClaim}
-              onSave={(value, revision) => {
+              onSave={(value, revision, source) => {
                 if (
                   update((w) =>
-                    updateClaim(w, inspectClaim.id, value, revision),
+                    source ? recordEvidence(w, { claimId: inspectClaim.id, value, source }, revision) : updateClaim(w, inspectClaim.id, value, revision),
                   )
                 )
                   close();
@@ -683,7 +684,11 @@ export function CoordinationApp() {
             />
           )}
           {inspectDecision && (
-            <DecisionDetail workspace={workspace} decision={inspectDecision} />
+            <DecisionReconsideration key={`${profile.id}-${inspectDecision.id}`}
+              workspace={workspace} decision={inspectDecision}
+              record={<DecisionDetail workspace={workspace} decision={inspectDecision} />}
+              inspect={viewProps.inspect} change={update}
+              navigate={next => { close(); navigate(next); }} />
           )}
           {inspectScope && (
             <div className="scope-detail">
@@ -740,7 +745,16 @@ export function CoordinationApp() {
               <button className="text-button" onClick={readArchives}>
                 Archive
               </button>
-              <button
+              <button className="button primary" onClick={() => openProjectImport()}><Upload size={15} />Bring data</button>
+              {PROFILES.some(item => item.id === profile.id) && <button className="button" onClick={() => {
+                const example = decisionEpisode(PROFILES.find(item => item.id === profile.id)!);
+                const id = `case-${crypto.randomUUID()}`;
+                const instance = { ...example, profile: { ...example.profile, id, name: `${example.profile.name} · case` } };
+                if (change(previous => ({ ...previous, activeId: id, onboardingDone: true, workspaces: [...previous.workspaces, instance] }))) {
+                  setScopeId(""); close(); navigate("situation");
+                }
+              }}><ArrowRight size={15} />Explore</button>}
+              {!workspace.project && <button
                 className="button"
                 onClick={() =>
                   start(
@@ -755,7 +769,7 @@ export function CoordinationApp() {
               >
                 <GitBranch size={15} />
                 New instance
-              </button>
+              </button>}
               <button className="button" onClick={() => setModal("new")}>
                 <Plus size={16} />
                 New world
@@ -892,7 +906,7 @@ export function CoordinationApp() {
             <p>
               {exportSnapshot.workspaces.length} worlds ·{" "}
               {exportSnapshot.workspaces.reduce(
-                (total, item) => total + item.decisions.length,
+                (total, item) => total + item.decisions.length + (item.project?.responses.length ?? 0),
                 0,
               )}{" "}
               decisions ·{" "}
@@ -901,6 +915,7 @@ export function CoordinationApp() {
                 0,
               )}{" "}
               mandates
+              {exportSnapshot.workspaces.some(item => item.project) && ` · ${exportSnapshot.workspaces.reduce((total, item) => total + (item.project?.snapshots.length ?? 0), 0)} source snapshots`}
             </p>
           )}
           <details className="export-code">
